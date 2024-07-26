@@ -8,21 +8,306 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace Vezénylés_szerkesztő.Properties
-{
+namespace Vezénylés_szerkesztő.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14")]
+        public int warningCardDateDays {
+            get {
+                return ((int)(this["warningCardDateDays"]));
+            }
+            set {
+                this["warningCardDateDays"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int warningExamDateDays {
+            get {
+                return ((int)(this["warningExamDateDays"]));
+            }
+            set {
+                this["warningExamDateDays"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("168")]
+        public int avgMonthlyHours {
+            get {
+                return ((int)(this["avgMonthlyHours"]));
+            }
+            set {
+                this["avgMonthlyHours"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        public int hoursPTO {
+            get {
+                return ((int)(this["hoursPTO"]));
+            }
+            set {
+                this["hoursPTO"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int hoursStandby {
+            get {
+                return ((int)(this["hoursStandby"]));
+            }
+            set {
+                this["hoursStandby"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int hoursFreeDay {
+            get {
+                return ((int)(this["hoursFreeDay"]));
+            }
+            set {
+                this["hoursFreeDay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        public int multiplierKm {
+            get {
+                return ((int)(this["multiplierKm"]));
+            }
+            set {
+                this["multiplierKm"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11")]
+        public int employeesPerFlight {
+            get {
+                return ((int)(this["employeesPerFlight"]));
+            }
+            set {
+                this["employeesPerFlight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int employeesPerNightShift {
+            get {
+                return ((int)(this["employeesPerNightShift"]));
+            }
+            set {
+                this["employeesPerNightShift"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int employeesPerDayShift {
+            get {
+                return ((int)(this["employeesPerDayShift"]));
+            }
+            set {
+                this["employeesPerDayShift"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int employeesPerStandby {
+            get {
+                return ((int)(this["employeesPerStandby"]));
+            }
+            set {
+                this["employeesPerStandby"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lime")]
+        public global::System.Drawing.Color colorShiftAMStart {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftAMStart"]));
+            }
+            set {
+                this["colorShiftAMStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lime")]
+        public global::System.Drawing.Color colorShiftAMEndLong {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftAMEndLong"]));
+            }
+            set {
+                this["colorShiftAMEndLong"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Aquamarine")]
+        public global::System.Drawing.Color colorShiftAMEndShort {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftAMEndShort"]));
+            }
+            set {
+                this["colorShiftAMEndShort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cyan")]
+        public global::System.Drawing.Color colorShiftModDay {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftModDay"]));
+            }
+            set {
+                this["colorShiftModDay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Magenta")]
+        public global::System.Drawing.Color colorShiftPMStart {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftPMStart"]));
+            }
+            set {
+                this["colorShiftPMStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Magenta")]
+        public global::System.Drawing.Color colorShiftPMEndLong {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftPMEndLong"]));
+            }
+            set {
+                this["colorShiftPMEndLong"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pink")]
+        public global::System.Drawing.Color colorShiftPMEndShort {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftPMEndShort"]));
+            }
+            set {
+                this["colorShiftPMEndShort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DarkCyan")]
+        public global::System.Drawing.Color colorShiftGate3 {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftGate3"]));
+            }
+            set {
+                this["colorShiftGate3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Gold")]
+        public global::System.Drawing.Color colorShiftNight {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftNight"]));
+            }
+            set {
+                this["colorShiftNight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        public global::System.Drawing.Color colorShiftStandby {
+            get {
+                return ((global::System.Drawing.Color)(this["colorShiftStandby"]));
+            }
+            set {
+                this["colorShiftStandby"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightBlue")]
+        public global::System.Drawing.Color colorFreeDay {
+            get {
+                return ((global::System.Drawing.Color)(this["colorFreeDay"]));
+            }
+            set {
+                this["colorFreeDay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
+        public global::System.Drawing.Color colorStandBy {
+            get {
+                return ((global::System.Drawing.Color)(this["colorStandBy"]));
+            }
+            set {
+                this["colorStandBy"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public global::System.Drawing.Color colorPaidTimeOff {
+            get {
+                return ((global::System.Drawing.Color)(this["colorPaidTimeOff"]));
+            }
+            set {
+                this["colorPaidTimeOff"] = value;
             }
         }
     }

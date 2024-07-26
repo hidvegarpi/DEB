@@ -1,7 +1,78 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Vezénylés_szerkesztő.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="warningCardDateDays" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">14</Value>
+    </Setting>
+    <Setting Name="warningExamDateDays" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="avgMonthlyHours" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">168</Value>
+    </Setting>
+    <Setting Name="hoursPTO" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="hoursStandby" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="hoursFreeDay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="multiplierKm" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9</Value>
+    </Setting>
+    <Setting Name="employeesPerFlight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">11</Value>
+    </Setting>
+    <Setting Name="employeesPerNightShift" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="employeesPerDayShift" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="employeesPerStandby" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="colorShiftAMStart" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Lime</Value>
+    </Setting>
+    <Setting Name="colorShiftAMEndLong" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Lime</Value>
+    </Setting>
+    <Setting Name="colorShiftAMEndShort" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Aquamarine</Value>
+    </Setting>
+    <Setting Name="colorShiftModDay" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Cyan</Value>
+    </Setting>
+    <Setting Name="colorShiftPMStart" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Magenta</Value>
+    </Setting>
+    <Setting Name="colorShiftPMEndLong" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Magenta</Value>
+    </Setting>
+    <Setting Name="colorShiftPMEndShort" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Pink</Value>
+    </Setting>
+    <Setting Name="colorShiftGate3" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DarkCyan</Value>
+    </Setting>
+    <Setting Name="colorShiftNight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Gold</Value>
+    </Setting>
+    <Setting Name="colorShiftStandby" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Yellow</Value>
+    </Setting>
+    <Setting Name="colorFreeDay" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">LightBlue</Value>
+    </Setting>
+    <Setting Name="colorStandBy" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Yellow</Value>
+    </Setting>
+    <Setting Name="colorPaidTimeOff" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

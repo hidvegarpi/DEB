@@ -14,19 +14,19 @@ namespace Vezénylés_szerkesztő
 {
     public static class PublicParameters
     {
-        public static int warningCardDateDays         = 14;
-        public static int warningExamDateDays         = 30;
+        public static int warningCardDateDays         { get { return Properties.Settings.Default.warningCardDateDays; } set { Properties.Settings.Default.warningCardDateDays = value; Properties.Settings.Default.Save(); } }
+        public static int warningExamDateDays         { get { return Properties.Settings.Default.warningExamDateDays; } set { Properties.Settings.Default.warningExamDateDays = value; Properties.Settings.Default.Save(); } }
 
-        public static int avgMonthlyHours             = 168;
-        public static int hoursPTO                    = 12;
-        public static int hoursStandby                = 0;
-        public static int hoursFreeDay                = 0;
-        public static int multiplierKm                = 9;
+        public static int avgMonthlyHours             { get { return Properties.Settings.Default.avgMonthlyHours; } set { Properties.Settings.Default.avgMonthlyHours = value; Properties.Settings.Default.Save(); } }
+        public static int hoursPTO                    { get { return Properties.Settings.Default.hoursPTO; } set { Properties.Settings.Default.hoursPTO = value; Properties.Settings.Default.Save(); } }
+        public static int hoursStandby                { get { return Properties.Settings.Default.hoursStandby; } set { Properties.Settings.Default.hoursStandby = value; Properties.Settings.Default.Save(); } }
+        public static int hoursFreeDay                { get { return Properties.Settings.Default.hoursFreeDay; } set { Properties.Settings.Default.hoursFreeDay = value; Properties.Settings.Default.Save(); } }
+        public static int multiplierKm                { get { return Properties.Settings.Default.multiplierKm; } set { Properties.Settings.Default.multiplierKm = value; Properties.Settings.Default.Save(); } }
 
-        public static int employeesPerFlight          = 9;
-        public static int employeesPerNightShift      = 2;
-        public static int employeesPerDayShift        = 5;
-        public static int employeesPerStandby         = 4;
+        public static int employeesPerFlight          { get { return Properties.Settings.Default.employeesPerFlight; } set { Properties.Settings.Default.employeesPerFlight = value; Properties.Settings.Default.Save(); } }
+        public static int employeesPerNightShift      { get { return Properties.Settings.Default.employeesPerNightShift; } set { Properties.Settings.Default.employeesPerNightShift = value; Properties.Settings.Default.Save(); } }
+        public static int employeesPerDayShift        { get { return Properties.Settings.Default.employeesPerDayShift; } set { Properties.Settings.Default.employeesPerDayShift = value; Properties.Settings.Default.Save(); } }
+        public static int employeesPerStandby         { get { return Properties.Settings.Default.employeesPerStandby; } set { Properties.Settings.Default.employeesPerStandby = value; Properties.Settings.Default.Save(); } }
 
         public static int shiftIndexDay               = 2;
         public static int shiftIndexStandby           = 3;
@@ -34,21 +34,21 @@ namespace Vezénylés_szerkesztő
         public static int shiftIndexFreeDay           = 5;
         public static int shiftNonDefaultStart        = 6;
 
-        public static Color colorShiftAMStart         = Color.Lime;
-        public static Color colorShiftAMEndLong       = Color.Lime;
-        public static Color colorShiftAMEndShort      = Color.Aquamarine;
-        public static Color colorShiftModDay          = Color.Cyan;
+        public static Color colorShiftAMStart         { get { return Properties.Settings.Default.colorShiftAMStart; } set { Properties.Settings.Default.colorShiftAMStart = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftAMEndLong       { get { return Properties.Settings.Default.colorShiftAMEndLong; } set { Properties.Settings.Default.colorShiftAMEndLong = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftAMEndShort      { get { return Properties.Settings.Default.colorShiftAMEndShort; } set { Properties.Settings.Default.colorShiftAMEndShort = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftModDay          { get { return Properties.Settings.Default.colorShiftModDay; } set { Properties.Settings.Default.colorShiftModDay = value; Properties.Settings.Default.Save(); } }
 
-        public static Color colorShiftPMStart         = Color.Magenta;
-        public static Color colorShiftPMEndLong       = Color.Magenta;
-        public static Color colorShiftPMEndShort      = Color.Pink;
+        public static Color colorShiftPMStart         { get { return Properties.Settings.Default.colorShiftPMStart; } set { Properties.Settings.Default.colorShiftPMStart = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftPMEndLong       { get { return Properties.Settings.Default.colorShiftPMEndLong; } set { Properties.Settings.Default.colorShiftPMEndLong = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftPMEndShort      { get { return Properties.Settings.Default.colorShiftPMEndShort; } set { Properties.Settings.Default.colorShiftPMEndShort = value; Properties.Settings.Default.Save(); } }
 
-        public static Color colorShiftGate3           = Color.DarkCyan;
-        public static Color colorShiftNight           = Color.Gold;
-        public static Color colorShiftStandby         = Color.Yellow;
-        public static Color colorFreeDay              = Color.LightBlue;
-        public static Color colorStandBy              = Color.Yellow;
-        public static Color colorPaidTimeOff          = Form1.DefaultBackColor;
+        public static Color colorShiftGate3           { get { return Properties.Settings.Default.colorShiftGate3; } set { Properties.Settings.Default.colorShiftGate3 = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftNight           { get { return Properties.Settings.Default.colorShiftNight; } set { Properties.Settings.Default.colorShiftNight = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftStandby         { get { return Properties.Settings.Default.colorShiftStandby; } set { Properties.Settings.Default.colorShiftStandby = value; Properties.Settings.Default.Save(); } }
+        public static Color colorFreeDay              { get { return Properties.Settings.Default.colorFreeDay; } set { Properties.Settings.Default.colorFreeDay = value; Properties.Settings.Default.Save(); } }
+        public static Color colorStandBy              { get { return Properties.Settings.Default.colorStandBy; } set { Properties.Settings.Default.colorStandBy = value; Properties.Settings.Default.Save(); } }
+        public static Color colorPaidTimeOff          { get { return Properties.Settings.Default.colorPaidTimeOff; } set { Properties.Settings.Default.colorPaidTimeOff = value; Properties.Settings.Default.Save(); } }
     }
 
     public enum EmployeeType
@@ -114,7 +114,7 @@ namespace Vezénylés_szerkesztő
                 "\nType: " + type +
                 "\nExamDate: " + examDate.ToString("yyyy. MM. dd.") +
                 "\nCardDate: " + cardDate.ToString("yyyy. MM. dd.") +
-                "DistanceToWork: " + distanceToWork + " Km" +
+                "\nDistanceToWork: " + distanceToWork + " Km" +
                 "\nExams: " +
                 (exams.HasFlag(ExamType.VED1) ? "1" : "0") +
                 (exams.HasFlag(ExamType.VED2) ? "1" : "0") +

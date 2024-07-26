@@ -39,6 +39,10 @@ namespace Vezénylés_szerkesztő
             this.járatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hozzáadásToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.törlésToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.beoSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.beállításokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kilépésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -46,14 +50,10 @@ namespace Vezénylés_szerkesztő
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.beoSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.beállításokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kilépésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -100,7 +100,7 @@ namespace Vezénylés_szerkesztő
             // hozzáadásToolStripMenuItem
             // 
             this.hozzáadásToolStripMenuItem.Name = "hozzáadásToolStripMenuItem";
-            this.hozzáadásToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hozzáadásToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.hozzáadásToolStripMenuItem.Text = "Hozzáadás";
             this.hozzáadásToolStripMenuItem.Click += new System.EventHandler(this.hozzáadásToolStripMenuItem_Click);
             // 
@@ -108,7 +108,7 @@ namespace Vezénylés_szerkesztő
             // 
             this.törlésToolStripMenuItem.Enabled = false;
             this.törlésToolStripMenuItem.Name = "törlésToolStripMenuItem";
-            this.törlésToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.törlésToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.törlésToolStripMenuItem.Text = "Törlés";
             // 
             // járatToolStripMenuItem
@@ -123,7 +123,7 @@ namespace Vezénylés_szerkesztő
             // hozzáadásToolStripMenuItem1
             // 
             this.hozzáadásToolStripMenuItem1.Name = "hozzáadásToolStripMenuItem1";
-            this.hozzáadásToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.hozzáadásToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.hozzáadásToolStripMenuItem1.Text = "Hozzáadás";
             this.hozzáadásToolStripMenuItem1.Click += new System.EventHandler(this.hozzáadásToolStripMenuItem1_Click);
             // 
@@ -131,8 +131,34 @@ namespace Vezénylés_szerkesztő
             // 
             this.törlésToolStripMenuItem1.Enabled = false;
             this.törlésToolStripMenuItem1.Name = "törlésToolStripMenuItem1";
-            this.törlésToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.törlésToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.törlésToolStripMenuItem1.Text = "Törlés";
+            // 
+            // beoSaveToolStripMenuItem
+            // 
+            this.beoSaveToolStripMenuItem.Name = "beoSaveToolStripMenuItem";
+            this.beoSaveToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.beoSaveToolStripMenuItem.Text = "Beosztás mentése képként";
+            this.beoSaveToolStripMenuItem.Click += new System.EventHandler(this.beoSaveToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            // 
+            // beállításokToolStripMenuItem
+            // 
+            this.beállításokToolStripMenuItem.Name = "beállításokToolStripMenuItem";
+            this.beállításokToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.beállításokToolStripMenuItem.Text = "Beállítások";
+            this.beállításokToolStripMenuItem.Click += new System.EventHandler(this.beállításokToolStripMenuItem_Click);
+            // 
+            // kilépésToolStripMenuItem
+            // 
+            this.kilépésToolStripMenuItem.Name = "kilépésToolStripMenuItem";
+            this.kilépésToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.kilépésToolStripMenuItem.Text = "Kilépés";
+            this.kilépésToolStripMenuItem.Click += new System.EventHandler(this.kilépésToolStripMenuItem_Click);
             // 
             // toolStripStatusLabel1
             // 
@@ -145,7 +171,7 @@ namespace Vezénylés_szerkesztő
             // 
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(571, 21);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(602, 21);
             this.toolStripStatusLabel2.Spring = true;
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -208,52 +234,6 @@ namespace Vezénylés_szerkesztő
             this.tabPage2.Text = "Statisztika";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 60000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "LHDC UBI Vezénylés";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
-            // 
-            // beoSaveToolStripMenuItem
-            // 
-            this.beoSaveToolStripMenuItem.Name = "beoSaveToolStripMenuItem";
-            this.beoSaveToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.beoSaveToolStripMenuItem.Text = "Beosztás mentése képként";
-            this.beoSaveToolStripMenuItem.Click += new System.EventHandler(this.beoSaveToolStripMenuItem_Click);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.DefaultExt = "*.png";
-            this.saveFileDialog1.FileName = "beosztás.png";
-            this.saveFileDialog1.Filter = "PNG|*.png";
-            this.saveFileDialog1.InitialDirectory = "./";
-            this.saveFileDialog1.Title = "Beosztás mentése képként";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
-            // 
-            // beállításokToolStripMenuItem
-            // 
-            this.beállításokToolStripMenuItem.Name = "beállításokToolStripMenuItem";
-            this.beállításokToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.beállításokToolStripMenuItem.Text = "Beállítások";
-            this.beállításokToolStripMenuItem.Click += new System.EventHandler(this.beállításokToolStripMenuItem_Click);
-            // 
-            // kilépésToolStripMenuItem
-            // 
-            this.kilépésToolStripMenuItem.Name = "kilépésToolStripMenuItem";
-            this.kilépésToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.kilépésToolStripMenuItem.Text = "Kilépés";
-            this.kilépésToolStripMenuItem.Click += new System.EventHandler(this.kilépésToolStripMenuItem_Click);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -266,6 +246,26 @@ namespace Vezénylés_szerkesztő
             this.richTextBox1.Size = new System.Drawing.Size(1179, 396);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 60000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "LHDC UBI Vezénylés";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "*.png";
+            this.saveFileDialog1.FileName = "beosztás.png";
+            this.saveFileDialog1.Filter = "PNG|*.png";
+            this.saveFileDialog1.InitialDirectory = "./";
+            this.saveFileDialog1.Title = "Beosztás mentése képként";
             // 
             // Form1
             // 

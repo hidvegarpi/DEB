@@ -60,40 +60,40 @@ namespace Vezénylés_szerkesztő
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label21 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.label30 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
-            this.label35 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -497,209 +497,77 @@ namespace Vezénylés_szerkesztő
             this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 30;
             // 
-            // colorDialog1
+            // label35
             // 
-            this.colorDialog1.FullOpen = true;
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(329, 271);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(16, 13);
+            this.label35.TabIndex = 34;
+            this.label35.Text = "Ft";
             // 
-            // label21
+            // numericUpDown11
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(13, 11);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Éjszakás szín:";
+            this.numericUpDown11.Location = new System.Drawing.Point(278, 269);
+            this.numericUpDown11.Name = "numericUpDown11";
+            this.numericUpDown11.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown11.TabIndex = 33;
+            this.numericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown11.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
             // 
-            // button1
+            // label34
             // 
-            this.button1.Location = new System.Drawing.Point(180, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 20);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(12, 271);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(86, 13);
+            this.label34.TabIndex = 32;
+            this.label34.Text = "Kilométer szorzó:";
             // 
-            // button2
+            // checkBox2
             // 
-            this.button2.Location = new System.Drawing.Point(180, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 20);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(15, 322);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(275, 17);
+            this.checkBox2.TabIndex = 31;
+            this.checkBox2.Text = "Beosztás generálás: együtt bejárás figyelembe vétele";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // label22
+            // checkBox1
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 37);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(78, 13);
-            this.label22.TabIndex = 3;
-            this.label22.Text = "Nappalos szín:";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(15, 296);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBox1.Size = new System.Drawing.Size(352, 17);
+            this.checkBox1.TabIndex = 30;
+            this.checkBox1.Text = "Betegjelentés: csak a készenlétesek kiválasztásának engedélyezése";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // label33
             // 
-            this.button3.Location = new System.Drawing.Point(180, 85);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 20);
-            this.button3.TabIndex = 4;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(13, 63);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(130, 13);
+            this.label33.TabIndex = 25;
+            this.label33.Text = "Módosított nappalos szín:";
             // 
-            // button4
+            // button15
             // 
-            this.button4.Location = new System.Drawing.Point(180, 111);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 20);
-            this.button4.TabIndex = 5;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(180, 137);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 20);
-            this.button5.TabIndex = 6;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(13, 89);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(90, 13);
-            this.label23.TabIndex = 7;
-            this.label23.Text = "Készenlétes szín:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(13, 115);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(87, 13);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "Szabadnap szín:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(13, 141);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(86, 13);
-            this.label25.TabIndex = 9;
-            this.label25.Text = "Szabadság szín:";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(13, 167);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(114, 13);
-            this.label26.TabIndex = 10;
-            this.label26.Text = "Osztott délelőttös szín:";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(180, 163);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 20);
-            this.button6.TabIndex = 11;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(180, 189);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 20);
-            this.button7.TabIndex = 12;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(180, 215);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 20);
-            this.button8.TabIndex = 13;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(13, 193);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(115, 13);
-            this.label27.TabIndex = 14;
-            this.label27.Text = "Osztott délutános szín:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(13, 219);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(80, 13);
-            this.label28.TabIndex = 15;
-            this.label28.Text = "3-as kapu szín:";
-            // 
-            // button9
-            // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Location = new System.Drawing.Point(617, 366);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 31;
-            this.button9.Text = "Mentés";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(476, 366);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(135, 23);
-            this.button10.TabIndex = 32;
-            this.button10.Text = "Alaphelyzetbe állítás";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(13, 245);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(139, 13);
-            this.label29.TabIndex = 16;
-            this.label29.Text = "Osztott délelőtt hosszú szín:";
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(180, 241);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 20);
-            this.button11.TabIndex = 17;
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(180, 267);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 20);
-            this.button12.TabIndex = 18;
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(13, 271);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(129, 13);
-            this.label30.TabIndex = 19;
-            this.label30.Text = "Osztott délelőtt rövid szín:";
+            this.button15.Location = new System.Drawing.Point(180, 59);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 20);
+            this.button15.TabIndex = 24;
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // label31
             // 
@@ -737,77 +605,210 @@ namespace Vezénylés_szerkesztő
             this.label32.TabIndex = 20;
             this.label32.Text = "Osztott délután hosszú szín:";
             // 
-            // label33
+            // label30
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(13, 63);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(130, 13);
-            this.label33.TabIndex = 25;
-            this.label33.Text = "Módosított nappalos szín:";
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(13, 271);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(129, 13);
+            this.label30.TabIndex = 19;
+            this.label30.Text = "Osztott délelőtt rövid szín:";
             // 
-            // button15
+            // button12
             // 
-            this.button15.Location = new System.Drawing.Point(180, 59);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(75, 20);
-            this.button15.TabIndex = 24;
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.button12.Location = new System.Drawing.Point(180, 267);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 20);
+            this.button12.TabIndex = 18;
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // checkBox1
+            // button11
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(15, 296);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBox1.Size = new System.Drawing.Size(352, 17);
-            this.checkBox1.TabIndex = 30;
-            this.checkBox1.Text = "Betegjelentés: csak a készenlétesek kiválasztásának engedélyezése";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.button11.Location = new System.Drawing.Point(180, 241);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 20);
+            this.button11.TabIndex = 17;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // checkBox2
+            // label29
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(15, 322);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(275, 17);
-            this.checkBox2.TabIndex = 31;
-            this.checkBox2.Text = "Beosztás generálás: együtt bejárás figyelembe vétele";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(13, 245);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(139, 13);
+            this.label29.TabIndex = 16;
+            this.label29.Text = "Osztott délelőtt hosszú szín:";
             // 
-            // label34
+            // label28
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(12, 271);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(86, 13);
-            this.label34.TabIndex = 32;
-            this.label34.Text = "Kilométer szorzó:";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(13, 219);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(80, 13);
+            this.label28.TabIndex = 15;
+            this.label28.Text = "3-as kapu szín:";
             // 
-            // numericUpDown11
+            // label27
             // 
-            this.numericUpDown11.Location = new System.Drawing.Point(278, 269);
-            this.numericUpDown11.Name = "numericUpDown11";
-            this.numericUpDown11.Size = new System.Drawing.Size(45, 20);
-            this.numericUpDown11.TabIndex = 33;
-            this.numericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDown11.Value = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(13, 193);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(115, 13);
+            this.label27.TabIndex = 14;
+            this.label27.Text = "Osztott délutános szín:";
             // 
-            // label35
+            // button8
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(329, 271);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(16, 13);
-            this.label35.TabIndex = 34;
-            this.label35.Text = "Ft";
+            this.button8.Location = new System.Drawing.Point(180, 215);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 20);
+            this.button8.TabIndex = 13;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(180, 189);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 20);
+            this.button7.TabIndex = 12;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(180, 163);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 20);
+            this.button6.TabIndex = 11;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(13, 167);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(114, 13);
+            this.label26.TabIndex = 10;
+            this.label26.Text = "Osztott délelőttös szín:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(13, 141);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(86, 13);
+            this.label25.TabIndex = 9;
+            this.label25.Text = "Szabadság szín:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(13, 115);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(87, 13);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "Szabadnap szín:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(13, 89);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(90, 13);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "Készenlétes szín:";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(180, 137);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 20);
+            this.button5.TabIndex = 6;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(180, 111);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 20);
+            this.button4.TabIndex = 5;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(180, 85);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 20);
+            this.button3.TabIndex = 4;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 37);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(78, 13);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Nappalos szín:";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(180, 33);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 20);
+            this.button2.TabIndex = 2;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(180, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 20);
+            this.button1.TabIndex = 1;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(13, 11);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(75, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Éjszakás szín:";
+            // 
+            // colorDialog1
+            // 
+            this.colorDialog1.FullOpen = true;
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Location = new System.Drawing.Point(617, 366);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 31;
+            this.button9.Text = "Mentés";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.Location = new System.Drawing.Point(476, 366);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(135, 23);
+            this.button10.TabIndex = 32;
+            this.button10.Text = "Alaphelyzetbe állítás";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Form6
             // 

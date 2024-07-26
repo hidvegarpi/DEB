@@ -19,6 +19,11 @@ namespace Vezénylés_szerkesztő
 
         private void Form6_Load(object sender, EventArgs e)
         {
+            SetBtnColors();
+        }
+
+        void SetBtnColors()
+        {
             button1.BackColor = PublicParameters.colorShiftNight;
             button2.BackColor = PublicParameters.colorShiftAMStart;
             button3.BackColor = PublicParameters.colorStandBy;
@@ -32,11 +37,6 @@ namespace Vezénylés_szerkesztő
             button14.BackColor = PublicParameters.colorShiftPMEndLong;
             button13.BackColor = PublicParameters.colorShiftPMEndShort;
             button15.BackColor = PublicParameters.colorShiftModDay;
-        }
-
-        int ColorToInt(Color color)
-        {
-            return (color.B << 16) + (color.G << 8) + color.R;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -167,6 +167,14 @@ namespace Vezénylés_szerkesztő
             {
                 button15.BackColor = colorDialog1.Color;
             }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Reset();
+            Properties.Settings.Default.Save();
+
+            SetBtnColors();
         }
     }
 }

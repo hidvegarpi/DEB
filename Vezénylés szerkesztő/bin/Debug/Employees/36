@@ -1,0 +1,13 @@
+{
+  "id": 36,
+  "name": "Oláh Krisztina",
+  "type": 0,
+  "exams": 13,
+  "examDate": "2001-01-01T00:00:00",
+  "cardDate": "2001-01-01T00:00:00",
+  "distanceToWork": 0.0,
+  "male": false,
+  "canGoWith": [
+    10
+  ]
+}

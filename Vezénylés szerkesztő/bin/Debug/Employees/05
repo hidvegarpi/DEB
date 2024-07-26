@@ -1,0 +1,11 @@
+{
+  "id": 5,
+  "name": "Sápi Nándor",
+  "type": 0,
+  "exams": 13,
+  "examDate": "2001-01-01T00:00:00",
+  "cardDate": "2001-01-01T00:00:00",
+  "distanceToWork": 6.4,
+  "male": true,
+  "canGoWith": []
+}

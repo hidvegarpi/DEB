@@ -1,0 +1,124 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Vezénylés_szerkesztő
+{
+    public partial class UserControl2 : UserControl
+    {
+        public UserControl2()
+        {
+            InitializeComponent();
+        }
+
+        public void Destroy() => DestroyHandle();
+
+        string _name;
+        int _id;
+        bool isSup;
+
+        public Action<Employee> onEmployeeEdited;
+        public Action<Employee, DateTime, Employee> sickEmployee;
+        public Form owner;
+        public Employee employeeData;
+
+        public string name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                label2.Text = value;
+                if (value == "") ContextMenuStrip = new ContextMenuStrip();
+            }
+        }
+        public int id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+                label1.Text = value == 0 ? "" : value.ToString().PadLeft(2, '0');
+            }
+        }
+        public bool isSupervisor
+        {
+            get
+            {
+                return isSup;
+            }
+            set
+            {
+                isSup = value;
+                label2.ForeColor = value ? Color.Red : Color.Black;
+            }
+        }
+
+
+        private void UserControl2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void szerkesztésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (name == "") return;
+
+            Form2 addEmployeeForm = new Form2();
+            addEmployeeForm.Owner = owner;
+            addEmployeeForm.Text = "Munkáltatott szerkesztése";
+            addEmployeeForm.employee = employeeData;
+
+            addEmployeeForm.Show();
+            addEmployeeForm.FormClosing += AddEmployeeFormClosing;
+        }
+
+        void AddEmployeeFormClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Form2 form = (Form2)sender;
+            if (form.DialogResult == DialogResult.OK)
+            {
+                Employee n = new Employee(form.id, form.name, form.type, form.exams, form.examDate, form.cardDate, form.male, form.distanceToWork, form.canGoWith);
+                n.SaveToFile();
+                onEmployeeEdited(n);
+                //MessageBox.Show(n.ToString());
+            }
+        }
+
+        private void bejelentésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (name == "") return;
+            Form4 sickEmployee = new Form4();
+            sickEmployee.Owner = owner;
+            sickEmployee.employeeData = employeeData;
+
+            sickEmployee.Show();
+            sickEmployee.FormClosing += SickEmployeeFormClosing;
+            sickEmployee.onDateSelected += OnDateSelected;
+        }
+
+        void SickEmployeeFormClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        void OnDateSelected(DateTime date, Form4 form)
+        {
+            foreach (Day d in ((Form1)owner).currentMonth.daysOfMonth)
+                if (d.date.Year == date.Year && d.date.Month == date.Month && d.date.Day == date.Day)
+                    form.employeeList = d.shiftList[PublicParameters.shiftIndexStandby].employeeList.Count > 0 ? d.shiftList[PublicParameters.shiftIndexStandby].employeeList : new List<Employee>();
+        }
+    }
+}

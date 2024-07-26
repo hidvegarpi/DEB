@@ -1,0 +1,11 @@
+{
+  "id": 11,
+  "name": "Nagy Renáta",
+  "type": 0,
+  "exams": 13,
+  "examDate": "2001-01-01T00:00:00",
+  "cardDate": "2001-01-01T00:00:00",
+  "distanceToWork": 15.9,
+  "male": false,
+  "canGoWith": []
+}

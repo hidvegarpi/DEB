@@ -120,5 +120,84 @@ namespace Vezénylés_szerkesztő
                 if (d.date.Year == date.Year && d.date.Month == date.Month && d.date.Day == date.Day)
                     form.employeeList = d.shiftList[PublicParameters.shiftIndexStandby].employeeList.Count > 0 ? d.shiftList[PublicParameters.shiftIndexStandby].employeeList : new List<Employee>();
         }
+
+        private void hozzáadásToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (name == "") return;
+
+            Form7 form = new Form7();
+            form.Owner = owner;
+            form.Text = form.Text += " : " + name;
+
+            form.FormClosing += AddOderedShiftClosing;
+            form.Show();
+        }
+
+        public void AddOderedShiftClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Form7 form = (Form7)sender;
+            if (form.DialogResult == DialogResult.OK)
+            {
+                Form1 o = (Form1)owner;
+                DateTime date = form.date;
+                bool oFreeDay = form.orderedFreeDay;
+                bool oPTO = form.orderedPTO;
+                bool oNight = form.orderedNight;
+                bool oImportant = form.important;
+                Employee em = employeeData;
+
+                foreach (Shift s in o.currentMonth.daysOfMonth[date.Day - 1].shiftList)
+                {
+                    if (s.ordered)
+                    {
+                        MessageBox.Show("Már létezik kérés a napra!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (false) // check for conficting request fo next day if requested night shift
+                    {
+
+                    }
+                    else
+                    {
+                        s.RemoveEmployee(em);
+                        break;
+                    }
+                }
+
+
+                if (oFreeDay && oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_OI].employeeList.Add(em);
+                if (oPTO && oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexPTO_OI].employeeList.Add(em);
+                if (oFreeDay && !oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_O].employeeList.Add(em); if (oFreeDay) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_OI].employeeList.Add(em);
+                if (oPTO && !oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexPTO_O].employeeList.Add(em);
+                if (oNight) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[1].employeeList.Add(em);
+
+                o.SaveCurrentMonth();
+
+                int shiftIndex = oImportant ? (oFreeDay ? PublicParameters.shiftIndexFreeDay_OI :
+                    oPTO ? PublicParameters.shiftIndexPTO_OI : -1) : oFreeDay ?
+                    PublicParameters.shiftIndexFreeDay_O : (oNight ? PublicParameters.shiftIndexNight2_O : PublicParameters.shiftIndexPTO_O);
+
+                //o.currentMonth.daysOfMonth[date.Day - 1].shiftList[shiftIndex].employeeList.Add(em);
+                List<Shift> sl = new List<Shift>();
+                sl.Add(o.currentMonth.daysOfMonth[date.Day - 1].shiftList[shiftIndex]);
+
+                if (oNight && date.Day < o.currentMonth.daysOfMonth.Count)
+                {
+                    o.currentMonth.daysOfMonth[date.Day].shiftList[PublicParameters.shiftIndexNight1_O].employeeList.Add(em);
+                    List<Shift> sl2 = new List<Shift>();
+                    sl2.Add(o.currentMonth.daysOfMonth[date.Day].shiftList[PublicParameters.shiftIndexNight1_O]);
+                    ((UserControl1)o.controlNestedList[em.id - 1][date.Day]).shifts = sl2;
+                    ((UserControl1)o.controlNestedList[em.id - 1][date.Day]).EnableRemoveOrder();
+                }
+                
+                ((UserControl1)o.controlNestedList[em.id - 1][date.Day - 1]).shifts = sl;
+                ((UserControl1)o.controlNestedList[em.id - 1][date.Day - 1]).EnableRemoveOrder();
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

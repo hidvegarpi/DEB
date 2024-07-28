@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Office.Core;
+//using Microsoft.Office.Core;
 using System.Configuration;
 
 namespace Vezénylés_szerkesztő
@@ -18,6 +18,7 @@ namespace Vezénylés_szerkesztő
         public static int warningCardDateDays         { get { return Properties.Settings.Default.warningCardDateDays; } set { Properties.Settings.Default.warningCardDateDays = value; Properties.Settings.Default.Save(); } }
         public static int warningExamDateDays         { get { return Properties.Settings.Default.warningExamDateDays; } set { Properties.Settings.Default.warningExamDateDays = value; Properties.Settings.Default.Save(); } }
 
+        public static int minShiftTimeMins            { get { return Properties.Settings.Default.minShiftTimeMins; } set { Properties.Settings.Default.minShiftTimeMins = value; Properties.Settings.Default.Save(); } }
         public static int avgMonthlyHours             { get { return Properties.Settings.Default.avgMonthlyHours; } set { Properties.Settings.Default.avgMonthlyHours = value; Properties.Settings.Default.Save(); } }
         public static int hoursPTO                    { get { return Properties.Settings.Default.hoursPTO; } set { Properties.Settings.Default.hoursPTO = value; Properties.Settings.Default.Save(); } }
         public static int hoursStandby                { get { return Properties.Settings.Default.hoursStandby; } set { Properties.Settings.Default.hoursStandby = value; Properties.Settings.Default.Save(); } }
@@ -33,7 +34,13 @@ namespace Vezénylés_szerkesztő
         public static int shiftIndexStandby           = 3;
         public static int shiftIndexPTO               = 4;
         public static int shiftIndexFreeDay           = 5;
-        public static int shiftNonDefaultStart        = 6;
+        public static int shiftIndexPTO_O             = 6;
+        public static int shiftIndexPTO_OI            = 7;
+        public static int shiftIndexFreeDay_O         = 8;
+        public static int shiftIndexFreeDay_OI        = 9;
+        public static int shiftIndexNight1_O          = 10;
+        public static int shiftIndexNight2_O          = 11;
+        public static int shiftNonDefaultStart        = 12;
 
         public static Color colorShiftAMStart         { get { return Properties.Settings.Default.colorShiftAMStart; } set { Properties.Settings.Default.colorShiftAMStart = value; Properties.Settings.Default.Save(); } }
         public static Color colorShiftAMEndLong       { get { return Properties.Settings.Default.colorShiftAMEndLong; } set { Properties.Settings.Default.colorShiftAMEndLong = value; Properties.Settings.Default.Save(); } }
@@ -212,9 +219,19 @@ namespace Vezénylés_szerkesztő
             shiftList.Add(new Shift(0, 7, ShiftType.Night | ShiftType.Long, this));
             shiftList.Add(new Shift(19, 24, ShiftType.Night | ShiftType.Long, this));
             shiftList.Add(new Shift(7, 19, ShiftType.Day | ShiftType.Long, this));
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, true));
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true));
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true));
+
+            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, true)); //standby
+            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true)); //pto
+            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true)); //free
+
+            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true, false, true)); //ordered pto
+            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true, false, true, true)); //ordered important pto
+
+            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true, true)); //ordered free
+            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true, true, true)); //ordered important free
+
+            shiftList.Add(new Shift(0, 7, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 1
+            shiftList.Add(new Shift(19, 24, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 2
         }
 
         public void CreateShifts()
@@ -297,7 +314,7 @@ namespace Vezénylés_szerkesztő
                 }
             }
 
-            if (shiftList.Count == 9 && shiftToDelete.Count == 0)
+            if (shiftList.Count == PublicParameters.shiftNonDefaultStart + 3 && shiftToDelete.Count == 0)
             {
                 if (shiftList[PublicParameters.shiftNonDefaultStart].shiftStart.Hour == 4 && shiftList[PublicParameters.shiftNonDefaultStart].shiftEnd.Hour == 8 &&
                     shiftList[PublicParameters.shiftNonDefaultStart + 1].shiftStart.Hour == 10 && shiftList[PublicParameters.shiftNonDefaultStart + 1].shiftEnd.Hour == 14 && shiftList[PublicParameters.shiftNonDefaultStart + 1].shiftEnd.Minute == 30 &&
@@ -329,19 +346,30 @@ namespace Vezénylés_szerkesztő
                 goto LOOP;
             }
 
-            if (shiftList.Count > 8)
+            if (shiftList.Count > PublicParameters.shiftNonDefaultStart + 2)
             {
                 string s = "";
-                for (int i = 6; i < shiftList.Count; i++)
+                for (int i = PublicParameters.shiftNonDefaultStart; i < shiftList.Count; i++)
                     s += shiftList[i].ToString() + "\n\n";
                 MessageBox.Show(s);
             }
 
-            if (shiftList.Count == 8)
+            if (shiftList.Count == PublicParameters.shiftNonDefaultStart + 2)
             {
                 shiftList[PublicParameters.shiftNonDefaultStart].type = shiftList[PublicParameters.shiftNonDefaultStart].type | ShiftType.Divided;
                 shiftList[PublicParameters.shiftNonDefaultStart + 1].type = shiftList[PublicParameters.shiftNonDefaultStart + 1].type | ShiftType.Divided;
             }
+        }
+
+        public List<Shift> GetShiftsPerEmployee(Employee e)
+        {
+            List<Shift> shifts = new List<Shift>();
+            foreach (Shift s in shiftList)
+                foreach (Employee em in s.employeeList)
+                    if (em != null)
+                        if (em.id == e.id && em.name == e.name)
+                            shifts.Add(s);
+            return shifts;
         }
 
         public override string ToString()
@@ -388,6 +416,11 @@ namespace Vezénylés_szerkesztő
         public bool isPto = false;
         public bool isFreeDay = false;
 
+        public bool ordered = false;
+        public bool important = false;
+
+        public bool sickShift = false;
+
         public float hours
         {
             get
@@ -395,11 +428,20 @@ namespace Vezénylés_szerkesztő
                 if (isPto) return PublicParameters.hoursPTO;
                 if (isStandby) return PublicParameters.hoursStandby;
                 if (isFreeDay) return PublicParameters.hoursFreeDay;
+                if (sickShift) return 0;
                 return (float)Math.Round((shiftEnd - shiftStart).TotalHours, 1, MidpointRounding.AwayFromZero);
             }
         }
+        public bool isNow
+        {
+            get
+            {
+                if (shiftStart < DateTime.Now && shiftEnd > DateTime.Now) return true;
+                else return false;
+            }
+        }
 
-        public Shift(float _shiftStart, float _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false)
+        public Shift(float _shiftStart, float _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false)
         {
             day = _day;
             type = _type;
@@ -419,10 +461,13 @@ namespace Vezénylés_szerkesztő
             isPto = _pto;
             isFreeDay = _freeDay;
 
-            if (isPto || isFreeDay) requiredPeople = 0;
+            ordered = _ordered;
+            important = _important;
+
+            if (isPto || isFreeDay || sickShift) requiredPeople = 0;
         }
 
-        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false)
+        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false)
         {
             day = _day;
             type = _type;
@@ -442,11 +487,14 @@ namespace Vezénylés_szerkesztő
             isPto = _pto;
             isFreeDay = _freeDay;
 
-            if (isPto || isFreeDay) requiredPeople = 0;
+            ordered = _ordered;
+            important = _important;
+
+            if (isPto || isFreeDay || sickShift) requiredPeople = 0;
         }
 
         [JsonConstructor]
-        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false)
+        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false)
         {
             type = _type;
             requiredPeople = _reqPeople;
@@ -465,7 +513,10 @@ namespace Vezénylés_szerkesztő
             isPto = _pto;
             isFreeDay = _freeDay;
 
-            if (isPto || isFreeDay) requiredPeople = 0;
+            ordered = _ordered;
+            important = _important;
+
+            if (isPto || isFreeDay || sickShift) requiredPeople = 0;
         }
 
         public bool CoversFlight(Flight f)
@@ -485,9 +536,22 @@ namespace Vezénylés_szerkesztő
         public bool ContainsEmployee(Employee e)
         {
             foreach (Employee em in employeeList)
-                if (em.id == e.id)
-                    return true;
+                if (em != null)
+                    if (em.id == e.id)
+                        return true;
             return false;
+        }
+
+        public void RemoveEmployee(Employee e)
+        {
+            for (int i = 0; i < employeeList.Count; i++)
+            {
+                if (e.id == employeeList[i].id && e.name == employeeList[i].name)
+                {
+                    employeeList.RemoveAt(i);
+                    return;
+                }
+            }
         }
 
         public void AddTimeAtEnd(TimeSpan time)
@@ -497,8 +561,8 @@ namespace Vezénylés_szerkesztő
 
         public void RemoveTimeFromEnd(TimeSpan time)
         {
-            if (shiftEnd - shiftStart > new TimeSpan(4, 0, 0)) shiftEnd -= time;
-            if (shiftEnd - shiftStart < new TimeSpan(4, 0, 0)) shiftEnd = shiftStart + new TimeSpan(4, 0, 0);
+            if (shiftEnd - shiftStart > new TimeSpan((PublicParameters.minShiftTimeMins - (PublicParameters.minShiftTimeMins % 60)) / 60, PublicParameters.minShiftTimeMins % 60, 0)) shiftEnd -= time;
+            if (shiftEnd - shiftStart < new TimeSpan((PublicParameters.minShiftTimeMins - (PublicParameters.minShiftTimeMins % 60)) / 60, PublicParameters.minShiftTimeMins % 60, 0)) shiftEnd = shiftStart + new TimeSpan(4, 0, 0);
         }
 
         public override string ToString()

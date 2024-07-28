@@ -20,3 +20,26 @@ C:\Users\Arpad\source\repos\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_sz
 C:\Users\Arpad\source\repos\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés szerkesztő.csproj.ResolveComReference.cache
 C:\Users\Arpad\source\repos\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form5.resources
 C:\Users\Arpad\source\repos\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form6.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\bin\Debug\Vezénylés szerkesztő.exe.config
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\bin\Debug\Vezénylés szerkesztő.exe
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\bin\Debug\Vezénylés szerkesztő.pdb
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\bin\Debug\Newtonsoft.Json.dll
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\bin\Debug\Newtonsoft.Json.xml
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés szerkesztő.csproj.AssemblyReference.cache
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés szerkesztő.csproj.ResolveComReference.cache
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form1.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form2.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form3.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form4.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form5.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form6.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Properties.Resources.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.UserControl1.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.UserControl2.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.UserControl3.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés szerkesztő.csproj.GenerateResource.cache
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés szerkesztő.csproj.CoreCompileInputs.cache
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylé.FCD7DFF0.Up2Date
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés szerkesztő.exe
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés szerkesztő.pdb
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form7.resources

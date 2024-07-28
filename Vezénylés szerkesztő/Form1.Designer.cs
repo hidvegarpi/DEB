@@ -69,7 +69,7 @@ namespace Vezénylés_szerkesztő
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1373, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1370, 26);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -171,10 +171,11 @@ namespace Vezénylés_szerkesztő
             // 
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(602, 21);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(568, 21);
             this.toolStripStatusLabel2.Spring = true;
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripStatusLabel2.Click += new System.EventHandler(this.toolStripStatusLabel2_Click);
             // 
             // tabControl1
             // 
@@ -186,7 +187,7 @@ namespace Vezénylés_szerkesztő
             this.tabControl1.Location = new System.Drawing.Point(0, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1373, 434);
+            this.tabControl1.Size = new System.Drawing.Size(1370, 434);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.TabStop = false;
             // 
@@ -198,7 +199,7 @@ namespace Vezénylés_szerkesztő
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1365, 408);
+            this.tabPage1.Size = new System.Drawing.Size(1362, 408);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Vezénylés";
             // 
@@ -220,7 +221,7 @@ namespace Vezénylés_szerkesztő
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 60);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1353, 342);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1350, 342);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // tabPage2
@@ -272,12 +273,12 @@ namespace Vezénylés_szerkesztő
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1373, 461);
+            this.ClientSize = new System.Drawing.Size(1370, 461);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1389, 3000);
-            this.MinimumSize = new System.Drawing.Size(1389, 500);
+            this.MinimumSize = new System.Drawing.Size(1364, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LHDC UBI Vezénylés";

@@ -41,7 +41,7 @@ namespace Vezénylés_szerkesztő
                 d.CreateShifts();
             }
 
-            ShowTable();
+            ShowTable(false, false, false);
             UpdateStatusBar();
             CheckDates();
             GenerateStatistics();
@@ -65,9 +65,25 @@ namespace Vezénylés_szerkesztő
             if (!File.Exists("./MonthData/" + DateTime.Now.ToString("yyyy-MM") + ".mnth")) return;
             string data = File.ReadAllText("./MonthData/" + DateTime.Now.ToString("yyyy-MM") + ".mnth");
             currentMonth = JsonConvert.DeserializeObject<Month>(data);
+
+            foreach (Day d in currentMonth.daysOfMonth)
+            {
+                foreach (Shift s in d.shiftList)
+                {
+                    DEL:
+                    for (int i = 0; i < s.employeeList.Count; i++)
+                    {
+                        if (s.employeeList[i] == null)
+                        {
+                            s.employeeList.RemoveAt(i);
+                            goto DEL;
+                        }
+                    }
+                }
+            }
         }
 
-        void SaveCurrentMonth()
+        public void SaveCurrentMonth()
         {
             if (!Directory.Exists("./MonthData")) Directory.CreateDirectory("./MonthData");
             string data = JsonConvert.SerializeObject(currentMonth, Formatting.Indented);
@@ -159,11 +175,11 @@ namespace Vezénylés_szerkesztő
             GenerateStatistics();
         }
 
-        List<List<Control>> controlNestedList = new List<List<Control>>();
-        List<Control> employeeControlList = new List<Control>();
+        public List<List<Control>> controlNestedList = new List<List<Control>>();
+        public List<Control> employeeControlList = new List<Control>();
         List<Control> daysControlList = new List<Control>();
 
-        void ShowTable(bool onlyTopRow = false, bool onlyUpdate = false)
+        void ShowTable(bool onlyTopRow = false, bool onlyUpdate = false, bool notModifyShifts = false)
         {
             if (!onlyTopRow && !onlyUpdate)
             {
@@ -194,193 +210,200 @@ namespace Vezénylés_szerkesztő
                     {
                         UserControl1 n = new UserControl1();
                         n.isFreeDay = true; //temporary
+                        n.shifts = currentMonth.daysOfMonth[i].GetShiftsPerEmployee(e);
+                        n.employeeData = e;
+                        n.owner = this;
+                        n.date = new DateTime(currentMonth.startDate.Year, currentMonth.startDate.Month, i + 1);
 
-                        #region TMP_ShiftTypes
-                        if (e.id == 1)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> divided = new List<Shift>();
-                            foreach (Shift s in currentMonth.daysOfMonth[i].nonDefaultShifts)
+                        if (!notModifyShifts) 
+                        { 
+                            #region TMP_ShiftTypes
+                            if (e.id == 1)
                             {
-                                if (s.type.HasFlag(ShiftType.Divided))
+                                n.isFreeDay = false;
+                                List<Shift> divided = new List<Shift>();
+                                foreach (Shift s in currentMonth.daysOfMonth[i].nonDefaultShifts)
                                 {
-                                    divided.Add(s);
-                                    s.employeeList.Add(e);
+                                    if (s.type.HasFlag(ShiftType.Divided))
+                                    {
+                                        divided.Add(s);
+                                        s.employeeList.Add(e);
+                                    }
                                 }
+
+                                n.shifts = divided;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
 
-                            n.shifts = divided;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 2)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> nonDivided = new List<Shift>();
-                            foreach (Shift s in currentMonth.daysOfMonth[i].nonDefaultShifts)
+                            if (e.id == 2)
                             {
-                                if (!s.type.HasFlag(ShiftType.Divided))
+                                n.isFreeDay = false;
+                                List<Shift> nonDivided = new List<Shift>();
+                                foreach (Shift s in currentMonth.daysOfMonth[i].nonDefaultShifts)
                                 {
-                                    nonDivided.Add(s);
-                                    s.employeeList.Add(e);
+                                    if (!s.type.HasFlag(ShiftType.Divided))
+                                    {
+                                        nonDivided.Add(s);
+                                        s.employeeList.Add(e);
+                                    }
                                 }
+
+                                n.shifts = nonDivided;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
 
-                            n.shifts = nonDivided;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 3)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> modDefault = new List<Shift>();
-                            if (currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour != 7)
+                            if (e.id == 3)
                             {
-                                modDefault.Add(currentMonth.daysOfMonth[i].shiftList[2]);
-                                currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                List<Shift> modDefault = new List<Shift>();
+                                if (currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour != 7)
+                                {
+                                    modDefault.Add(currentMonth.daysOfMonth[i].shiftList[2]);
+                                    currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
+                                }
+
+                                n.shifts = modDefault;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
 
-                            n.shifts = modDefault;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 4)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> night = new List<Shift>();
-                            if (i % 4 == 1)
+                            if (e.id == 4)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                List<Shift> night = new List<Shift>();
+                                if (i % 4 == 1)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
+                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                }
+                                if (i % 4 == 0)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
+                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                }
+
+                                n.shifts = night;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
-                            if (i % 4 == 0)
+
+                            if (e.id == 5)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                List<Shift> night = new List<Shift>();
+                                if (i % 4 == 2)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
+                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                }
+                                if (i % 4 == 1)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
+                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                }
+
+                                n.shifts = night;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
 
-                            n.shifts = night;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 5)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> night = new List<Shift>();
-                            if (i % 4 == 2)
+                            if (e.id == 6)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                List<Shift> night = new List<Shift>();
+                                if (i % 4 == 3)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
+                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                }
+                                if (i % 4 == 2)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
+                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                }
+
+                                n.shifts = night;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
-                            if (i % 4 == 1)
+
+                            if (e.id == 7)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                List<Shift> night = new List<Shift>();
+                                if (i % 4 == 0)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
+                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                }
+                                if (i % 4 == 3)
+                                {
+                                    night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
+                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                }
+
+                                n.shifts = night;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
 
-                            n.shifts = night;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 6)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> night = new List<Shift>();
-                            if (i % 4 == 3)
+                            if (e.id == 8)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                List<Shift> day = new List<Shift>();
+                                if (i % 2 == 1 && currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour == 7)
+                                {
+                                    day.Add(currentMonth.daysOfMonth[i].shiftList[2]);
+                                    currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
+                                }
+
+                                n.shifts = day;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
-                            if (i % 4 == 2)
+
+                            if (e.id == 9)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                List<Shift> day = new List<Shift>();
+                                if (i % 2 == 0 && currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour == 7)
+                                {
+                                    day.Add(currentMonth.daysOfMonth[i].shiftList[2]);
+                                    currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
+                                }
+
+                                n.isGate3 = true;
+                                n.shifts = day;
+
+                                if (n.shifts.Count == 0)
+                                    n.isFreeDay = true;
                             }
 
-                            n.shifts = night;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 7)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> night = new List<Shift>();
-                            if (i % 4 == 0)
+                            if (e.id == 10)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                n.isStandBy = true;
+                                currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexStandby].employeeList.Add(e);
                             }
-                            if (i % 4 == 3)
+
+                            if (e.id == 11)
                             {
-                                night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                n.isFreeDay = false;
+                                n.isPTO = true;
+                                currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexPTO].employeeList.Add(e);
                             }
-
-                            n.shifts = night;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 8)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> day = new List<Shift>();
-                            if (i % 2 == 1 && currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour == 7)
-                            {
-                                day.Add(currentMonth.daysOfMonth[i].shiftList[2]);
-                                currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
-                            }
-
-                            n.shifts = day;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 9)
-                        {
-                            n.isFreeDay = false;
-                            List<Shift> day = new List<Shift>();
-                            if (i % 2 == 0 && currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour == 7)
-                            {
-                                day.Add(currentMonth.daysOfMonth[i].shiftList[2]);
-                                currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
-                            }
-
-                            n.isGate3 = true;
-                            n.shifts = day;
-
-                            if (n.shifts.Count == 0)
-                                n.isFreeDay = true;
-                        }
-
-                        if (e.id == 10)
-                        {
-                            n.isFreeDay = false;
-                            n.isStandBy = true;
-                            currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexStandby].employeeList.Add(e);
-                        }
-
-                        if (e.id == 11)
-                        {
-                            n.isFreeDay = false;
-                            n.isPTO = true;
-                            currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexPTO].employeeList.Add(e);
-                        }
                         #endregion
+                        }
 
                         flowLayoutPanel1.Controls.Add(n);
                         controlList.Add(n);
@@ -457,9 +480,22 @@ namespace Vezénylés_szerkesztő
                 }
             }
 
+            int sup = 0;
+            int emp = 0;
+            foreach (Shift s in currentMonth.daysOfMonth[DateTime.Now.Day - 1].shiftList)
+            {
+                foreach (Employee e in s.employeeList)
+                {
+                    if (e.type == EmployeeType.Supervisor && s.isNow) sup++;
+                    else if (e.type == EmployeeType.Default && s.isNow) emp++;
+                }
+            }
+
             statusLabel = statusLabel.Replace("#CURRENT", "Nincs");
             statusLabel = statusLabel.Replace("#NAME", "Nincs");
             statusLabel = statusLabel.Replace("#CHECKIN", "NaN");
+            statusLabel = statusLabel.Replace("#1", emp.ToString());
+            statusLabel = statusLabel.Replace("#2", sup.ToString());
             toolStripStatusLabel1.Text = statusLabel;
         }
 
@@ -632,6 +668,11 @@ namespace Vezénylés_szerkesztő
         private void kilépésToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        {
+            //ShowTable(false, false, true);
         }
     }
 }

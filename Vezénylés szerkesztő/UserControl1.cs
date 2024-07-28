@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Vezénylés_szerkesztő
 {
@@ -28,6 +29,9 @@ namespace Vezénylés_szerkesztő
         bool standBy;
         bool gate3;
         List<Shift> shiftData = new List<Shift>();
+        public Employee employeeData;
+        public Form1 owner;
+        public DateTime date;
 
         public DateTime date1
         {
@@ -88,14 +92,15 @@ namespace Vezénylés_szerkesztő
             {
                 PTO = value;
                 label1.Text = "";
-                label2.Text = " Szb";
+                label2.Text = " Szb  ";
                 label3.Text = "";
                 label4.Text = "";
                 BackColor = !value ? DefaultBackColor : PublicParameters.colorPaidTimeOff;
-                label1.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label2.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label3.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label4.BackColor = !value ? DefaultBackColor : Color.Transparent;
+                panel1.BackColor = !value ? DefaultBackColor : PublicParameters.colorPaidTimeOff;
+                label1.BackColor = !value ? DefaultBackColor : PublicParameters.colorPaidTimeOff;
+                label2.BackColor = !value ? DefaultBackColor : PublicParameters.colorPaidTimeOff;
+                label3.BackColor = !value ? DefaultBackColor : PublicParameters.colorPaidTimeOff;
+                label4.BackColor = !value ? DefaultBackColor : PublicParameters.colorPaidTimeOff;
             }
         }
         public bool isFreeDay
@@ -107,15 +112,16 @@ namespace Vezénylés_szerkesztő
             set
             {
                 freeDay = value;
-                label1.Text = "   X";
-                label2.Text = "   X";
-                label3.Text = "   X";
-                label4.Text = "   X";
+                label1.Text = "";
+                label2.Text = "   X  ";
+                label3.Text = "   X  ";
+                label4.Text = "";
                 BackColor = !value ? DefaultBackColor : PublicParameters.colorFreeDay;
-                label1.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label2.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label3.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label4.BackColor = !value ? DefaultBackColor : Color.Transparent;
+                panel1.BackColor = !value ? DefaultBackColor : PublicParameters.colorFreeDay;
+                label1.BackColor = !value ? DefaultBackColor : PublicParameters.colorFreeDay;
+                label2.BackColor = !value ? DefaultBackColor : PublicParameters.colorFreeDay;
+                label3.BackColor = !value ? DefaultBackColor : PublicParameters.colorFreeDay;
+                label4.BackColor = !value ? DefaultBackColor : PublicParameters.colorFreeDay;
             }
         }
         public bool isStandBy
@@ -127,15 +133,16 @@ namespace Vezénylés_szerkesztő
             set
             {
                 standBy = value;
-                label1.Text = "   X";
-                label2.Text = "   X";
-                label3.Text = "   X";
-                label4.Text = "   X";
+                label1.Text = "";
+                label2.Text = "   X  ";
+                label3.Text = "   X  ";
+                label4.Text = "";
                 BackColor = !value ? DefaultBackColor : PublicParameters.colorStandBy;
-                label1.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label2.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label3.BackColor = !value ? DefaultBackColor : Color.Transparent;
-                label4.BackColor = !value ? DefaultBackColor : Color.Transparent;
+                panel1.BackColor = !value ? DefaultBackColor : PublicParameters.colorStandBy;
+                label1.BackColor = !value ? DefaultBackColor : PublicParameters.colorStandBy;
+                label2.BackColor = !value ? DefaultBackColor : PublicParameters.colorStandBy;
+                label3.BackColor = !value ? DefaultBackColor : PublicParameters.colorStandBy;
+                label4.BackColor = !value ? DefaultBackColor : PublicParameters.colorStandBy;
             }
         }
         public bool isGate3
@@ -171,7 +178,31 @@ namespace Vezénylés_szerkesztő
                 }
                 if (shiftData.Count == 1)
                 {
-                    if (shiftData[0].isStandby) isStandBy = true;
+                    panel1.BackColor = DefaultBackColor;
+                    BackColor = DefaultBackColor;
+                    if (shiftData[0].ordered)
+                    {
+                        //MessageBox.Show(shiftData[0].ToString());
+                        kérésTörléseToolStripMenuItem.Enabled = true;
+                        kérésHozzáadásaToolStripMenuItem.Enabled = false;
+                        if (shiftData[0].isStandby)
+                        {
+                            isStandBy = true;
+                            panel1.BackColor = PublicParameters.colorStandBy;
+                        }
+                        else if (shiftData[0].isFreeDay)
+                        {
+                            isFreeDay = true;
+                            panel1.BackColor = PublicParameters.colorFreeDay;
+                        }
+                        else if (shiftData[0].isPto)
+                        {
+                            isPTO = true;
+                            panel1.BackColor = PublicParameters.colorPaidTimeOff;
+                        }
+                        BackColor = shiftData[0].important ? Color.Red : Color.Orange;
+                    }
+                    else if (shiftData[0].isStandby) isStandBy = true;
                     else if (shiftData[0].isFreeDay) isFreeDay = true;
                     else if (shiftData[0].isPto) isPTO = true;
                     else if (shiftData[0].type == (ShiftType.Night | ShiftType.Long))
@@ -184,6 +215,7 @@ namespace Vezénylés_szerkesztő
                         label3.BackColor = PublicParameters.colorShiftNight;
                         date4 = shiftData[0].shiftEnd;
                         label4.BackColor = PublicParameters.colorShiftNight;
+                        BackColor = DefaultBackColor;
                     }
                     else if (shiftData[0].type == (ShiftType.Day | ShiftType.Long) && shiftData[0].shiftStart.Hour == 4)
                     {
@@ -195,6 +227,7 @@ namespace Vezénylés_szerkesztő
                         label3.BackColor = PublicParameters.colorShiftModDay;
                         date4 = shiftData[0].shiftEnd;
                         label4.BackColor = PublicParameters.colorShiftAMEndLong;
+                        BackColor = DefaultBackColor;
                     }
                     else if (shiftData[0].type == (ShiftType.Day | ShiftType.Long))
                     {
@@ -206,6 +239,7 @@ namespace Vezénylés_szerkesztő
                         label3.BackColor = gate3 ? PublicParameters.colorShiftGate3 : PublicParameters.colorShiftAMStart;
                         date4 = shiftData[0].shiftEnd;
                         label4.BackColor = PublicParameters.colorShiftAMEndLong;
+                        BackColor = DefaultBackColor;
                     }
                     else
                     {
@@ -217,6 +251,7 @@ namespace Vezénylés_szerkesztő
                         label3.BackColor = PublicParameters.colorShiftAMStart;
                         date4 = shiftData[0].shiftEnd;
                         label4.BackColor = PublicParameters.colorShiftAMEndLong;
+                        BackColor = DefaultBackColor;
                     }
                 }
             }
@@ -225,6 +260,56 @@ namespace Vezénylés_szerkesztő
         private void UserControl1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void EnableRemoveOrder() => kérésTörléseToolStripMenuItem.Enabled = true;
+
+        private void kérésTörléseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool removed = false;
+            foreach (Shift s in owner.currentMonth.daysOfMonth[shiftData[0].shiftStart.Day - 1].shiftList)
+            {
+                if (s == shiftData[0])
+                {
+                    s.RemoveEmployee(employeeData);
+                    removed = true;
+                    //for (int i = 0; i < s.employeeList.Count; i++)
+                    //{
+                    //    if (s.employeeList[i].id == employeeData.id && s.employeeList[i].name == employeeData.name)
+                    //    {
+                    //        s.employeeList.RemoveAt(i);
+                    //        removed = true;
+                    //    }
+                    //    if (removed) break;
+                    //}
+                }
+                if (removed) break;
+            }
+            List<Shift> sl = new List<Shift>();
+            sl.Add(owner.currentMonth.daysOfMonth[shiftData[0].shiftStart.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay]);
+            BackColor = PublicParameters.colorFreeDay;
+            shiftData = sl;
+            isFreeDay = true;
+
+            kérésTörléseToolStripMenuItem.Enabled = false;
+            kérésHozzáadásaToolStripMenuItem.Enabled = true;
+            owner.SaveCurrentMonth();
+        }
+
+        private void kérésHozzáadásaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (employeeData.name == "") return;
+
+            Form7 form = new Form7();
+            form.Owner = owner;
+            form.Text = form.Text += " : " + employeeData.name;
+            form.date = date;
+
+            form.FormClosing += ((UserControl2)owner.employeeControlList[employeeData.id - 1]).AddOderedShiftClosing;
+            form.Show();
+
+            kérésHozzáadásaToolStripMenuItem.Enabled = false;
+            kérésTörléseToolStripMenuItem.Enabled = true;
         }
     }
 }

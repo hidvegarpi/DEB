@@ -165,13 +165,12 @@ namespace Vezénylés_szerkesztő
                 }
 
 
-                if (oFreeDay && oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_OI].employeeList.Add(em);
-                if (oPTO && oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexPTO_OI].employeeList.Add(em);
-                if (oFreeDay && !oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_O].employeeList.Add(em); if (oFreeDay) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_OI].employeeList.Add(em);
-                if (oPTO && !oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexPTO_O].employeeList.Add(em);
-                if (oNight) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[1].employeeList.Add(em);
-
-                o.SaveCurrentMonth();
+                if (oPTO && oImportant)      o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexPTO_OI].AddEmployee(em);
+                if (oPTO && !oImportant)     o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexPTO_O].AddEmployee(em);
+                if (oFreeDay && oImportant)  o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_OI].AddEmployee(em);
+                if (oFreeDay && !oImportant) o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay_O].AddEmployee(em);
+                if (oNight && oImportant)    o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexNight2_O].AddEmployee(em);
+                if (oNight && !oImportant)   o.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexNight2_O].AddEmployee(em);
 
                 int shiftIndex = oImportant ? (oFreeDay ? PublicParameters.shiftIndexFreeDay_OI :
                     oPTO ? PublicParameters.shiftIndexPTO_OI : -1) : oFreeDay ?
@@ -183,7 +182,7 @@ namespace Vezénylés_szerkesztő
 
                 if (oNight && date.Day < o.currentMonth.daysOfMonth.Count)
                 {
-                    o.currentMonth.daysOfMonth[date.Day].shiftList[PublicParameters.shiftIndexNight1_O].employeeList.Add(em);
+                    o.currentMonth.daysOfMonth[date.Day].shiftList[PublicParameters.shiftIndexNight1_O].AddEmployee(em);
                     List<Shift> sl2 = new List<Shift>();
                     sl2.Add(o.currentMonth.daysOfMonth[date.Day].shiftList[PublicParameters.shiftIndexNight1_O]);
                     ((UserControl1)o.controlNestedList[em.id - 1][date.Day]).shifts = sl2;
@@ -192,6 +191,8 @@ namespace Vezénylés_szerkesztő
                 
                 ((UserControl1)o.controlNestedList[em.id - 1][date.Day - 1]).shifts = sl;
                 ((UserControl1)o.controlNestedList[em.id - 1][date.Day - 1]).EnableRemoveOrder();
+
+                o.SaveCurrentMonth();
             }
         }
 

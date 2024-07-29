@@ -18,6 +18,7 @@ namespace Vezénylés_szerkesztő
         public static int warningCardDateDays         { get { return Properties.Settings.Default.warningCardDateDays; } set { Properties.Settings.Default.warningCardDateDays = value; Properties.Settings.Default.Save(); } }
         public static int warningExamDateDays         { get { return Properties.Settings.Default.warningExamDateDays; } set { Properties.Settings.Default.warningExamDateDays = value; Properties.Settings.Default.Save(); } }
 
+        public static TimeSpan minShiftTime { get { return TimeSpan.FromMinutes(minShiftTimeMins); } }
         public static int minShiftTimeMins            { get { return Properties.Settings.Default.minShiftTimeMins; } set { Properties.Settings.Default.minShiftTimeMins = value; Properties.Settings.Default.Save(); } }
         public static int avgMonthlyHours             { get { return Properties.Settings.Default.avgMonthlyHours; } set { Properties.Settings.Default.avgMonthlyHours = value; Properties.Settings.Default.Save(); } }
         public static int hoursPTO                    { get { return Properties.Settings.Default.hoursPTO; } set { Properties.Settings.Default.hoursPTO = value; Properties.Settings.Default.Save(); } }
@@ -175,9 +176,12 @@ namespace Vezénylés_szerkesztő
             get
             {
                 List<Shift> list = new List<Shift>();
-                foreach (Shift s in shiftList)
-                    if (s.requiredPeople >= PublicParameters.employeesPerFlight)
-                        list.Add(s);
+                for (int i = 0; i < shiftList.Count; i++)
+                    if (i >= PublicParameters.shiftNonDefaultStart)
+                        list.Add(shiftList[i]);
+                //foreach (Shift s in shiftList)
+                //    if (s.requiredPeople >= PublicParameters.employeesPerFlight)
+                //        list.Add(s);
                 return list;
             }
         }
@@ -216,103 +220,72 @@ namespace Vezénylés_szerkesztő
 
         public void AddDefaultShifts()
         {
-            shiftList.Add(new Shift(0, 7, ShiftType.Night | ShiftType.Long, this));
-            shiftList.Add(new Shift(19, 24, ShiftType.Night | ShiftType.Long, this));
-            shiftList.Add(new Shift(7, 19, ShiftType.Day | ShiftType.Long, this));
-
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, true)); //standby
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true)); //pto
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true)); //free
-
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true, false, true)); //ordered pto
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true, false, true, true)); //ordered important pto
-
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true, true)); //ordered free
-            shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true, true, true)); //ordered important free
-
-            shiftList.Add(new Shift(0, 7, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 1
-            shiftList.Add(new Shift(19, 24, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 2
+            /*  0 */shiftList.Add(new Shift(0, 7, ShiftType.Night | ShiftType.Long, this));
+            /*  1 */shiftList.Add(new Shift(19, 24, ShiftType.Night | ShiftType.Long, this));
+            /*  2 */shiftList.Add(new Shift(7, 19, ShiftType.Day | ShiftType.Long, this));
+            
+            /*  3 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, true)); //standby
+            /*  4 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true)); //pto
+            /*  5 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true)); //free
+            
+            /*  6 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true, false, true)); //ordered pto
+            /*  7 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, true, false, true, true)); //ordered important pto
+            
+            /*  8 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true, true)); //ordered free
+            /*  9 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, true, true, true)); //ordered important free
+            
+            /* 10 */shiftList.Add(new Shift(0, 7, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 1
+            /* 11 */shiftList.Add(new Shift(19, 24, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 2
         }
 
         public void CreateShifts()
         {
-            foreach (Flight f in flightList)
-            {
-                bool isCovered = false;
-                foreach (Shift s in shiftList)
-                    if (s.CoversFlight(f))
-                        isCovered = true;
-
-                if (!isCovered)
-                {
-                    foreach (Shift s in shiftList)
-                    {
-                        if (s.FlightStartsMidShift(f) && 
-                            s.requiredPeople >= PublicParameters.employeesPerFlight &&
-                            !isCovered)
-                        {
-                            //expand shift
-                            while (s.shiftEnd < f.checkInStart + new TimeSpan(1, 50, 0))
-                                s.AddTimeAtEnd(new TimeSpan(0, 30, 0));
-                            isCovered = true;
-                        }
-                    }
-                }
-
-                if (!isCovered)
-                {
-                    //add new shift
-                    DateTime start2 = f.checkInStart/* - new TimeSpan(0, 20, 0)*/;
-                    DateTime shiftStart = new DateTime(start2.Year, start2.Month,
-                            start2.Minute == 0 ? start2.Day : (start2.Minute > 30 ? start2.Day : (start2.Hour >= 1 ? start2.Day : (start2.Day - 1))),
-                            start2.Minute == 0 ? start2.Hour : (start2.Hour >= 1 ? start2.Hour : (start2.Minute > 30 ? 0 : 23)),
-                            start2.Minute >= 30 ? 30 : 0, start2.Second);
-                    DateTime shiftEnd = shiftStart + new TimeSpan(4, 0, 0);
-                    Shift newShift = new Shift(shiftStart, shiftEnd, ShiftType.Day);
-                    shiftList.Add(newShift);
-                    isCovered = true;
-                }
-            }
+            CheckFlightsCovered();
 
             LOOP:
             List<int> shiftToDelete = new List<int>();
-            for (int i = 0; i < shiftList.Count; i++)
+            for (int i = PublicParameters.shiftNonDefaultStart + 1; i < shiftList.Count; i++)
             {
-                if (i >= 7)
+                if (shiftList.Count <= PublicParameters.shiftNonDefaultStart) break;
+                if (shiftList[i].shiftStart == shiftList[i - 1].shiftEnd)
                 {
-                    if (shiftList[i].shiftStart == shiftList[i - 1].shiftEnd)
-                    {
-                        shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd;
-                        shiftToDelete.Add(i);
-                    }
-                    if (shiftList[i - 1].shiftStart == shiftList[i].shiftEnd)
-                    {
-                        shiftList[i].shiftEnd = shiftList[i - 1].shiftEnd;
-                        shiftToDelete.Add(i + 1);
-                    }
+                    //MessageBox.Show("1");
+                    shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd;
+                    shiftToDelete.Add(i);
+                }
+                if (shiftList[i - 1].shiftStart == shiftList[i].shiftEnd)
+                {
+                    //MessageBox.Show("2");
+                    shiftList[i].shiftEnd = shiftList[i - 1].shiftEnd;
+                    shiftToDelete.Add(i + 1);
+                }
 
-                    if (shiftList[i].shiftStart - new TimeSpan(1, 30, 0) == shiftList[i - 1].shiftEnd)
-                    {
-                        //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
-                        shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd);
-                        shiftToDelete.Add(i);
-                    }
+                if (shiftList[i].shiftStart - new TimeSpan(1, 30, 0) == shiftList[i - 1].shiftEnd)
+                {
+                    //MessageBox.Show("3");
+                    //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
+                    shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd);
+                    shiftToDelete.Add(i);
+                }
 
-                    if (shiftList[i].shiftStart - new TimeSpan(0, 30, 0) == shiftList[i - 1].shiftEnd)
-                    {
-                        //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
-                        shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd) - new TimeSpan(1, 30, 0);
-                        shiftToDelete.Add(i);
-                    }
+                if (shiftList[i].shiftStart - new TimeSpan(0, 30, 0) == shiftList[i - 1].shiftEnd)
+                {
+                    //MessageBox.Show("4");
+                    //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
+                    shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd) - new TimeSpan(1, 30, 0);
+                    shiftToDelete.Add(i);
+                }
 
-                    if (shiftList[i].shiftStart - new TimeSpan(1, 0, 0) == shiftList[i - 1].shiftEnd)
-                    {
-                        //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
-                        shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd) - new TimeSpan(1, 0, 0);
-                        shiftToDelete.Add(i);
-                    }
+                if (shiftList[i].shiftStart - new TimeSpan(1, 0, 0) == shiftList[i - 1].shiftEnd)
+                {
+                    //MessageBox.Show("5");
+                    //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
+                    shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd) - new TimeSpan(1, 0, 0);
+                    shiftToDelete.Add(i);
                 }
             }
+
+            CheckFlightsCovered();
 
             if (shiftList.Count == PublicParameters.shiftNonDefaultStart + 3 && shiftToDelete.Count == 0)
             {
@@ -358,6 +331,49 @@ namespace Vezénylés_szerkesztő
             {
                 shiftList[PublicParameters.shiftNonDefaultStart].type = shiftList[PublicParameters.shiftNonDefaultStart].type | ShiftType.Divided;
                 shiftList[PublicParameters.shiftNonDefaultStart + 1].type = shiftList[PublicParameters.shiftNonDefaultStart + 1].type | ShiftType.Divided;
+            }
+
+            CheckFlightsCovered();
+        }
+
+        void CheckFlightsCovered() 
+        {
+            foreach (Flight f in flightList)
+            {
+                bool isCovered = false;
+                foreach (Shift s in shiftList)
+                    if (s.CoversFlight(f))
+                        isCovered = true;
+
+                if (!isCovered)
+                {
+                    foreach (Shift s in shiftList)
+                    {
+                        if (s.FlightStartsMidShift(f) &&
+                            s.requiredPeople >= PublicParameters.employeesPerFlight &&
+                            !isCovered)
+                        {
+                            //expand shift
+                            while (!s.CoversFlight(f))
+                                s.AddTimeAtEnd(new TimeSpan(0, 30, 0));
+                            isCovered = true;
+                        }
+                    }
+                }
+
+                if (!isCovered)
+                {
+                    //add new shift
+                    DateTime start2 = f.checkInStart/* - new TimeSpan(0, 20, 0)*/;
+                    DateTime shiftStart = new DateTime(start2.Year, start2.Month,
+                            start2.Minute == 0 ? start2.Day : (start2.Minute > 30 ? start2.Day : (start2.Hour >= 1 ? start2.Day : (start2.Day - 1))),
+                            start2.Minute == 0 ? start2.Hour : (start2.Hour >= 1 ? start2.Hour : (start2.Minute > 30 ? 0 : 23)),
+                            start2.Minute >= 30 ? 30 : 0, start2.Second);
+                    DateTime shiftEnd = shiftStart + PublicParameters.minShiftTime;
+                    Shift newShift = new Shift(shiftStart, shiftEnd, ShiftType.Day);
+                    shiftList.Add(newShift);
+                    isCovered = true;
+                }
             }
         }
 
@@ -542,6 +558,12 @@ namespace Vezénylés_szerkesztő
             return false;
         }
 
+        public void AddEmployee(Employee e)
+        {
+            if (!ContainsEmployee(e))
+                employeeList.Add(e);
+        }
+
         public void RemoveEmployee(Employee e)
         {
             for (int i = 0; i < employeeList.Count; i++)
@@ -561,8 +583,8 @@ namespace Vezénylés_szerkesztő
 
         public void RemoveTimeFromEnd(TimeSpan time)
         {
-            if (shiftEnd - shiftStart > new TimeSpan((PublicParameters.minShiftTimeMins - (PublicParameters.minShiftTimeMins % 60)) / 60, PublicParameters.minShiftTimeMins % 60, 0)) shiftEnd -= time;
-            if (shiftEnd - shiftStart < new TimeSpan((PublicParameters.minShiftTimeMins - (PublicParameters.minShiftTimeMins % 60)) / 60, PublicParameters.minShiftTimeMins % 60, 0)) shiftEnd = shiftStart + new TimeSpan(4, 0, 0);
+            if (shiftEnd - shiftStart > PublicParameters.minShiftTime) shiftEnd -= time;
+            if (shiftEnd - shiftStart < PublicParameters.minShiftTime) shiftEnd = shiftStart + PublicParameters.minShiftTime;
         }
 
         public override string ToString()

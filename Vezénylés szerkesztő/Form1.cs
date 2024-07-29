@@ -36,12 +36,12 @@ namespace Vezénylés_szerkesztő
 
             foreach (Day d in currentMonth.daysOfMonth)
             {
-                d.shiftList = new List<Shift>();
-                d.AddDefaultShifts();
-                d.CreateShifts();
+                //d.shiftList = new List<Shift>();
+                //d.AddDefaultShifts();
+                //d.CreateShifts();
             }
 
-            ShowTable(false, false, false);
+            ShowTable(false, false, true);
             UpdateStatusBar();
             CheckDates();
             GenerateStatistics();
@@ -227,7 +227,7 @@ namespace Vezénylés_szerkesztő
                                     if (s.type.HasFlag(ShiftType.Divided))
                                     {
                                         divided.Add(s);
-                                        s.employeeList.Add(e);
+                                        s.AddEmployee(e);
                                     }
                                 }
 
@@ -246,7 +246,7 @@ namespace Vezénylés_szerkesztő
                                     if (!s.type.HasFlag(ShiftType.Divided))
                                     {
                                         nonDivided.Add(s);
-                                        s.employeeList.Add(e);
+                                        s.AddEmployee(e);
                                     }
                                 }
 
@@ -260,10 +260,10 @@ namespace Vezénylés_szerkesztő
                             {
                                 n.isFreeDay = false;
                                 List<Shift> modDefault = new List<Shift>();
-                                if (currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour != 7)
+                                if (currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexDay].shiftStart.Hour != 7)
                                 {
-                                    modDefault.Add(currentMonth.daysOfMonth[i].shiftList[2]);
-                                    currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
+                                    modDefault.Add(currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexDay]);
+                                    currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexDay].AddEmployee(e);
                                 }
 
                                 n.shifts = modDefault;
@@ -279,12 +279,12 @@ namespace Vezénylés_szerkesztő
                                 if (i % 4 == 1)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[0].AddEmployee(e);
                                 }
                                 if (i % 4 == 0)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[1].AddEmployee(e);
                                 }
 
                                 n.shifts = night;
@@ -300,12 +300,12 @@ namespace Vezénylés_szerkesztő
                                 if (i % 4 == 2)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[0].AddEmployee(e);
                                 }
                                 if (i % 4 == 1)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[1].AddEmployee(e);
                                 }
 
                                 n.shifts = night;
@@ -321,12 +321,12 @@ namespace Vezénylés_szerkesztő
                                 if (i % 4 == 3)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[0].AddEmployee(e);
                                 }
                                 if (i % 4 == 2)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[1].AddEmployee(e);
                                 }
 
                                 n.shifts = night;
@@ -342,12 +342,12 @@ namespace Vezénylés_szerkesztő
                                 if (i % 4 == 0)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[0]);
-                                    currentMonth.daysOfMonth[i].shiftList[0].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[0].AddEmployee(e);
                                 }
                                 if (i % 4 == 3)
                                 {
                                     night.Add(currentMonth.daysOfMonth[i].shiftList[1]);
-                                    currentMonth.daysOfMonth[i].shiftList[1].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[1].AddEmployee(e);
                                 }
 
                                 n.shifts = night;
@@ -363,7 +363,7 @@ namespace Vezénylés_szerkesztő
                                 if (i % 2 == 1 && currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour == 7)
                                 {
                                     day.Add(currentMonth.daysOfMonth[i].shiftList[2]);
-                                    currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[2].AddEmployee(e);
                                 }
 
                                 n.shifts = day;
@@ -379,7 +379,7 @@ namespace Vezénylés_szerkesztő
                                 if (i % 2 == 0 && currentMonth.daysOfMonth[i].shiftList[2].shiftStart.Hour == 7)
                                 {
                                     day.Add(currentMonth.daysOfMonth[i].shiftList[2]);
-                                    currentMonth.daysOfMonth[i].shiftList[2].employeeList.Add(e);
+                                    currentMonth.daysOfMonth[i].shiftList[2].AddEmployee(e);
                                 }
 
                                 n.isGate3 = true;
@@ -393,14 +393,14 @@ namespace Vezénylés_szerkesztő
                             {
                                 n.isFreeDay = false;
                                 n.isStandBy = true;
-                                currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexStandby].employeeList.Add(e);
+                                currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexStandby].AddEmployee(e);
                             }
 
                             if (e.id == 11)
                             {
                                 n.isFreeDay = false;
                                 n.isPTO = true;
-                                currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexPTO].employeeList.Add(e);
+                                currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexPTO].AddEmployee(e);
                             }
                         #endregion
                         }
@@ -484,10 +484,13 @@ namespace Vezénylés_szerkesztő
             int emp = 0;
             foreach (Shift s in currentMonth.daysOfMonth[DateTime.Now.Day - 1].shiftList)
             {
-                foreach (Employee e in s.employeeList)
+                if (s.hours > 0 && !s.isPto)
                 {
-                    if (e.type == EmployeeType.Supervisor && s.isNow) sup++;
-                    else if (e.type == EmployeeType.Default && s.isNow) emp++;
+                    foreach (Employee e in s.employeeList)
+                    {
+                        if (e.type == EmployeeType.Supervisor && s.isNow) sup++;
+                        else if (e.type == EmployeeType.Default && s.isNow) emp++;
+                    }
                 }
             }
 

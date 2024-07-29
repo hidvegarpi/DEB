@@ -231,7 +231,21 @@
           "shiftStart": "2024-07-01T07:00:00",
           "shiftEnd": "2024-07-01T19:00:00",
           "type": 2,
-          "employeeList": [],
+          "employeeList": [
+            {
+              "id": 2,
+              "name": "Román Attila",
+              "type": 1,
+              "exams": 13,
+              "examDate": "2001-01-01T00:00:00",
+              "cardDate": "2001-01-01T00:00:00",
+              "distanceToWork": 6.3,
+              "male": true,
+              "canGoWith": [
+                1
+              ]
+            }
+          ],
           "requiredPeople": 0,
           "isStandby": false,
           "isPto": false,
@@ -246,7 +260,19 @@
           "shiftStart": "2024-07-01T07:00:00",
           "shiftEnd": "2024-07-01T19:00:00",
           "type": 2,
-          "employeeList": [],
+          "employeeList": [
+            {
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
+              "exams": 13,
+              "examDate": "2001-01-01T00:00:00",
+              "cardDate": "2001-01-01T00:00:00",
+              "distanceToWork": 50.0,
+              "male": true,
+              "canGoWith": []
+            }
+          ],
           "requiredPeople": 0,
           "isStandby": false,
           "isPto": false,
@@ -259,6 +285,21 @@
         },
         {
           "shiftStart": "2024-07-01T00:00:00",
+          "shiftEnd": "2024-07-01T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-01T19:00:00",
           "shiftEnd": "2024-07-01T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -269,24 +310,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-01T04:00:00",
           "shiftEnd": "2024-07-01T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -313,7 +356,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -324,33 +369,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-01T17:00:00",
-          "shiftEnd": "2024-07-01T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -358,18 +376,20 @@
         {
           "shiftStart": "2024-07-01T04:00:00",
           "shiftEnd": "2024-07-01T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -396,7 +416,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -407,33 +429,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-01T17:00:00",
-          "shiftEnd": "2024-07-01T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -688,6 +683,21 @@
         },
         {
           "shiftStart": "2024-07-02T00:00:00",
+          "shiftEnd": "2024-07-02T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-02T19:00:00",
           "shiftEnd": "2024-07-02T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -698,24 +708,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-02T05:00:00",
           "shiftEnd": "2024-07-02T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -742,7 +754,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -753,33 +767,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-02T17:00:00",
-          "shiftEnd": "2024-07-02T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -787,18 +774,20 @@
         {
           "shiftStart": "2024-07-02T05:00:00",
           "shiftEnd": "2024-07-02T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -825,7 +814,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -836,33 +827,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-02T17:00:00",
-          "shiftEnd": "2024-07-02T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -1117,6 +1081,21 @@
         },
         {
           "shiftStart": "2024-07-03T00:00:00",
+          "shiftEnd": "2024-07-03T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-03T19:00:00",
           "shiftEnd": "2024-07-03T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -1127,12 +1106,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-03T12:30:00",
-          "shiftEnd": "2024-07-03T23:59:00",
+          "shiftEnd": "2024-07-03T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -1144,7 +1123,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -1154,14 +1135,14 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ],
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-03T12:30:00",
-          "shiftEnd": "2024-07-03T23:59:00",
+          "shiftEnd": "2024-07-03T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -1173,7 +1154,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -1183,7 +1166,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ]
@@ -1422,6 +1405,21 @@
         },
         {
           "shiftStart": "2024-07-04T00:00:00",
+          "shiftEnd": "2024-07-04T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-04T19:00:00",
           "shiftEnd": "2024-07-04T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -1432,7 +1430,7 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
@@ -1449,7 +1447,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -1460,33 +1460,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-04T16:30:00",
-          "shiftEnd": "2024-07-04T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -1505,7 +1478,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -1516,33 +1491,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-04T16:30:00",
-          "shiftEnd": "2024-07-04T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -1813,6 +1761,21 @@
         },
         {
           "shiftStart": "2024-07-05T00:00:00",
+          "shiftEnd": "2024-07-05T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-05T19:00:00",
           "shiftEnd": "2024-07-05T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -1823,24 +1786,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-05T04:00:00",
           "shiftEnd": "2024-07-05T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -1856,18 +1821,20 @@
         {
           "shiftStart": "2024-07-05T12:30:00",
           "shiftEnd": "2024-07-05T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -1885,18 +1852,20 @@
         {
           "shiftStart": "2024-07-05T04:00:00",
           "shiftEnd": "2024-07-05T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -1912,18 +1881,20 @@
         {
           "shiftStart": "2024-07-05T12:30:00",
           "shiftEnd": "2024-07-05T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2031,19 +2002,19 @@
           "isNow": false
         },
         {
-          "shiftStart": "2024-07-06T07:00:00",
+          "shiftStart": "2024-07-06T04:00:00",
           "shiftEnd": "2024-07-06T19:00:00",
           "type": 6,
           "employeeList": [
             {
-              "id": 8,
-              "name": "Molnár Ernőné",
-              "type": 0,
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 5.6,
-              "male": false,
+              "distanceToWork": 50.0,
+              "male": true,
               "canGoWith": []
             }
           ],
@@ -2054,7 +2025,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 12.0,
+          "hours": 15.0,
           "isNow": false
         },
         {
@@ -2188,6 +2159,21 @@
         },
         {
           "shiftStart": "2024-07-06T00:00:00",
+          "shiftEnd": "2024-07-06T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-06T19:00:00",
           "shiftEnd": "2024-07-06T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -2198,38 +2184,11 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-06T04:00:00",
-          "shiftEnd": "2024-07-06T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-06T10:00:00",
           "shiftEnd": "2024-07-06T14:30:00",
           "type": 18,
           "employeeList": [
@@ -2242,7 +2201,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2252,7 +2213,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -2269,7 +2230,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2286,33 +2249,6 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-06T04:00:00",
-          "shiftEnd": "2024-07-06T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-06T10:00:00",
           "shiftEnd": "2024-07-06T14:30:00",
           "type": 18,
           "employeeList": [
@@ -2325,7 +2261,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2335,7 +2273,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -2352,7 +2290,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2633,7 +2573,7 @@
         },
         {
           "shiftStart": "2024-07-07T00:00:00",
-          "shiftEnd": "2024-07-07T23:59:00",
+          "shiftEnd": "2024-07-07T07:00:00",
           "type": 5,
           "employeeList": [],
           "requiredPeople": 2,
@@ -2643,13 +2583,13 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 7.0,
           "isNow": false
         },
         {
-          "shiftStart": "2024-07-07T04:00:00",
-          "shiftEnd": "2024-07-07T12:00:00",
-          "type": 2,
+          "shiftStart": "2024-07-07T19:00:00",
+          "shiftEnd": "2024-07-07T23:59:00",
+          "type": 5,
           "employeeList": [
             {
               "id": 2,
@@ -2660,22 +2600,24 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
-          "requiredPeople": 11,
+          "requiredPeople": 2,
           "isStandby": false,
           "isPto": false,
           "isFreeDay": false,
-          "ordered": false,
+          "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 8.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
-          "shiftStart": "2024-07-07T09:30:00",
-          "shiftEnd": "2024-07-07T13:30:00",
+          "shiftStart": "2024-07-07T04:00:00",
+          "shiftEnd": "2024-07-07T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -2687,7 +2629,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2697,7 +2641,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -2714,7 +2658,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2731,34 +2677,7 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-07T04:00:00",
-          "shiftEnd": "2024-07-07T12:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-07T09:30:00",
-          "shiftEnd": "2024-07-07T13:30:00",
+          "shiftEnd": "2024-07-07T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -2770,7 +2689,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -2780,7 +2701,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -2797,7 +2718,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3070,6 +2993,35 @@
         },
         {
           "shiftStart": "2024-07-08T00:00:00",
+          "shiftEnd": "2024-07-08T07:00:00",
+          "type": 5,
+          "employeeList": [
+            {
+              "id": 2,
+              "name": "Román Attila",
+              "type": 1,
+              "exams": 13,
+              "examDate": "2001-01-01T00:00:00",
+              "cardDate": "2001-01-01T00:00:00",
+              "distanceToWork": 6.3,
+              "male": true,
+              "canGoWith": [
+                1
+              ]
+            }
+          ],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-08T19:00:00",
           "shiftEnd": "2024-07-08T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -3080,24 +3032,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-08T04:00:00",
           "shiftEnd": "2024-07-08T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3124,7 +3078,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3135,33 +3091,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-08T17:00:00",
-          "shiftEnd": "2024-07-08T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -3169,18 +3098,20 @@
         {
           "shiftStart": "2024-07-08T04:00:00",
           "shiftEnd": "2024-07-08T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3207,7 +3138,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3218,33 +3151,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-08T17:00:00",
-          "shiftEnd": "2024-07-08T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -3499,6 +3405,21 @@
         },
         {
           "shiftStart": "2024-07-09T00:00:00",
+          "shiftEnd": "2024-07-09T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-09T19:00:00",
           "shiftEnd": "2024-07-09T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -3509,24 +3430,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-09T05:00:00",
           "shiftEnd": "2024-07-09T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3553,7 +3476,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3564,33 +3489,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-09T17:00:00",
-          "shiftEnd": "2024-07-09T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -3598,18 +3496,20 @@
         {
           "shiftStart": "2024-07-09T05:00:00",
           "shiftEnd": "2024-07-09T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3636,7 +3536,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3647,33 +3549,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-09T17:00:00",
-          "shiftEnd": "2024-07-09T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -3915,19 +3790,7 @@
           "shiftStart": "2024-07-10T07:00:00",
           "shiftEnd": "2024-07-10T19:00:00",
           "type": 2,
-          "employeeList": [
-            {
-              "id": 3,
-              "name": "Opris Gergő",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 50.0,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
+          "employeeList": [],
           "requiredPeople": 0,
           "isStandby": false,
           "isPto": false,
@@ -3940,6 +3803,21 @@
         },
         {
           "shiftStart": "2024-07-10T00:00:00",
+          "shiftEnd": "2024-07-10T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-10T19:00:00",
           "shiftEnd": "2024-07-10T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -3950,12 +3828,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-10T12:30:00",
-          "shiftEnd": "2024-07-10T23:59:00",
+          "shiftEnd": "2024-07-10T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -3967,7 +3845,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -3977,14 +3857,14 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ],
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-10T12:30:00",
-          "shiftEnd": "2024-07-10T23:59:00",
+          "shiftEnd": "2024-07-10T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -3996,7 +3876,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -4006,7 +3888,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ]
@@ -4245,6 +4127,21 @@
         },
         {
           "shiftStart": "2024-07-11T00:00:00",
+          "shiftEnd": "2024-07-11T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-11T19:00:00",
           "shiftEnd": "2024-07-11T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -4255,7 +4152,7 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
@@ -4272,7 +4169,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -4283,33 +4182,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-11T16:30:00",
-          "shiftEnd": "2024-07-11T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -4328,7 +4200,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -4339,33 +4213,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-11T16:30:00",
-          "shiftEnd": "2024-07-11T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -4623,19 +4470,7 @@
           "shiftStart": "2024-07-12T07:00:00",
           "shiftEnd": "2024-07-12T19:00:00",
           "type": 2,
-          "employeeList": [
-            {
-              "id": 3,
-              "name": "Opris Gergő",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 50.0,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
+          "employeeList": [],
           "requiredPeople": 0,
           "isStandby": false,
           "isPto": false,
@@ -4648,6 +4483,21 @@
         },
         {
           "shiftStart": "2024-07-12T00:00:00",
+          "shiftEnd": "2024-07-12T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-12T19:00:00",
           "shiftEnd": "2024-07-12T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -4658,24 +4508,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-12T04:00:00",
           "shiftEnd": "2024-07-12T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -4691,18 +4543,20 @@
         {
           "shiftStart": "2024-07-12T12:30:00",
           "shiftEnd": "2024-07-12T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -4720,18 +4574,20 @@
         {
           "shiftStart": "2024-07-12T04:00:00",
           "shiftEnd": "2024-07-12T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -4747,18 +4603,20 @@
         {
           "shiftStart": "2024-07-12T12:30:00",
           "shiftEnd": "2024-07-12T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -4866,18 +4724,18 @@
           "isNow": false
         },
         {
-          "shiftStart": "2024-07-13T07:00:00",
+          "shiftStart": "2024-07-13T04:00:00",
           "shiftEnd": "2024-07-13T19:00:00",
           "type": 6,
           "employeeList": [
             {
-              "id": 9,
-              "name": "Zsigmond Zsolt",
-              "type": 0,
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 31.1,
+              "distanceToWork": 50.0,
               "male": true,
               "canGoWith": []
             }
@@ -4889,7 +4747,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 12.0,
+          "hours": 15.0,
           "isNow": false
         },
         {
@@ -5023,6 +4881,21 @@
         },
         {
           "shiftStart": "2024-07-13T00:00:00",
+          "shiftEnd": "2024-07-13T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-13T19:00:00",
           "shiftEnd": "2024-07-13T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -5033,38 +4906,11 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-13T04:00:00",
-          "shiftEnd": "2024-07-13T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-13T10:00:00",
           "shiftEnd": "2024-07-13T14:30:00",
           "type": 18,
           "employeeList": [
@@ -5077,7 +4923,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5087,7 +4935,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -5104,7 +4952,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5121,33 +4971,6 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-13T04:00:00",
-          "shiftEnd": "2024-07-13T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-13T10:00:00",
           "shiftEnd": "2024-07-13T14:30:00",
           "type": 18,
           "employeeList": [
@@ -5160,7 +4983,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5170,7 +4995,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -5187,7 +5012,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5468,6 +5295,21 @@
         },
         {
           "shiftStart": "2024-07-14T00:00:00",
+          "shiftEnd": "2024-07-14T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-14T19:00:00",
           "shiftEnd": "2024-07-14T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -5478,39 +5320,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-14T04:00:00",
-          "shiftEnd": "2024-07-14T12:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-14T09:30:00",
-          "shiftEnd": "2024-07-14T13:30:00",
+          "shiftEnd": "2024-07-14T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -5522,7 +5337,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5532,7 +5349,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -5549,7 +5366,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5566,34 +5385,7 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-14T04:00:00",
-          "shiftEnd": "2024-07-14T12:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-14T09:30:00",
-          "shiftEnd": "2024-07-14T13:30:00",
+          "shiftEnd": "2024-07-14T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -5605,7 +5397,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5615,7 +5409,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -5632,7 +5426,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5905,6 +5701,21 @@
         },
         {
           "shiftStart": "2024-07-15T00:00:00",
+          "shiftEnd": "2024-07-15T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-15T19:00:00",
           "shiftEnd": "2024-07-15T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -5915,24 +5726,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-15T04:00:00",
           "shiftEnd": "2024-07-15T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5959,7 +5772,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -5970,33 +5785,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-15T17:00:00",
-          "shiftEnd": "2024-07-15T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -6004,18 +5792,20 @@
         {
           "shiftStart": "2024-07-15T04:00:00",
           "shiftEnd": "2024-07-15T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6042,7 +5832,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6053,33 +5845,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-15T17:00:00",
-          "shiftEnd": "2024-07-15T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -6334,6 +6099,21 @@
         },
         {
           "shiftStart": "2024-07-16T00:00:00",
+          "shiftEnd": "2024-07-16T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-16T19:00:00",
           "shiftEnd": "2024-07-16T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -6344,24 +6124,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-16T05:00:00",
           "shiftEnd": "2024-07-16T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6388,7 +6170,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6399,33 +6183,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-16T17:00:00",
-          "shiftEnd": "2024-07-16T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -6433,18 +6190,20 @@
         {
           "shiftStart": "2024-07-16T05:00:00",
           "shiftEnd": "2024-07-16T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6471,7 +6230,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6482,33 +6243,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-16T17:00:00",
-          "shiftEnd": "2024-07-16T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -6763,6 +6497,21 @@
         },
         {
           "shiftStart": "2024-07-17T00:00:00",
+          "shiftEnd": "2024-07-17T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-17T19:00:00",
           "shiftEnd": "2024-07-17T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -6773,12 +6522,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-17T12:30:00",
-          "shiftEnd": "2024-07-17T23:59:00",
+          "shiftEnd": "2024-07-17T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -6790,7 +6539,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6800,14 +6551,14 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ],
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-17T12:30:00",
-          "shiftEnd": "2024-07-17T23:59:00",
+          "shiftEnd": "2024-07-17T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -6819,7 +6570,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -6829,7 +6582,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ]
@@ -7068,6 +6821,21 @@
         },
         {
           "shiftStart": "2024-07-18T00:00:00",
+          "shiftEnd": "2024-07-18T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-18T19:00:00",
           "shiftEnd": "2024-07-18T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -7078,7 +6846,7 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
@@ -7095,7 +6863,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7106,33 +6876,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-18T16:30:00",
-          "shiftEnd": "2024-07-18T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -7151,7 +6894,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7162,33 +6907,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-18T16:30:00",
-          "shiftEnd": "2024-07-18T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -7459,6 +7177,21 @@
         },
         {
           "shiftStart": "2024-07-19T00:00:00",
+          "shiftEnd": "2024-07-19T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-19T19:00:00",
           "shiftEnd": "2024-07-19T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -7469,24 +7202,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-19T04:00:00",
           "shiftEnd": "2024-07-19T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7502,18 +7237,20 @@
         {
           "shiftStart": "2024-07-19T12:30:00",
           "shiftEnd": "2024-07-19T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7531,18 +7268,20 @@
         {
           "shiftStart": "2024-07-19T04:00:00",
           "shiftEnd": "2024-07-19T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7558,18 +7297,20 @@
         {
           "shiftStart": "2024-07-19T12:30:00",
           "shiftEnd": "2024-07-19T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7677,19 +7418,19 @@
           "isNow": false
         },
         {
-          "shiftStart": "2024-07-20T07:00:00",
+          "shiftStart": "2024-07-20T04:00:00",
           "shiftEnd": "2024-07-20T19:00:00",
           "type": 6,
           "employeeList": [
             {
-              "id": 8,
-              "name": "Molnár Ernőné",
-              "type": 0,
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 5.6,
-              "male": false,
+              "distanceToWork": 50.0,
+              "male": true,
               "canGoWith": []
             }
           ],
@@ -7700,7 +7441,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 12.0,
+          "hours": 15.0,
           "isNow": false
         },
         {
@@ -7834,6 +7575,21 @@
         },
         {
           "shiftStart": "2024-07-20T00:00:00",
+          "shiftEnd": "2024-07-20T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-20T19:00:00",
           "shiftEnd": "2024-07-20T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -7844,38 +7600,11 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-20T04:00:00",
-          "shiftEnd": "2024-07-20T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-20T10:00:00",
           "shiftEnd": "2024-07-20T14:30:00",
           "type": 18,
           "employeeList": [
@@ -7888,7 +7617,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7898,7 +7629,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -7915,7 +7646,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7932,33 +7665,6 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-20T04:00:00",
-          "shiftEnd": "2024-07-20T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-20T10:00:00",
           "shiftEnd": "2024-07-20T14:30:00",
           "type": 18,
           "employeeList": [
@@ -7971,7 +7677,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -7981,7 +7689,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -7998,7 +7706,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8279,6 +7989,21 @@
         },
         {
           "shiftStart": "2024-07-21T00:00:00",
+          "shiftEnd": "2024-07-21T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-21T19:00:00",
           "shiftEnd": "2024-07-21T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -8289,39 +8014,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-21T04:00:00",
-          "shiftEnd": "2024-07-21T12:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-21T09:30:00",
-          "shiftEnd": "2024-07-21T13:30:00",
+          "shiftEnd": "2024-07-21T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -8333,7 +8031,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8343,7 +8043,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -8360,7 +8060,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8377,34 +8079,7 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-21T04:00:00",
-          "shiftEnd": "2024-07-21T12:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-21T09:30:00",
-          "shiftEnd": "2024-07-21T13:30:00",
+          "shiftEnd": "2024-07-21T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -8416,7 +8091,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8426,7 +8103,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -8443,7 +8120,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8716,6 +8395,21 @@
         },
         {
           "shiftStart": "2024-07-22T00:00:00",
+          "shiftEnd": "2024-07-22T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-22T19:00:00",
           "shiftEnd": "2024-07-22T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -8726,24 +8420,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-22T04:00:00",
           "shiftEnd": "2024-07-22T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8770,7 +8466,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8781,33 +8479,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-22T17:00:00",
-          "shiftEnd": "2024-07-22T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -8815,18 +8486,20 @@
         {
           "shiftStart": "2024-07-22T04:00:00",
           "shiftEnd": "2024-07-22T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8853,7 +8526,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -8864,33 +8539,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-22T17:00:00",
-          "shiftEnd": "2024-07-22T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -9145,6 +8793,21 @@
         },
         {
           "shiftStart": "2024-07-23T00:00:00",
+          "shiftEnd": "2024-07-23T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-23T19:00:00",
           "shiftEnd": "2024-07-23T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -9155,24 +8818,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-23T05:00:00",
           "shiftEnd": "2024-07-23T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9199,7 +8864,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9210,33 +8877,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-23T17:00:00",
-          "shiftEnd": "2024-07-23T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -9244,18 +8884,20 @@
         {
           "shiftStart": "2024-07-23T05:00:00",
           "shiftEnd": "2024-07-23T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9282,7 +8924,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9293,33 +8937,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-23T17:00:00",
-          "shiftEnd": "2024-07-23T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -9574,6 +9191,21 @@
         },
         {
           "shiftStart": "2024-07-24T00:00:00",
+          "shiftEnd": "2024-07-24T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-24T19:00:00",
           "shiftEnd": "2024-07-24T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -9584,12 +9216,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-24T12:30:00",
-          "shiftEnd": "2024-07-24T23:59:00",
+          "shiftEnd": "2024-07-24T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -9601,7 +9233,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9611,14 +9245,14 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ],
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-24T12:30:00",
-          "shiftEnd": "2024-07-24T23:59:00",
+          "shiftEnd": "2024-07-24T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -9630,7 +9264,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9640,7 +9276,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ]
@@ -9879,6 +9515,21 @@
         },
         {
           "shiftStart": "2024-07-25T00:00:00",
+          "shiftEnd": "2024-07-25T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-25T19:00:00",
           "shiftEnd": "2024-07-25T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -9889,7 +9540,7 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
@@ -9906,7 +9557,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9917,33 +9570,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-25T16:30:00",
-          "shiftEnd": "2024-07-25T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -9962,7 +9588,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -9973,33 +9601,6 @@
           "important": false,
           "sickShift": false,
           "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-25T16:30:00",
-          "shiftEnd": "2024-07-25T20:30:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -10270,6 +9871,21 @@
         },
         {
           "shiftStart": "2024-07-26T00:00:00",
+          "shiftEnd": "2024-07-26T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-26T19:00:00",
           "shiftEnd": "2024-07-26T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -10280,24 +9896,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-26T04:00:00",
           "shiftEnd": "2024-07-26T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -10313,18 +9931,20 @@
         {
           "shiftStart": "2024-07-26T12:30:00",
           "shiftEnd": "2024-07-26T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -10342,18 +9962,20 @@
         {
           "shiftStart": "2024-07-26T04:00:00",
           "shiftEnd": "2024-07-26T08:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -10369,18 +9991,20 @@
         {
           "shiftStart": "2024-07-26T12:30:00",
           "shiftEnd": "2024-07-26T19:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -10488,18 +10112,18 @@
           "isNow": false
         },
         {
-          "shiftStart": "2024-07-27T07:00:00",
+          "shiftStart": "2024-07-27T04:00:00",
           "shiftEnd": "2024-07-27T19:00:00",
           "type": 6,
           "employeeList": [
             {
-              "id": 9,
-              "name": "Zsigmond Zsolt",
-              "type": 0,
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 31.1,
+              "distanceToWork": 50.0,
               "male": true,
               "canGoWith": []
             }
@@ -10511,8 +10135,8 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 12.0,
-          "isNow": true
+          "hours": 15.0,
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T07:00:00",
@@ -10539,7 +10163,7 @@
           "important": false,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": true
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T07:00:00",
@@ -10566,7 +10190,7 @@
           "important": false,
           "sickShift": false,
           "hours": 12.0,
-          "isNow": true
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T07:00:00",
@@ -10581,7 +10205,7 @@
           "important": false,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": true
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T07:00:00",
@@ -10596,7 +10220,7 @@
           "important": false,
           "sickShift": false,
           "hours": 12.0,
-          "isNow": true
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T07:00:00",
@@ -10611,7 +10235,7 @@
           "important": true,
           "sickShift": false,
           "hours": 12.0,
-          "isNow": true
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T07:00:00",
@@ -10626,7 +10250,7 @@
           "important": false,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": true
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T07:00:00",
@@ -10641,10 +10265,25 @@
           "important": true,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": true
+          "isNow": false
         },
         {
           "shiftStart": "2024-07-27T00:00:00",
+          "shiftEnd": "2024-07-27T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-27T19:00:00",
           "shiftEnd": "2024-07-27T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -10655,38 +10294,11 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
-          "isNow": true
-        },
-        {
-          "shiftStart": "2024-07-27T04:00:00",
-          "shiftEnd": "2024-07-27T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
-          "shiftStart": "2024-07-27T10:00:00",
+          "shiftStart": "2024-07-27T04:00:00",
           "shiftEnd": "2024-07-27T14:30:00",
           "type": 18,
           "employeeList": [
@@ -10699,7 +10311,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -10709,7 +10323,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -10726,7 +10340,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -10743,33 +10359,6 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-27T04:00:00",
-          "shiftEnd": "2024-07-27T08:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-27T10:00:00",
           "shiftEnd": "2024-07-27T14:30:00",
           "type": 18,
           "employeeList": [
@@ -10782,7 +10371,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -10792,7 +10383,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.5,
+          "hours": 10.5,
           "isNow": false
         },
         {
@@ -10809,7 +10400,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11090,6 +10683,21 @@
         },
         {
           "shiftStart": "2024-07-28T00:00:00",
+          "shiftEnd": "2024-07-28T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-28T19:00:00",
           "shiftEnd": "2024-07-28T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -11100,39 +10708,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-28T04:00:00",
-          "shiftEnd": "2024-07-28T12:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-28T09:30:00",
-          "shiftEnd": "2024-07-28T13:30:00",
+          "shiftEnd": "2024-07-28T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -11144,7 +10725,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11154,7 +10737,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -11171,7 +10754,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11188,34 +10773,7 @@
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-28T04:00:00",
-          "shiftEnd": "2024-07-28T12:00:00",
-          "type": 2,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 8.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-28T09:30:00",
-          "shiftEnd": "2024-07-28T13:30:00",
+          "shiftEnd": "2024-07-28T12:30:00",
           "type": 18,
           "employeeList": [
             {
@@ -11227,7 +10785,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11237,7 +10797,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 4.0,
+          "hours": 8.5,
           "isNow": false
         },
         {
@@ -11254,7 +10814,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11394,7 +10956,7 @@
           "important": false,
           "sickShift": false,
           "hours": 12.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T07:00:00",
@@ -11421,7 +10983,7 @@
           "important": false,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T07:00:00",
@@ -11448,7 +11010,7 @@
           "important": false,
           "sickShift": false,
           "hours": 12.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T07:00:00",
@@ -11463,7 +11025,7 @@
           "important": false,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T07:00:00",
@@ -11478,7 +11040,7 @@
           "important": false,
           "sickShift": false,
           "hours": 12.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T07:00:00",
@@ -11493,7 +11055,7 @@
           "important": true,
           "sickShift": false,
           "hours": 12.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T07:00:00",
@@ -11508,7 +11070,7 @@
           "important": false,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T07:00:00",
@@ -11523,10 +11085,25 @@
           "important": true,
           "sickShift": false,
           "hours": 0.0,
-          "isNow": false
+          "isNow": true
         },
         {
           "shiftStart": "2024-07-29T00:00:00",
+          "shiftEnd": "2024-07-29T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-29T19:00:00",
           "shiftEnd": "2024-07-29T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -11537,24 +11114,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-29T04:00:00",
           "shiftEnd": "2024-07-29T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11581,7 +11160,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11592,33 +11173,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-29T17:00:00",
-          "shiftEnd": "2024-07-29T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -11626,18 +11180,20 @@
         {
           "shiftStart": "2024-07-29T04:00:00",
           "shiftEnd": "2024-07-29T09:00:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11664,7 +11220,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -11675,33 +11233,6 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-29T17:00:00",
-          "shiftEnd": "2024-07-29T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -11956,6 +11487,21 @@
         },
         {
           "shiftStart": "2024-07-30T00:00:00",
+          "shiftEnd": "2024-07-30T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-30T19:00:00",
           "shiftEnd": "2024-07-30T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -11966,24 +11512,26 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-30T05:00:00",
           "shiftEnd": "2024-07-30T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -12010,7 +11558,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -12021,33 +11571,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-30T17:00:00",
-          "shiftEnd": "2024-07-30T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ],
@@ -12055,18 +11578,20 @@
         {
           "shiftStart": "2024-07-30T05:00:00",
           "shiftEnd": "2024-07-30T09:30:00",
-          "type": 2,
+          "type": 18,
           "employeeList": [
             {
-              "id": 2,
-              "name": "Román Attila",
+              "id": 1,
+              "name": "Ujhelyi Gyula",
               "type": 1,
               "exams": 13,
               "examDate": "2001-01-01T00:00:00",
               "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
+              "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -12093,7 +11618,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 11.6,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                2
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -12104,33 +11631,6 @@
           "important": false,
           "sickShift": false,
           "hours": 7.0,
-          "isNow": false
-        },
-        {
-          "shiftStart": "2024-07-30T17:00:00",
-          "shiftEnd": "2024-07-30T21:00:00",
-          "type": 18,
-          "employeeList": [
-            {
-              "id": 1,
-              "name": "Ujhelyi Gyula",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 11.6,
-              "male": true,
-              "canGoWith": []
-            }
-          ],
-          "requiredPeople": 11,
-          "isStandby": false,
-          "isPto": false,
-          "isFreeDay": false,
-          "ordered": false,
-          "important": false,
-          "sickShift": false,
-          "hours": 4.0,
           "isNow": false
         }
       ]
@@ -12385,6 +11885,21 @@
         },
         {
           "shiftStart": "2024-07-31T00:00:00",
+          "shiftEnd": "2024-07-31T07:00:00",
+          "type": 5,
+          "employeeList": [],
+          "requiredPeople": 2,
+          "isStandby": false,
+          "isPto": false,
+          "isFreeDay": false,
+          "ordered": true,
+          "important": false,
+          "sickShift": false,
+          "hours": 7.0,
+          "isNow": false
+        },
+        {
+          "shiftStart": "2024-07-31T19:00:00",
           "shiftEnd": "2024-07-31T23:59:00",
           "type": 5,
           "employeeList": [],
@@ -12395,12 +11910,12 @@
           "ordered": true,
           "important": false,
           "sickShift": false,
-          "hours": 24.0,
+          "hours": 5.0,
           "isNow": false
         },
         {
           "shiftStart": "2024-07-31T12:30:00",
-          "shiftEnd": "2024-07-31T23:59:00",
+          "shiftEnd": "2024-07-31T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -12412,7 +11927,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -12422,14 +11939,14 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ],
       "nonDefaultShifts": [
         {
           "shiftStart": "2024-07-31T12:30:00",
-          "shiftEnd": "2024-07-31T23:59:00",
+          "shiftEnd": "2024-07-31T19:00:00",
           "type": 2,
           "employeeList": [
             {
@@ -12441,7 +11958,9 @@
               "cardDate": "2001-01-01T00:00:00",
               "distanceToWork": 6.3,
               "male": true,
-              "canGoWith": []
+              "canGoWith": [
+                1
+              ]
             }
           ],
           "requiredPeople": 11,
@@ -12451,7 +11970,7 @@
           "ordered": false,
           "important": false,
           "sickShift": false,
-          "hours": 11.5,
+          "hours": 6.5,
           "isNow": false
         }
       ]

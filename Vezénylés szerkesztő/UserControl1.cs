@@ -189,18 +189,32 @@ namespace Vezénylés_szerkesztő
                         {
                             isStandBy = true;
                             panel1.BackColor = PublicParameters.colorStandBy;
+                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
                         }
                         else if (shiftData[0].isFreeDay)
                         {
                             isFreeDay = true;
                             panel1.BackColor = PublicParameters.colorFreeDay;
+                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
                         }
                         else if (shiftData[0].isPto)
                         {
                             isPTO = true;
                             panel1.BackColor = PublicParameters.colorPaidTimeOff;
+                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
                         }
-                        BackColor = shiftData[0].important ? Color.Red : Color.Orange;
+                        else if (shiftData[0].type.HasFlag(ShiftType.Night))
+                        {
+                            label1.Text = "";
+                            label1.BackColor = Color.Transparent;
+                            label2.Text = "";
+                            label2.BackColor = Color.Transparent;
+                            date3 = shiftData[0].shiftStart;
+                            label3.BackColor = PublicParameters.colorShiftNight;
+                            date4 = shiftData[0].shiftEnd;
+                            label4.BackColor = PublicParameters.colorShiftNight;
+                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
+                        }
                     }
                     else if (shiftData[0].isStandby) isStandBy = true;
                     else if (shiftData[0].isFreeDay) isFreeDay = true;
@@ -266,13 +280,18 @@ namespace Vezénylés_szerkesztő
 
         private void kérésTörléseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool removed = false;
-            foreach (Shift s in owner.currentMonth.daysOfMonth[shiftData[0].shiftStart.Day - 1].shiftList)
+            RemoveOrderedShift(true);
+        }
+
+        public void RemoveOrderedShift(bool removeNextNight = false)
+        {
+            //bool removed = false;
+            foreach (Shift s in owner.currentMonth.daysOfMonth[date.Day - 1].shiftList)
             {
-                if (s == shiftData[0])
+                if (s.ordered)
                 {
                     s.RemoveEmployee(employeeData);
-                    removed = true;
+                    //removed = true;
                     //for (int i = 0; i < s.employeeList.Count; i++)
                     //{
                     //    if (s.employeeList[i].id == employeeData.id && s.employeeList[i].name == employeeData.name)
@@ -283,10 +302,19 @@ namespace Vezénylés_szerkesztő
                     //    if (removed) break;
                     //}
                 }
-                if (removed) break;
+                //if (removed) break;
             }
+
+            if (removeNextNight && shiftData[0].shiftStart.Hour == 19)
+                if (shiftData[0].type.HasFlag(ShiftType.Night) && date.Day < owner.currentMonth.daysOfMonth.Count)
+                    ((UserControl1)owner.controlNestedList[employeeData.id - 1][date.Day]).RemoveOrderedShift();
+
+            if (removeNextNight && shiftData[0].shiftStart.Hour == 0)
+                if (shiftData[0].type.HasFlag(ShiftType.Night) && date.Day > 1)
+                    ((UserControl1)owner.controlNestedList[employeeData.id - 1][date.Day - 2]).RemoveOrderedShift();
+
             List<Shift> sl = new List<Shift>();
-            sl.Add(owner.currentMonth.daysOfMonth[shiftData[0].shiftStart.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay]);
+            sl.Add(owner.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay]);
             BackColor = PublicParameters.colorFreeDay;
             shiftData = sl;
             isFreeDay = true;
@@ -310,6 +338,7 @@ namespace Vezénylés_szerkesztő
 
             kérésHozzáadásaToolStripMenuItem.Enabled = false;
             kérésTörléseToolStripMenuItem.Enabled = true;
+            owner.SaveCurrentMonth();
         }
     }
 }

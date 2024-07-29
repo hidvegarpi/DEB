@@ -36,8 +36,8 @@ namespace Vezénylés_szerkesztő
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.kérésTörléseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kérésHozzáadásaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kérésTörléseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,22 +102,22 @@ namespace Vezénylés_szerkesztő
             this.kérésHozzáadásaToolStripMenuItem,
             this.kérésTörléseToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 48);
+            // 
+            // kérésHozzáadásaToolStripMenuItem
+            // 
+            this.kérésHozzáadásaToolStripMenuItem.Name = "kérésHozzáadásaToolStripMenuItem";
+            this.kérésHozzáadásaToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.kérésHozzáadásaToolStripMenuItem.Text = "Kérés hozzáadása";
+            this.kérésHozzáadásaToolStripMenuItem.Click += new System.EventHandler(this.kérésHozzáadásaToolStripMenuItem_Click);
             // 
             // kérésTörléseToolStripMenuItem
             // 
             this.kérésTörléseToolStripMenuItem.Enabled = false;
             this.kérésTörléseToolStripMenuItem.Name = "kérésTörléseToolStripMenuItem";
-            this.kérésTörléseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kérésTörléseToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.kérésTörléseToolStripMenuItem.Text = "Kérés törlése";
             this.kérésTörléseToolStripMenuItem.Click += new System.EventHandler(this.kérésTörléseToolStripMenuItem_Click);
-            // 
-            // kérésHozzáadásaToolStripMenuItem
-            // 
-            this.kérésHozzáadásaToolStripMenuItem.Name = "kérésHozzáadásaToolStripMenuItem";
-            this.kérésHozzáadásaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kérésHozzáadásaToolStripMenuItem.Text = "Kérés hozzáadása";
-            this.kérésHozzáadásaToolStripMenuItem.Click += new System.EventHandler(this.kérésHozzáadásaToolStripMenuItem_Click);
             // 
             // UserControl1
             // 

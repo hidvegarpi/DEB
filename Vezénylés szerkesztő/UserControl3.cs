@@ -21,6 +21,7 @@ namespace Vezénylés_szerkesztő
 
         int _day;
         Day _data;
+        public Form1 owner;
 
         public int day
         {
@@ -64,7 +65,7 @@ namespace Vezénylés_szerkesztő
                 label1.Text = label1.Text.Replace("#2", dayName);
 
                 if (_data.date.DayOfWeek == DayOfWeek.Sunday) label1.ForeColor = Color.Red;
-                this.BackColor = _data.date.DayOfWeek == DayOfWeek.Saturday || _data.date.DayOfWeek == DayOfWeek.Sunday ? Color.LightGray : Control.DefaultBackColor;
+                BackColor = _data.date.DayOfWeek == DayOfWeek.Saturday || _data.date.DayOfWeek == DayOfWeek.Sunday ? Color.LightGray : Control.DefaultBackColor;
             }
         }
 
@@ -75,12 +76,22 @@ namespace Vezénylés_szerkesztő
 
         private void UserControl3_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Color.Gray;
+            BackColor = Color.Gray;
         }
 
         private void UserControl3_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = _data.date.DayOfWeek == DayOfWeek.Saturday || _data.date.DayOfWeek == DayOfWeek.Sunday ? Color.LightGray : Control.DefaultBackColor;
+            BackColor = _data.date.DayOfWeek == DayOfWeek.Saturday || _data.date.DayOfWeek == DayOfWeek.Sunday ? Color.LightGray : Control.DefaultBackColor;
+        }
+
+        private void járatHozzáadásaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            owner.AddFlight(data.date);
+        }
+
+        private void járatTörléseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

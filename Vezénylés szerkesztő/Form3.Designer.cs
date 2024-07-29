@@ -171,6 +171,7 @@ namespace Vezénylés_szerkesztő
             this.Name = "Form3";
             this.ShowIcon = false;
             this.Text = "Járat hozzáadása";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

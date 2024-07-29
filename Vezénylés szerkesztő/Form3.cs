@@ -19,10 +19,23 @@ namespace Vezénylés_szerkesztő
 
         public string flightDestination = "NaN";
         public string airline = "NaN";
-        public DateTime checkInStart;
+        DateTime _checkInStart;
         public bool charter = false;
         public bool monthly = false;
         public bool weekly = false;
+
+        public DateTime checkInStart
+        {
+            get
+            {
+                return _checkInStart;
+            }
+            set
+            {
+                _checkInStart = value;
+                dateTimePicker1.Value = value;
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e) => Close();
 
@@ -30,7 +43,7 @@ namespace Vezénylés_szerkesztő
 
         private void textBox2_TextChanged(object sender, EventArgs e) => airline = textBox2.Text;
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) => checkInStart = dateTimePicker1.Value;
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) => _checkInStart = dateTimePicker1.Value;
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e) => charter = radioButton1.Checked;
 
@@ -43,6 +56,11 @@ namespace Vezénylés_szerkesztő
             charter = radioButton1.Checked;
             weekly = radioButton2.Checked;
             monthly = radioButton3.Checked;
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

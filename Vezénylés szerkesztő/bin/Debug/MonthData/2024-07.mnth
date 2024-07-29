@@ -11173,7 +11173,7 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
+          "isNow": true
         }
       ],
       "nonDefaultShifts": [
@@ -11233,7 +11233,7 @@
           "important": false,
           "sickShift": false,
           "hours": 6.5,
-          "isNow": false
+          "isNow": true
         }
       ]
     },

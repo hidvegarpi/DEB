@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Vezénylés_szerkesztő
 {
@@ -34,14 +35,19 @@ namespace Vezénylés_szerkesztő
             LoadEmployees();
             LoadCurrentMonth();
 
-            foreach (Day d in currentMonth.daysOfMonth)
+            bool clearShiftData = false;
+
+            if (clearShiftData)
             {
-                //d.shiftList = new List<Shift>();
-                //d.AddDefaultShifts();
-                //d.CreateShifts();
+                foreach (Day d in currentMonth.daysOfMonth)
+                {
+                    d.shiftList = new List<Shift>();
+                    d.AddDefaultShifts();
+                    d.CreateShifts();
+                }
             }
 
-            ShowTable(false, false, true);
+            ShowTable(false, false, !clearShiftData);
             UpdateStatusBar();
             CheckDates();
             GenerateStatistics();
@@ -101,22 +107,24 @@ namespace Vezénylés_szerkesztő
             addEmployeeForm.Show();
             addEmployeeForm.FormClosing += AddEmployeeFormClosing;
             addEmployeeForm.ID = employeeList.Count + 1;
-            Hide();
         }
 
         private void hozzáadásToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddFlight(DateTime.Now);
+        }
+
+        public void AddFlight(DateTime date)
         {
             Form3 addFlightForm = new Form3();
             addFlightForm.Owner = this;
             addFlightForm.Show();
             addFlightForm.FormClosing += AddFlightFormClosing;
-            Hide();
+            addFlightForm.checkInStart = date;
         }
 
         void AddEmployeeFormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Show();
-            BringToFront();
             Form2 form = (Form2)sender;
             if (form.DialogResult == DialogResult.OK)
             {
@@ -129,8 +137,6 @@ namespace Vezénylés_szerkesztő
 
         void AddFlightFormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Show();
-            BringToFront();
             Form3 form = (Form3)sender;
             if (form.DialogResult == DialogResult.OK)
             {
@@ -178,6 +184,7 @@ namespace Vezénylés_szerkesztő
         public List<List<Control>> controlNestedList = new List<List<Control>>();
         public List<Control> employeeControlList = new List<Control>();
         List<Control> daysControlList = new List<Control>();
+        List<string> warningList = new List<string>();
 
         void ShowTable(bool onlyTopRow = false, bool onlyUpdate = false, bool notModifyShifts = false)
         {
@@ -433,6 +440,7 @@ namespace Vezénylés_szerkesztő
                     UserControl3 n = new UserControl3();
                     n.data = currentMonth.daysOfMonth[i];
                     n.day = i + 1;
+                    n.owner = this;
                     flowLayoutPanel2.Controls.Add(n);
                     daysControlList.Add(n);
                 }
@@ -504,20 +512,32 @@ namespace Vezénylés_szerkesztő
 
         void CheckDates()
         {
+            bool hasWarning = false;
             foreach (Employee e in employeeList)
             {
                 if (e.cardDate < DateTime.Now + new TimeSpan(PublicParameters.warningCardDateDays, 0, 0, 0))
+                {
+                    string w = e.name + " belépőkártyájának érvényessége " + PublicParameters.warningCardDateDays + " napon belül lejár.";
                     notifyIcon1.ShowBalloonTip(10000,
                         "Belépő Kártya Lejárat",
-                        e.name + " belépőkártyájának érvényessége " + PublicParameters.warningCardDateDays + " napon belül lejár.",
+                        w,
                         ToolTipIcon.Warning);
+                    hasWarning = true;
+                    warningList.Add(w);
+                }
 
                 if (e.examDate + new TimeSpan(365, 0, 0, 0) < DateTime.Now + new TimeSpan(PublicParameters.warningExamDateDays, 0, 0, 0))
+                {
+                    string w = e.name + " vizsgájának érvényessége " + PublicParameters.warningExamDateDays + " napon belül lejár.";
                     notifyIcon1.ShowBalloonTip(10000,
                         "Vizsga Lejárat",
-                        e.name + " vizsgájának érvényessége " + PublicParameters.warningExamDateDays + " napon belül lejár.",
+                        w,
                         ToolTipIcon.Warning);
+                    hasWarning = true;
+                    warningList.Add(w);
+                }
             }
+            toolStripSplitButton1.Visible = hasWarning;
         }
 
         void GenerateStatistics()
@@ -676,6 +696,13 @@ namespace Vezénylés_szerkesztő
         private void toolStripStatusLabel2_Click(object sender, EventArgs e)
         {
             //ShowTable(false, false, true);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form8 form = new Form8();
+            form.warningList = warningList;
+            form.Show();
         }
     }
 }

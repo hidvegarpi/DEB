@@ -97,7 +97,7 @@ namespace Vezénylés_szerkesztő.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("9")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public int multiplierKm {
             get {
                 return ((int)(this["multiplierKm"]));
@@ -320,6 +320,54 @@ namespace Vezénylés_szerkesztő.Properties {
             }
             set {
                 this["minShiftTimeMins"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Orange")]
+        public global::System.Drawing.Color colorOrderedFreeDay {
+            get {
+                return ((global::System.Drawing.Color)(this["colorOrderedFreeDay"]));
+            }
+            set {
+                this["colorOrderedFreeDay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color colorOrderedFreeDayImportant {
+            get {
+                return ((global::System.Drawing.Color)(this["colorOrderedFreeDayImportant"]));
+            }
+            set {
+                this["colorOrderedFreeDayImportant"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color colorOrderedPTOImportant {
+            get {
+                return ((global::System.Drawing.Color)(this["colorOrderedPTOImportant"]));
+            }
+            set {
+                this["colorOrderedPTOImportant"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Orange")]
+        public global::System.Drawing.Color colorOrderedNight {
+            get {
+                return ((global::System.Drawing.Color)(this["colorOrderedNight"]));
+            }
+            set {
+                this["colorOrderedNight"] = value;
             }
         }
     }

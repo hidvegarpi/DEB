@@ -37,6 +37,9 @@ namespace Vezénylés_szerkesztő
             button14.BackColor = PublicParameters.colorShiftPMEndLong;
             button13.BackColor = PublicParameters.colorShiftPMEndShort;
             button15.BackColor = PublicParameters.colorShiftModDay;
+            button16.BackColor = PublicParameters.colorOrderedFreeDay;
+            button17.BackColor = PublicParameters.colorOrderedFreeDayImportant;
+            button18.BackColor = PublicParameters.colorOrderedNight;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -175,6 +178,21 @@ namespace Vezénylés_szerkesztő
             Properties.Settings.Default.Save();
 
             SetBtnColors();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

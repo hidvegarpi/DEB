@@ -2590,21 +2590,7 @@
           "shiftStart": "2024-07-07T19:00:00",
           "shiftEnd": "2024-07-07T23:59:00",
           "type": 5,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": [
-                1
-              ]
-            }
-          ],
+          "employeeList": [],
           "requiredPeople": 2,
           "isStandby": false,
           "isPto": false,
@@ -2950,7 +2936,19 @@
           "shiftStart": "2024-07-08T07:00:00",
           "shiftEnd": "2024-07-08T19:00:00",
           "type": 2,
-          "employeeList": [],
+          "employeeList": [
+            {
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
+              "exams": 13,
+              "examDate": "2001-01-01T00:00:00",
+              "cardDate": "2001-01-01T00:00:00",
+              "distanceToWork": 50.0,
+              "male": true,
+              "canGoWith": []
+            }
+          ],
           "requiredPeople": 0,
           "isStandby": false,
           "isPto": true,
@@ -2995,21 +2993,7 @@
           "shiftStart": "2024-07-08T00:00:00",
           "shiftEnd": "2024-07-08T07:00:00",
           "type": 5,
-          "employeeList": [
-            {
-              "id": 2,
-              "name": "Román Attila",
-              "type": 1,
-              "exams": 13,
-              "examDate": "2001-01-01T00:00:00",
-              "cardDate": "2001-01-01T00:00:00",
-              "distanceToWork": 6.3,
-              "male": true,
-              "canGoWith": [
-                1
-              ]
-            }
-          ],
+          "employeeList": [],
           "requiredPeople": 2,
           "isStandby": false,
           "isPto": false,
@@ -3820,7 +3804,19 @@
           "shiftStart": "2024-07-10T19:00:00",
           "shiftEnd": "2024-07-10T23:59:00",
           "type": 5,
-          "employeeList": [],
+          "employeeList": [
+            {
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
+              "exams": 13,
+              "examDate": "2001-01-01T00:00:00",
+              "cardDate": "2001-01-01T00:00:00",
+              "distanceToWork": 50.0,
+              "male": true,
+              "canGoWith": []
+            }
+          ],
           "requiredPeople": 2,
           "isStandby": false,
           "isPto": false,
@@ -4129,7 +4125,19 @@
           "shiftStart": "2024-07-11T00:00:00",
           "shiftEnd": "2024-07-11T07:00:00",
           "type": 5,
-          "employeeList": [],
+          "employeeList": [
+            {
+              "id": 3,
+              "name": "Opris Gergő",
+              "type": 1,
+              "exams": 13,
+              "examDate": "2001-01-01T00:00:00",
+              "cardDate": "2001-01-01T00:00:00",
+              "distanceToWork": 50.0,
+              "male": true,
+              "canGoWith": []
+            }
+          ],
           "requiredPeople": 2,
           "isStandby": false,
           "isPto": false,

@@ -94,6 +94,12 @@ namespace Vezénylés_szerkesztő
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.label36 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -467,6 +473,12 @@ namespace Vezénylés_szerkesztő
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label38);
+            this.splitContainer1.Panel2.Controls.Add(this.button18);
+            this.splitContainer1.Panel2.Controls.Add(this.label37);
+            this.splitContainer1.Panel2.Controls.Add(this.button17);
+            this.splitContainer1.Panel2.Controls.Add(this.label36);
+            this.splitContainer1.Panel2.Controls.Add(this.button16);
             this.splitContainer1.Panel2.Controls.Add(this.label33);
             this.splitContainer1.Panel2.Controls.Add(this.button15);
             this.splitContainer1.Panel2.Controls.Add(this.label31);
@@ -493,7 +505,7 @@ namespace Vezénylés_szerkesztő
             this.splitContainer1.Panel2.Controls.Add(this.button2);
             this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.label21);
-            this.splitContainer1.Size = new System.Drawing.Size(704, 356);
+            this.splitContainer1.Size = new System.Drawing.Size(704, 434);
             this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 30;
             // 
@@ -792,7 +804,7 @@ namespace Vezénylés_szerkesztő
             // button9
             // 
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Location = new System.Drawing.Point(617, 366);
+            this.button9.Location = new System.Drawing.Point(617, 444);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 31;
@@ -802,7 +814,7 @@ namespace Vezénylés_szerkesztő
             // button10
             // 
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(476, 366);
+            this.button10.Location = new System.Drawing.Point(476, 444);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(135, 23);
             this.button10.TabIndex = 32;
@@ -810,11 +822,65 @@ namespace Vezénylés_szerkesztő
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(13, 349);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(107, 13);
+            this.label36.TabIndex = 27;
+            this.label36.Text = "Kért szabadnap szín:";
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(180, 345);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(75, 20);
+            this.button16.TabIndex = 26;
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(13, 375);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(139, 13);
+            this.label37.TabIndex = 29;
+            this.label37.Text = "Kért fontos szabadnap szín:";
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(180, 371);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(75, 20);
+            this.button17.TabIndex = 28;
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(13, 401);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(96, 13);
+            this.label38.TabIndex = 31;
+            this.label38.Text = "Kért éjszakás szín:";
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(180, 397);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(75, 20);
+            this.button18.TabIndex = 30;
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 401);
+            this.ClientSize = new System.Drawing.Size(704, 479);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.splitContainer1);
@@ -912,5 +978,11 @@ namespace Vezénylés_szerkesztő
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.NumericUpDown numericUpDown11;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button button16;
     }
 }

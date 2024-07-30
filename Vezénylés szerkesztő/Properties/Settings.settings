@@ -21,7 +21,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="multiplierKm" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">9</Value>
+      <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="employeesPerFlight" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">11</Value>
@@ -76,6 +76,18 @@
     </Setting>
     <Setting Name="minShiftTimeMins" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">240</Value>
+    </Setting>
+    <Setting Name="colorOrderedFreeDay" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Orange</Value>
+    </Setting>
+    <Setting Name="colorOrderedFreeDayImportant" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="colorOrderedPTOImportant" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="colorOrderedNight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Orange</Value>
     </Setting>
   </Settings>
 </SettingsFile>

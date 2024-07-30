@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //using Microsoft.Office.Core;
 using System.Configuration;
+using System.Security.Policy;
 
 namespace Vezénylés_szerkesztő
 {
@@ -43,21 +44,26 @@ namespace Vezénylés_szerkesztő
         public static int shiftIndexNight2_O          = 11;
         public static int shiftNonDefaultStart        = 12;
 
-        public static Color colorShiftAMStart         { get { return Properties.Settings.Default.colorShiftAMStart; } set { Properties.Settings.Default.colorShiftAMStart = value; Properties.Settings.Default.Save(); } }
-        public static Color colorShiftAMEndLong       { get { return Properties.Settings.Default.colorShiftAMEndLong; } set { Properties.Settings.Default.colorShiftAMEndLong = value; Properties.Settings.Default.Save(); } }
-        public static Color colorShiftAMEndShort      { get { return Properties.Settings.Default.colorShiftAMEndShort; } set { Properties.Settings.Default.colorShiftAMEndShort = value; Properties.Settings.Default.Save(); } }
-        public static Color colorShiftModDay          { get { return Properties.Settings.Default.colorShiftModDay; } set { Properties.Settings.Default.colorShiftModDay = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftAMStart             { get { return Properties.Settings.Default.colorShiftAMStart; } set { Properties.Settings.Default.colorShiftAMStart = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftAMEndLong           { get { return Properties.Settings.Default.colorShiftAMEndLong; } set { Properties.Settings.Default.colorShiftAMEndLong = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftAMEndShort          { get { return Properties.Settings.Default.colorShiftAMEndShort; } set { Properties.Settings.Default.colorShiftAMEndShort = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftModDay              { get { return Properties.Settings.Default.colorShiftModDay; } set { Properties.Settings.Default.colorShiftModDay = value; Properties.Settings.Default.Save(); } }
 
-        public static Color colorShiftPMStart         { get { return Properties.Settings.Default.colorShiftPMStart; } set { Properties.Settings.Default.colorShiftPMStart = value; Properties.Settings.Default.Save(); } }
-        public static Color colorShiftPMEndLong       { get { return Properties.Settings.Default.colorShiftPMEndLong; } set { Properties.Settings.Default.colorShiftPMEndLong = value; Properties.Settings.Default.Save(); } }
-        public static Color colorShiftPMEndShort      { get { return Properties.Settings.Default.colorShiftPMEndShort; } set { Properties.Settings.Default.colorShiftPMEndShort = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftPMStart             { get { return Properties.Settings.Default.colorShiftPMStart; } set { Properties.Settings.Default.colorShiftPMStart = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftPMEndLong           { get { return Properties.Settings.Default.colorShiftPMEndLong; } set { Properties.Settings.Default.colorShiftPMEndLong = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftPMEndShort          { get { return Properties.Settings.Default.colorShiftPMEndShort; } set { Properties.Settings.Default.colorShiftPMEndShort = value; Properties.Settings.Default.Save(); } }
 
-        public static Color colorShiftGate3           { get { return Properties.Settings.Default.colorShiftGate3; } set { Properties.Settings.Default.colorShiftGate3 = value; Properties.Settings.Default.Save(); } }
-        public static Color colorShiftNight           { get { return Properties.Settings.Default.colorShiftNight; } set { Properties.Settings.Default.colorShiftNight = value; Properties.Settings.Default.Save(); } }
-        public static Color colorShiftStandby         { get { return Properties.Settings.Default.colorShiftStandby; } set { Properties.Settings.Default.colorShiftStandby = value; Properties.Settings.Default.Save(); } }
-        public static Color colorFreeDay              { get { return Properties.Settings.Default.colorFreeDay; } set { Properties.Settings.Default.colorFreeDay = value; Properties.Settings.Default.Save(); } }
-        public static Color colorStandBy              { get { return Properties.Settings.Default.colorStandBy; } set { Properties.Settings.Default.colorStandBy = value; Properties.Settings.Default.Save(); } }
-        public static Color colorPaidTimeOff          { get { return Properties.Settings.Default.colorPaidTimeOff; } set { Properties.Settings.Default.colorPaidTimeOff = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftGate3               { get { return Properties.Settings.Default.colorShiftGate3; } set { Properties.Settings.Default.colorShiftGate3 = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftNight               { get { return Properties.Settings.Default.colorShiftNight; } set { Properties.Settings.Default.colorShiftNight = value; Properties.Settings.Default.Save(); } }
+        public static Color colorShiftStandby             { get { return Properties.Settings.Default.colorShiftStandby; } set { Properties.Settings.Default.colorShiftStandby = value; Properties.Settings.Default.Save(); } }
+        public static Color colorFreeDay                  { get { return Properties.Settings.Default.colorFreeDay; } set { Properties.Settings.Default.colorFreeDay = value; Properties.Settings.Default.Save(); } }
+        public static Color colorStandBy                  { get { return Properties.Settings.Default.colorStandBy; } set { Properties.Settings.Default.colorStandBy = value; Properties.Settings.Default.Save(); } }
+        public static Color colorPaidTimeOff              { get { return Properties.Settings.Default.colorPaidTimeOff; } set { Properties.Settings.Default.colorPaidTimeOff = value; Properties.Settings.Default.Save(); } }
+
+        public static Color colorOrderedFreeDay           { get { return Properties.Settings.Default.colorOrderedFreeDay; } set { Properties.Settings.Default.colorOrderedFreeDay = value; Properties.Settings.Default.Save(); } }
+        public static Color colorOrderedFreeDayImportant  { get { return Properties.Settings.Default.colorOrderedFreeDayImportant; } set { Properties.Settings.Default.colorOrderedFreeDayImportant = value; Properties.Settings.Default.Save(); } }
+        public static Color colorOrderedPTOImportant      { get { return Properties.Settings.Default.colorOrderedPTOImportant; } set { Properties.Settings.Default.colorOrderedPTOImportant = value; Properties.Settings.Default.Save(); } }
+        public static Color colorOrderedNight             { get { return Properties.Settings.Default.colorOrderedNight; } set { Properties.Settings.Default.colorOrderedNight = value; Properties.Settings.Default.Save(); } }
     }
 
     public enum EmployeeType

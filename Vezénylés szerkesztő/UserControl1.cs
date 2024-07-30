@@ -185,23 +185,17 @@ namespace Vezénylés_szerkesztő
                         //MessageBox.Show(shiftData[0].ToString());
                         kérésTörléseToolStripMenuItem.Enabled = true;
                         kérésHozzáadásaToolStripMenuItem.Enabled = false;
-                        if (shiftData[0].isStandby)
-                        {
-                            isStandBy = true;
-                            panel1.BackColor = PublicParameters.colorStandBy;
-                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
-                        }
-                        else if (shiftData[0].isFreeDay)
+                        if (shiftData[0].isFreeDay)
                         {
                             isFreeDay = true;
                             panel1.BackColor = PublicParameters.colorFreeDay;
-                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
+                            BackColor = shiftData[0].important ? PublicParameters.colorOrderedFreeDayImportant : PublicParameters.colorOrderedFreeDay;
                         }
                         else if (shiftData[0].isPto)
                         {
                             isPTO = true;
                             panel1.BackColor = PublicParameters.colorPaidTimeOff;
-                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
+                            BackColor = PublicParameters.colorOrderedPTOImportant;
                         }
                         else if (shiftData[0].type.HasFlag(ShiftType.Night))
                         {
@@ -213,7 +207,7 @@ namespace Vezénylés_szerkesztő
                             label3.BackColor = PublicParameters.colorShiftNight;
                             date4 = shiftData[0].shiftEnd;
                             label4.BackColor = PublicParameters.colorShiftNight;
-                            BackColor = shiftData[0].important ? Color.Red : Color.Orange;
+                            BackColor = PublicParameters.colorOrderedNight;
                         }
                     }
                     else if (shiftData[0].isStandby) isStandBy = true;

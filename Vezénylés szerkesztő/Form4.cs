@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,14 +49,24 @@ namespace Vezénylés_szerkesztő
             set
             {
                 _employeeData = value;
-                label1.Text = label1.Text.Replace("#EMPLOYEE", value.id + "  -  " + value.name);
+                //label1.Text = label1.Text.Replace("#EMPLOYEE", value.id + "  -  " + value.name);
+                label3.Text = /*employeeData.id + "  -  " + */employeeData.name;
+            }
+        }
+        public Employee substituteEmployee
+        {
+            get
+            {
+                return employeeList[comboBox1.SelectedIndex];
             }
         }
 
         private void Form4_Load(object sender, EventArgs e)
         {
-
+            
         }
+
+        public void SetDate(DateTime date) => dateTimePicker1.Value = date;
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -67,6 +78,11 @@ namespace Vezénylés_szerkesztő
         {
             sickDate = dateTimePicker1.Value;
             Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

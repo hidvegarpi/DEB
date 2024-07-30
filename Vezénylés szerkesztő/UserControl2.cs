@@ -25,7 +25,7 @@ namespace Vezénylés_szerkesztő
 
         public Action<Employee> onEmployeeEdited;
         public Action<Employee, DateTime, Employee> sickEmployee;
-        public Form owner;
+        public Form1 owner;
         public Employee employeeData;
 
         public string name
@@ -109,12 +109,12 @@ namespace Vezénylés_szerkesztő
             sickEmployee.onDateSelected += OnDateSelected;
         }
 
-        void SickEmployeeFormClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        public void SickEmployeeFormClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            owner.AddSickDay(((Form4)sender).employeeData.id, ((Form4)sender).sickDate.Day, ((Form4)sender).substituteEmployee);
         }
 
-        void OnDateSelected(DateTime date, Form4 form)
+        public void OnDateSelected(DateTime date, Form4 form)
         {
             foreach (Day d in ((Form1)owner).currentMonth.daysOfMonth)
                 if (d.date.Year == date.Year && d.date.Month == date.Month && d.date.Day == date.Day)
@@ -199,6 +199,12 @@ namespace Vezénylés_szerkesztő
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (toolStripComboBox1.Text == "Több óra a hónapban") owner.currentMonth.AddEmployeeForMoreHours(employeeData);
+            if (toolStripComboBox1.Text == "Normál órák") owner.currentMonth.RemoveEmployeeFromMoreHours(employeeData);
         }
     }
 }

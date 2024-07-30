@@ -19,7 +19,27 @@ namespace Vezénylés_szerkesztő
 
         private void Form6_Load(object sender, EventArgs e)
         {
+            SetData();
             SetBtnColors();
+        }
+
+        void SetData()
+        {
+            numericUpDown1.Value = PublicParameters.warningCardDateDays;
+            numericUpDown2.Value = PublicParameters.warningExamDateDays;
+            numericUpDown3.Value = PublicParameters.employeesPerFlight;
+            numericUpDown4.Value = PublicParameters.employeesPerNightShift;
+            numericUpDown5.Value = PublicParameters.employeesPerDayShift;
+            numericUpDown6.Value = PublicParameters.employeesPerStandby;
+            numericUpDown7.Value = PublicParameters.avgMonthlyHours;
+            numericUpDown8.Value = PublicParameters.hoursPTO;
+            numericUpDown9.Value = PublicParameters.hoursStandby;
+            numericUpDown10.Value = PublicParameters.hoursFreeDay;
+            numericUpDown11.Value = PublicParameters.multiplierKm;
+            numericUpDown12.Value = PublicParameters.minShiftTimeMins;
+
+            checkBox1.Checked = PublicParameters.sickOnlyStandby;
+            checkBox2.Checked = PublicParameters.generateByCanGoWith;
         }
 
         void SetBtnColors()
@@ -42,6 +62,21 @@ namespace Vezénylés_szerkesztő
             button18.BackColor = PublicParameters.colorOrderedNight;
         }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+            PublicParameters.Reset();
+            PublicParameters.Save();
+
+            SetData();
+            SetBtnColors();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            PublicParameters.Save();
+            Close();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             colorDialog1.Color = button1.BackColor;
@@ -49,6 +84,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button1.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftNight = colorDialog1.Color;
             }
         }
 
@@ -59,6 +95,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button2.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftAMStart = colorDialog1.Color;
             }
         }
 
@@ -69,6 +106,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button3.BackColor = colorDialog1.Color;
+                PublicParameters.colorStandBy = colorDialog1.Color;
             }
         }
 
@@ -79,6 +117,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button4.BackColor = colorDialog1.Color;
+                PublicParameters.colorFreeDay = colorDialog1.Color;
             }
         }
 
@@ -89,6 +128,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button5.BackColor = colorDialog1.Color;
+                PublicParameters.colorPaidTimeOff = colorDialog1.Color;
             }
         }
 
@@ -99,6 +139,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button6.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftAMEndLong = colorDialog1.Color;
             }
         }
 
@@ -109,6 +150,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button7.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftPMStart = colorDialog1.Color;
             }
         }
 
@@ -119,6 +161,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button8.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftGate3 = colorDialog1.Color;
             }
         }
 
@@ -129,6 +172,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button11.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftAMEndLong = colorDialog1.Color;
             }
         }
 
@@ -139,6 +183,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button12.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftAMEndShort = colorDialog1.Color;
             }
         }
 
@@ -149,6 +194,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button14.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftPMEndLong = colorDialog1.Color;
             }
         }
 
@@ -159,6 +205,7 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button13.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftPMEndShort = colorDialog1.Color;
             }
         }
 
@@ -169,30 +216,69 @@ namespace Vezénylés_szerkesztő
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 button15.BackColor = colorDialog1.Color;
+                PublicParameters.colorShiftModDay = colorDialog1.Color;
             }
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.Reset();
-            Properties.Settings.Default.Save();
-
-            SetBtnColors();
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
-
+            colorDialog1.Color = button16.BackColor;
+            colorDialog1.CustomColors = new int[] { ColorTranslator.ToOle(button16.BackColor) };
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                button16.BackColor = colorDialog1.Color;
+                PublicParameters.colorOrderedFreeDay = colorDialog1.Color;
+            }
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
-
+            colorDialog1.Color = button17.BackColor;
+            colorDialog1.CustomColors = new int[] { ColorTranslator.ToOle(button17.BackColor) };
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                button17.BackColor = colorDialog1.Color;
+                PublicParameters.colorOrderedFreeDayImportant = colorDialog1.Color;
+            }
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
-
+            colorDialog1.Color = button18.BackColor;
+            colorDialog1.CustomColors = new int[] { ColorTranslator.ToOle(button18.BackColor) };
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                button18.BackColor = colorDialog1.Color;
+                PublicParameters.colorOrderedNight = colorDialog1.Color;
+            }
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e) => PublicParameters.warningCardDateDays = (int)numericUpDown1.Value;
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e) => PublicParameters.warningExamDateDays = (int)numericUpDown2.Value;
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e) => PublicParameters.employeesPerFlight = (int)numericUpDown3.Value;
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e) => PublicParameters.employeesPerNightShift = (int)numericUpDown4.Value;
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e) => PublicParameters.employeesPerDayShift = (int)numericUpDown5.Value;
+
+        private void numericUpDown6_ValueChanged(object sender, EventArgs e) => PublicParameters.employeesPerStandby = (int)numericUpDown6.Value;
+
+        private void numericUpDown7_ValueChanged(object sender, EventArgs e) => PublicParameters.avgMonthlyHours = (int)numericUpDown7.Value;
+
+        private void numericUpDown8_ValueChanged(object sender, EventArgs e) => PublicParameters.hoursPTO = (int)numericUpDown8.Value;
+
+        private void numericUpDown9_ValueChanged(object sender, EventArgs e) => PublicParameters.hoursStandby = (int)numericUpDown9.Value;
+
+        private void numericUpDown10_ValueChanged(object sender, EventArgs e) => PublicParameters.hoursFreeDay = (int)numericUpDown10.Value;
+
+        private void numericUpDown11_ValueChanged(object sender, EventArgs e) => PublicParameters.multiplierKm = (int)numericUpDown11.Value;
+
+        private void numericUpDown12_ValueChanged(object sender, EventArgs e) => PublicParameters.minShiftTimeMins = (int)numericUpDown12.Value;
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) => PublicParameters.sickOnlyStandby = checkBox1.Checked;
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e) => PublicParameters.generateByCanGoWith = checkBox2.Checked;
     }
 }

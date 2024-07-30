@@ -370,5 +370,29 @@ namespace Vezénylés_szerkesztő.Properties {
                 this["colorOrderedNight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool sickOnlyStandby {
+            get {
+                return ((bool)(this["sickOnlyStandby"]));
+            }
+            set {
+                this["sickOnlyStandby"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool generateByCanGoWith {
+            get {
+                return ((bool)(this["generateByCanGoWith"]));
+            }
+            set {
+                this["generateByCanGoWith"] = value;
+            }
+        }
     }
 }

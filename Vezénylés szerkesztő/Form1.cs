@@ -59,9 +59,12 @@ namespace Vezénylés_szerkesztő
         {
             foreach (string f in Directory.GetFiles("./Employees"))
             {
-                string json = File.ReadAllText(f);
-                Employee e = JsonConvert.DeserializeObject<Employee>(json);
-                employeeList.Add(e);
+                if (f.EndsWith(".emp"))
+                {
+                    string json = File.ReadAllText(f);
+                    Employee e = JsonConvert.DeserializeObject<Employee>(json);
+                    employeeList.Add(e);
+                }
             }
         }
 
@@ -221,6 +224,20 @@ namespace Vezénylés_szerkesztő
                         n.employeeData = e;
                         n.owner = this;
                         n.date = new DateTime(currentMonth.startDate.Year, currentMonth.startDate.Month, i + 1);
+
+                        if (n.shifts.Count > 0)
+                        {
+                            if (n.shifts[0].isSickDay)
+                            {
+                                foreach (SickDay s in currentMonth.sickDays)
+                                {
+                                    if (s.date.Day == i + 1 && s.sickEmployee.id == e.id && s.sickEmployee.name == e.name)
+                                    {
+                                        n.substituteEmployee = s.substituteEmployee;
+                                    }
+                                }
+                            }
+                        }
 
                         if (!notModifyShifts) 
                         { 
@@ -454,6 +471,7 @@ namespace Vezénylés_szerkesztő
             int cD = -1;
             int cI = -1;
 
+            List<string> currentFlights = new List<string>();
             bool nextFlightFound = false;
             for (int d = 0; d < currentMonth.daysOfMonth.Count; d++)
             {
@@ -471,7 +489,7 @@ namespace Vezénylés_szerkesztő
                         f.checkInStart.Second)
                     > DateTime.Now)
                     {
-                        statusLabel = statusLabel.Replace("#CURRENT", f.destination);
+                        currentFlights.Add(f.destination);
                         cD = d;
                         cI = i;
                     }
@@ -482,7 +500,6 @@ namespace Vezénylés_szerkesztő
                     {
                         statusLabel = statusLabel.Replace("#NAME", f.destination);
                         statusLabel = statusLabel.Replace("#CHECKIN", f.checkInStart.ToString("yyyy. MM. dd. HH:mm"));
-                        //MessageBox.Show(f.ToString());
                         nextFlightFound = true;
                     }
                 }
@@ -502,6 +519,15 @@ namespace Vezénylés_szerkesztő
                 }
             }
 
+            if (currentFlights.Count > 0)
+            {
+                string s = currentFlights[0];
+                if (currentFlights.Count > 1)
+                    for (int i = 1; i < currentFlights.Count; i++)
+                        s += " - " + currentFlights[i];
+                statusLabel = statusLabel.Replace("#CURRENT", s);
+            }
+
             statusLabel = statusLabel.Replace("#CURRENT", "Nincs");
             statusLabel = statusLabel.Replace("#NAME", "Nincs");
             statusLabel = statusLabel.Replace("#CHECKIN", "NaN");
@@ -512,16 +538,18 @@ namespace Vezénylés_szerkesztő
 
         void CheckDates()
         {
+            warningList = new List<string>();
+
             bool hasWarning = false;
             foreach (Employee e in employeeList)
             {
                 if (e.cardDate < DateTime.Now + new TimeSpan(PublicParameters.warningCardDateDays, 0, 0, 0))
                 {
                     string w = e.name + " belépőkártyájának érvényessége " + PublicParameters.warningCardDateDays + " napon belül lejár.";
-                    notifyIcon1.ShowBalloonTip(10000,
-                        "Belépő Kártya Lejárat",
-                        w,
-                        ToolTipIcon.Warning);
+                    //notifyIcon1.ShowBalloonTip(10000,
+                    //    "Belépő Kártya Lejárat",
+                    //    w,
+                    //    ToolTipIcon.Warning);
                     hasWarning = true;
                     warningList.Add(w);
                 }
@@ -529,10 +557,10 @@ namespace Vezénylés_szerkesztő
                 if (e.examDate + new TimeSpan(365, 0, 0, 0) < DateTime.Now + new TimeSpan(PublicParameters.warningExamDateDays, 0, 0, 0))
                 {
                     string w = e.name + " vizsgájának érvényessége " + PublicParameters.warningExamDateDays + " napon belül lejár.";
-                    notifyIcon1.ShowBalloonTip(10000,
-                        "Vizsga Lejárat",
-                        w,
-                        ToolTipIcon.Warning);
+                    //notifyIcon1.ShowBalloonTip(10000,
+                    //    "Vizsga Lejárat",
+                    //    w,
+                    //    ToolTipIcon.Warning);
                     hasWarning = true;
                     warningList.Add(w);
                 }
@@ -629,6 +657,63 @@ namespace Vezénylés_szerkesztő
             }
         }
 
+        public void SetShiftVisual(int employeeID, int dayOfMonth, List<Shift> shiftList, Employee substitute = null)
+        {
+            ((UserControl1)controlNestedList[employeeID - 1][dayOfMonth - 1]).shifts = shiftList;
+            if (substitute != null) ((UserControl1)controlNestedList[employeeID - 1][dayOfMonth - 1]).substituteEmployee = substitute;
+        }
+
+        public void AddNotification(string s)
+        {
+            warningList.Add(s);
+            toolStripSplitButton1.Visible = true;
+        }
+
+        public void AddSickDay(int employeeID, int dayOfMonth, Employee substitute = null)
+        {
+            List<Shift> sl1 = new List<Shift>();
+            foreach (Shift s in currentMonth.daysOfMonth[dayOfMonth - 1].shiftList)
+            {
+                s.RemoveEmployee(substitute);
+                if (s.ContainsEmployee(GetEmployee(employeeID)))
+                {
+                    s.AddEmployee(substitute);
+                    sl1.Add(s);
+                }
+            }
+            SetShiftVisual(substitute.id, dayOfMonth, sl1);
+
+            List<int> substituteShiftIndexes = new List<int>();
+            for (int i = 0; i < currentMonth.daysOfMonth[dayOfMonth - 1].shiftList.Count; i++)
+            {
+                if (currentMonth.daysOfMonth[dayOfMonth - 1].shiftList[i].ContainsEmployee(GetEmployee(employeeID)))
+                    substituteShiftIndexes.Add(i);
+
+                currentMonth.daysOfMonth[dayOfMonth - 1].shiftList[i].RemoveEmployee(GetEmployee(employeeID));
+            }
+
+            currentMonth.daysOfMonth[dayOfMonth - 1].shiftList[PublicParameters.shiftIndexSickDay].AddEmployee(GetEmployee(employeeID));
+            List<Shift> sl2 = new List<Shift>();
+            sl2.Add(currentMonth.daysOfMonth[dayOfMonth - 1].shiftList[PublicParameters.shiftIndexSickDay]);
+            SetShiftVisual(employeeID, dayOfMonth, sl2, substitute);
+
+            List<Shift> substituteShifts = new List<Shift>();
+            foreach (int i in substituteShiftIndexes)
+                substituteShifts.Add(currentMonth.daysOfMonth[dayOfMonth - 1].shiftList[i]);
+            currentMonth.AddSickDay(GetEmployee(employeeID), substitute, dayOfMonth, substituteShifts);
+
+            SaveCurrentMonth();
+            GenerateStatistics();
+        }
+
+        public Employee GetEmployee(int employeeID)
+        {
+            foreach (Employee e in employeeList)
+                if (e.id == employeeID)
+                    return e;
+            return null;
+        }
+
         string MultiplyChars(int m, char c)
         {
             string s = "";
@@ -703,6 +788,19 @@ namespace Vezénylés_szerkesztő
             Form8 form = new Form8();
             form.warningList = warningList;
             form.Show();
+        }
+
+        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
+        {
+            Form8 form = new Form8();
+            form.warningList = warningList;
+            form.Show();
+        }
+
+        private void értesítésekTörléseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            warningList = new List<string>();
+            toolStripSplitButton1.Visible = false;
         }
     }
 }

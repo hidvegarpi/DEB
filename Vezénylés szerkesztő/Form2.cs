@@ -67,6 +67,8 @@ namespace Vezénylés_szerkesztő
                 checkBox2.Checked = value.exams.HasFlag(ExamType.VED2);
                 checkBox3.Checked = value.exams.HasFlag(ExamType.VED3);
                 checkBox4.Checked = value.exams.HasFlag(ExamType.VED4);
+                checkBox5.Checked = value.exams.HasFlag(ExamType.FEL);
+                checkBox6.Checked = value.exams.HasFlag(ExamType.JOG);
             }
         }
 
@@ -76,6 +78,8 @@ namespace Vezénylés_szerkesztő
             exams = checkBox2.Checked ? exams | ExamType.VED2 : exams | 0;
             exams = checkBox3.Checked ? exams | ExamType.VED3 : exams | 0;
             exams = checkBox4.Checked ? exams | ExamType.VED4 : exams | 0;
+            exams = checkBox5.Checked ? exams | ExamType.FEL : exams | 0;
+            exams = checkBox6.Checked ? exams | ExamType.JOG : exams | 0;
             Close();
         }
 
@@ -115,6 +119,7 @@ namespace Vezénylés_szerkesztő
             if (form.DialogResult == DialogResult.OK)
             {
                 richTextBox1.Text = "";
+                canGoWith = new List<int>();
                 foreach (Employee em in form.employeeList)
                 {
                     canGoWith.Add(em.id);
@@ -124,12 +129,23 @@ namespace Vezénylés_szerkesztő
                     {
                         if (emp.id == em.id)
                         {
-                            emp.canGoWith.Add(id);
+                            if (!emp.canGoWith.Contains(id)) emp.canGoWith.Add(id);
                             emp.SaveToFile();
                         }
                     }
                 }
             }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            canGoWith = new List<int>();
+            richTextBox1.Text = "";
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Vezénylés_szerkesztő
         public static int warningCardDateDays         { get { return Properties.Settings.Default.warningCardDateDays; } set { Properties.Settings.Default.warningCardDateDays = value; Properties.Settings.Default.Save(); } }
         public static int warningExamDateDays         { get { return Properties.Settings.Default.warningExamDateDays; } set { Properties.Settings.Default.warningExamDateDays = value; Properties.Settings.Default.Save(); } }
 
-        public static TimeSpan minShiftTime { get { return TimeSpan.FromMinutes(minShiftTimeMins); } }
+        public static TimeSpan minShiftTime           { get { return TimeSpan.FromMinutes(minShiftTimeMins); } }
         public static int minShiftTimeMins            { get { return Properties.Settings.Default.minShiftTimeMins; } set { Properties.Settings.Default.minShiftTimeMins = value; Properties.Settings.Default.Save(); } }
         public static int avgMonthlyHours             { get { return Properties.Settings.Default.avgMonthlyHours; } set { Properties.Settings.Default.avgMonthlyHours = value; Properties.Settings.Default.Save(); } }
         public static int hoursPTO                    { get { return Properties.Settings.Default.hoursPTO; } set { Properties.Settings.Default.hoursPTO = value; Properties.Settings.Default.Save(); } }
@@ -42,7 +42,8 @@ namespace Vezénylés_szerkesztő
         public static int shiftIndexFreeDay_OI        = 9;
         public static int shiftIndexNight1_O          = 10;
         public static int shiftIndexNight2_O          = 11;
-        public static int shiftNonDefaultStart        = 12;
+        public static int shiftIndexSickDay           = 12;
+        public static int shiftNonDefaultStart        = 13;
 
         public static Color colorShiftAMStart             { get { return Properties.Settings.Default.colorShiftAMStart; } set { Properties.Settings.Default.colorShiftAMStart = value; Properties.Settings.Default.Save(); } }
         public static Color colorShiftAMEndLong           { get { return Properties.Settings.Default.colorShiftAMEndLong; } set { Properties.Settings.Default.colorShiftAMEndLong = value; Properties.Settings.Default.Save(); } }
@@ -59,11 +60,17 @@ namespace Vezénylés_szerkesztő
         public static Color colorFreeDay                  { get { return Properties.Settings.Default.colorFreeDay; } set { Properties.Settings.Default.colorFreeDay = value; Properties.Settings.Default.Save(); } }
         public static Color colorStandBy                  { get { return Properties.Settings.Default.colorStandBy; } set { Properties.Settings.Default.colorStandBy = value; Properties.Settings.Default.Save(); } }
         public static Color colorPaidTimeOff              { get { return Properties.Settings.Default.colorPaidTimeOff; } set { Properties.Settings.Default.colorPaidTimeOff = value; Properties.Settings.Default.Save(); } }
+        public static Color colorSickDay = Color.OrangeRed;
 
         public static Color colorOrderedFreeDay           { get { return Properties.Settings.Default.colorOrderedFreeDay; } set { Properties.Settings.Default.colorOrderedFreeDay = value; Properties.Settings.Default.Save(); } }
         public static Color colorOrderedFreeDayImportant  { get { return Properties.Settings.Default.colorOrderedFreeDayImportant; } set { Properties.Settings.Default.colorOrderedFreeDayImportant = value; Properties.Settings.Default.Save(); } }
         public static Color colorOrderedPTOImportant      { get { return Properties.Settings.Default.colorOrderedPTOImportant; } set { Properties.Settings.Default.colorOrderedPTOImportant = value; Properties.Settings.Default.Save(); } }
         public static Color colorOrderedNight             { get { return Properties.Settings.Default.colorOrderedNight; } set { Properties.Settings.Default.colorOrderedNight = value; Properties.Settings.Default.Save(); } }
+        public static bool sickOnlyStandby                { get { return Properties.Settings.Default.sickOnlyStandby; } set { Properties.Settings.Default.sickOnlyStandby = value; Properties.Settings.Default.Save(); } }
+        public static bool generateByCanGoWith            { get { return Properties.Settings.Default.generateByCanGoWith; } set { Properties.Settings.Default.generateByCanGoWith = value; Properties.Settings.Default.Save(); } }
+
+        public static void Save() => Properties.Settings.Default.Save();
+        public static void Reset() => Properties.Settings.Default.Reset();
     }
 
     public enum EmployeeType
@@ -78,7 +85,9 @@ namespace Vezénylés_szerkesztő
         VED1 = 0b_0000_0001,
         VED2 = 0b_0000_0010,
         VED3 = 0b_0000_0100,
-        VED4 = 0b_0000_1000
+        VED4 = 0b_0000_1000,
+        FEL =  0b_0001_0000,
+        JOG =  0b_0010_0000
     }
 
     [Flags]
@@ -142,7 +151,7 @@ namespace Vezénylés_szerkesztő
             if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
 
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(directory + "/" + id.ToString().PadLeft(2, '0'), json);
+            File.WriteAllText(directory + "/" + id.ToString().PadLeft(2, '0') + ".emp", json);
         }
     }
 
@@ -150,6 +159,8 @@ namespace Vezénylés_szerkesztő
     {
         public DateTime startDate;
         public List<Day> daysOfMonth;
+        public List<int> moreHoursInMonth = new List<int>();
+        public List<SickDay> sickDays = new List<SickDay>();
 
         //statistic read only parameters
 
@@ -157,16 +168,65 @@ namespace Vezénylés_szerkesztő
         {
             startDate = new DateTime(_startDate.Year, _startDate.Month, 1);
             daysOfMonth = new List<Day>();
+            moreHoursInMonth = new List<int>();
+            sickDays = new List<SickDay>();
 
             for (int i = 0; i < DateTime.DaysInMonth(startDate.Year, startDate.Month); i++)
                 daysOfMonth.Add(new Day(i + 1, this));
         }
 
         [JsonConstructor]
-        public Month(DateTime _startDate, List<Day> _days)
+        public Month(DateTime _startDate, List<Day> _days, List<int> _moreHours, List<SickDay> _sickDays)
         {
             startDate = _startDate;
-            daysOfMonth = _days;
+            daysOfMonth = _days == null || _days.Count == 0 ? new List<Day>() : _days;
+            moreHoursInMonth = _moreHours == null ? new List<int>() : _moreHours;
+            sickDays = _sickDays == null ? new List<SickDay>() : _sickDays;
+
+            if (daysOfMonth.Count == 0) 
+                for (int i = 0; i < DateTime.DaysInMonth(startDate.Year, startDate.Month); i++)
+                    daysOfMonth.Add(new Day(i + 1, this));
+        }
+
+        public void CalculateEmployeesForShifts()
+        {
+            // TODO:    Make it work
+            //
+            //          calculte with:
+            //              - avgMonthlyHours
+            //              - canGoWith
+            //              - male/female
+            //              - moreHoursInMonth
+            //              - requested days
+            //              - requiredPeople
+        }
+
+        public void AddEmployeeForMoreHours(Employee e)
+        {
+            if (!moreHoursInMonth.Contains(e.id)) moreHoursInMonth.Add(e.id);
+        }
+
+        public void RemoveEmployeeFromMoreHours(Employee e)
+        {
+            if (!moreHoursInMonth.Contains(e.id)) return;
+            for (int i = 0; i < moreHoursInMonth.Count; i++)
+            {
+                if (e.id == moreHoursInMonth[i])
+                {
+                    moreHoursInMonth.RemoveAt(i);
+                    return;
+                }    
+            }
+        }
+
+        public List<Employee> EmployeesOnStandby(int dayOfMonth)
+        {
+            return daysOfMonth[dayOfMonth - 1].shiftList[PublicParameters.shiftIndexStandby].employeeList;
+        }
+
+        public void AddSickDay(Employee sickEmployee, Employee substitute, int dayOfMonth, List<Shift> shiftList)
+        {
+            sickDays.Add(new SickDay(sickEmployee, substitute, shiftList, daysOfMonth[dayOfMonth - 1].date));
         }
     }
 
@@ -242,6 +302,8 @@ namespace Vezénylés_szerkesztő
             
             /* 10 */shiftList.Add(new Shift(0, 7, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 1
             /* 11 */shiftList.Add(new Shift(19, 24, ShiftType.Night | ShiftType.Long, this, -1, false, false, false, true)); //ordered night 2
+
+            /* 12 */shiftList.Add(new Shift(7, 19, ShiftType.Day, this, -1, false, false, false, false, false, true)); //sick day
         }
 
         public void CreateShifts()
@@ -437,11 +499,10 @@ namespace Vezénylés_szerkesztő
         public bool isStandby = false;
         public bool isPto = false;
         public bool isFreeDay = false;
+        public bool isSickDay = false;
 
         public bool ordered = false;
         public bool important = false;
-
-        public bool sickShift = false;
 
         public float hours
         {
@@ -450,7 +511,7 @@ namespace Vezénylés_szerkesztő
                 if (isPto) return PublicParameters.hoursPTO;
                 if (isStandby) return PublicParameters.hoursStandby;
                 if (isFreeDay) return PublicParameters.hoursFreeDay;
-                if (sickShift) return 0;
+                if (isSickDay) return 0;
                 return (float)Math.Round((shiftEnd - shiftStart).TotalHours, 1, MidpointRounding.AwayFromZero);
             }
         }
@@ -463,7 +524,7 @@ namespace Vezénylés_szerkesztő
             }
         }
 
-        public Shift(float _shiftStart, float _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false)
+        public Shift(float _shiftStart, float _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false)
         {
             day = _day;
             type = _type;
@@ -482,14 +543,15 @@ namespace Vezénylés_szerkesztő
             isStandby = _standby;
             isPto = _pto;
             isFreeDay = _freeDay;
+            isSickDay = _sickDay;
 
             ordered = _ordered;
             important = _important;
 
-            if (isPto || isFreeDay || sickShift) requiredPeople = 0;
+            if (isPto || isFreeDay || isSickDay) requiredPeople = 0;
         }
 
-        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false)
+        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false)
         {
             day = _day;
             type = _type;
@@ -508,15 +570,16 @@ namespace Vezénylés_szerkesztő
             isStandby = _standby;
             isPto = _pto;
             isFreeDay = _freeDay;
+            isSickDay = _sickDay;
 
             ordered = _ordered;
             important = _important;
 
-            if (isPto || isFreeDay || sickShift) requiredPeople = 0;
+            if (isPto || isFreeDay || isSickDay) requiredPeople = 0;
         }
 
         [JsonConstructor]
-        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false)
+        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false)
         {
             type = _type;
             requiredPeople = _reqPeople;
@@ -534,11 +597,12 @@ namespace Vezénylés_szerkesztő
             isStandby = _standby;
             isPto = _pto;
             isFreeDay = _freeDay;
+            isSickDay = _sickDay;
 
             ordered = _ordered;
             important = _important;
 
-            if (isPto || isFreeDay || sickShift) requiredPeople = 0;
+            if (isPto || isFreeDay || isSickDay) requiredPeople = 0;
         }
 
         public bool CoversFlight(Flight f)
@@ -599,16 +663,19 @@ namespace Vezénylés_szerkesztő
         }
     }
 
-    public class PaidTimeOff
+    public class SickDay
     {
-        public Employee employee;
+        public Employee sickEmployee;
+        public Employee substituteEmployee;
+        public List<Shift> shiftList;
         public DateTime date;
-    }
 
-    public class RequestedFreeDay
-    {
-        public Employee employee;
-        public DateTime date;
-        public bool isImportant;
+        public SickDay(Employee _sickEmployee, Employee _substituteEmployee, List<Shift> _shiftList, DateTime _date)
+        {
+            sickEmployee = _sickEmployee;
+            substituteEmployee = _substituteEmployee;
+            shiftList = _shiftList;
+            date = _date;
+        }
     }
 }

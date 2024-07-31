@@ -1,6 +1,7 @@
 #LHDC UBI Vezénylés szerkesztő
 
 ##Használata
+
 ###Új munkáltatott hozzáadása
 Kattintson a képen látható menüpontra, majd vegye fel a munkáltatott adatait.
 

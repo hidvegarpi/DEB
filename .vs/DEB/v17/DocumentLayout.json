@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\hidve\\Documents\\GitHub\\DEB\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|C:\\Users\\hidve\\Documents\\GitHub\\DEB\\vez\u00E9nyl\u00E9s szerkeszt\u0151\\classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|solutionrelative:vez\u00E9nyl\u00E9s szerkeszt\u0151\\classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|c:\\users\\hidve\\documents\\github\\deb\\vez\u00E9nyl\u00E9s szerkeszt\u0151\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|solutionrelative:vez\u00E9nyl\u00E9s szerkeszt\u0151\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|c:\\users\\hidve\\documents\\github\\deb\\vez\u00E9nyl\u00E9s szerkeszt\u0151\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|solutionrelative:vez\u00E9nyl\u00E9s szerkeszt\u0151\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|C:\\Users\\hidve\\Documents\\GitHub\\DEB\\vez\u00E9nyl\u00E9s szerkeszt\u0151\\classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|solutionrelative:vez\u00E9nyl\u00E9s szerkeszt\u0151\\classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{362E581D-EA3E-45FC-A631-832BC689AC7F}|Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Vez\u00E9nyl\u00E9s szerkeszt\u0151.csproj|c:\\users\\hidve\\documents\\github\\deb\\vez\u00E9nyl\u00E9s szerkeszt\u0151\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,11 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Classes.cs",
               "DocumentMoniker": "C:\\Users\\hidve\\Documents\\GitHub\\DEB\\Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Classes.cs",
               "RelativeDocumentMoniker": "Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Classes.cs",
@@ -48,7 +48,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form6.cs",
               "DocumentMoniker": "C:\\Users\\hidve\\Documents\\GitHub\\DEB\\Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Form6.cs",
               "RelativeDocumentMoniker": "Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Form6.cs",
@@ -61,7 +61,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form6.cs [Design]",
               "DocumentMoniker": "C:\\Users\\hidve\\Documents\\GitHub\\DEB\\Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Form6.cs",
               "RelativeDocumentMoniker": "Vez\u00E9nyl\u00E9s szerkeszt\u0151\\Form6.cs",

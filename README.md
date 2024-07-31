@@ -1,12 +1,10 @@
 # LHDC UBI Vezénylés szerkesztő
 
-# Tartalom
+**Tartalom**
+
+[TOCM]
 
 [TOC]
-## Használata [Heading link](https://github.com/hidvegarpi/DEB/README.md "Használata")
-### Új munkáltatott hozzáadása [Heading link](https://github.com/hidvegarpi/DEB/README.md "Új munkáltatott hozzáadása")
-### Munkáltatott szerkesztése [Heading link](https://github.com/hidvegarpi/DEB/README.md "Munkáltatott szerkesztése")
-## Járat hozzáadása [Heading link](https://github.com/hidvegarpi/DEB/README.md "Járat hozzáadása")
 
 ## Használata
 

@@ -1,5 +1,13 @@
 # LHDC UBI Vezénylés szerkesztő
 
+# Tartalom
+
+[TOC]
+## Használata
+### Új munkáltatott hozzáadása
+### Munkáltatott szerkesztése
+## Járat hozzáadása
+
 ## Használata
 
 ### Új munkáltatott hozzáadása
@@ -33,7 +41,7 @@ Jobb kattintás a munkáltatott nevére, majd a szerkesztés menüpont kiválasz
 
 A továbbiakban az előző bekezdés alapján működik az eljárás.
 
-### Járat hozzáadása
+## Járat hozzáadása
 
 Kattintson a képen látható menüpontra (Fájl > Járat > Hozzáadás), majd vegye fel a járat adatait.
 

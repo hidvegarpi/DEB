@@ -1,11 +1,5 @@
 # LHDC UBI Vezénylés szerkesztő
 
-**Tartalom**
-
-[TOCM]
-
-[TOC]
-
 ## Használata
 
 ### Új munkáltatott hozzáadása
@@ -58,3 +52,14 @@ Járat adatai:
 
 Amennyiben a jobb kattintás módszert alkalmazta, a dátum automatikusan be van állítva, csak az időpontot kell módosítani.
 Ha a hetente ismétlődő pontot bejelöli, a program a hónapban minden hét adott napjára automatikusan beilleszti a járatot ugyanazzal az időponttal.
+
+## Kérés
+
+### Hozzáadása (WIP)
+### Törlése (WIP)
+### Több óra a hónapban (WIP)
+
+## Betegség
+
+### Bejelentése (WIP)
+### Törlése (WIP)

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 //using Microsoft.Office.Core;
 using System.Configuration;
 using System.Security.Policy;
+using System.CodeDom;
 
 namespace Vezénylés_szerkesztő
 {
@@ -451,7 +452,7 @@ namespace Vezénylés_szerkesztő
             foreach (Shift s in shiftList)
                 foreach (Employee em in s.employeeList)
                     if (em != null)
-                        if (em.id == e.id && em.name == e.name)
+                        if (em.id == e.id)
                             shifts.Add(s);
             return shifts;
         }
@@ -638,7 +639,7 @@ namespace Vezénylés_szerkesztő
         {
             for (int i = 0; i < employeeList.Count; i++)
             {
-                if (e.id == employeeList[i].id && e.name == employeeList[i].name)
+                if (e.id == employeeList[i].id)
                 {
                     employeeList.RemoveAt(i);
                     return;
@@ -660,6 +661,27 @@ namespace Vezénylés_szerkesztő
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
+
+        public static bool operator == (Shift a, Shift b)
+        {
+            if (a.type == b.type &&
+                a.shiftStart == b.shiftStart &&
+                a.shiftEnd == b.shiftEnd &&
+                a.requiredPeople == b.requiredPeople &&
+                a.isStandby == b.isStandby &&
+                a.isPto == b.isPto &&
+                a.isFreeDay == b.isFreeDay &&
+                a.isSickDay == b.isSickDay &&
+                a.ordered == b.ordered &&
+                a.important == b.important)
+                return true;
+            return false;
+        }
+
+        public static bool operator !=(Shift a, Shift b)
+        {
+            return !(a == b);
         }
     }
 

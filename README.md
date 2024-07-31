@@ -55,9 +55,44 @@ Ha a hetente ismétlődő pontot bejelöli, a program a hónapban minden hét ad
 
 ## Kérés
 
-### Hozzáadása (WIP)
-### Törlése (WIP)
-### Több óra a hónapban (WIP)
+### Hozzáadása
+
+Jobb kattintás a munkáltatott nevére, majd kérés hozzáadása (Kérés > Hozzáadás) menüpont kiválasztása.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/add%20request%201.png)
+
+Vagy jobb kattintás a napra (a munkáltatottal megegyező sorban) és kérés hozzáadása (Kérés > Hozzáadás) menüpont kiválasztása.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/add%20request%202.png)
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/add%20request%203.png)
+
+Kérés adatai:
+- Szabadnap / szabadság / éjszakás kiválasztása
+- Szabadnap esetén fontos / nem fontos
+- Kérés napja (kattintson a naptár ikonra a dátum kiválaszásához)
+
+Amennyiben a jobb kattintás módszert alkalmazta, a dátum automatikusan be van állítva.
+A nem fontos kérések (alap beállítás szerint) sárga, a fontos kérések piros színnel jelennek meg. A szabadság mindig fontos, illetve az éjszakás mindig nem fontos színekkel jelenik meg.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/requested%20days%201.png)
+
+### Törlése
+
+Jobb kattintás a napra (amelyik kérést törölni szeretné) és a kérés törlése (Kérés > Törlés) menüpont kiválasztása.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/delete%20request%201.png)
+
+A kérés automatikusan törlődni fog. Éjszakás kérés törlése esetén bármelyik napra (éjszakás kezd / végez) lehet kérni a törlést, mind a kettő műszakot törölni fogja a program.
+
+### Több óra a hónapban
+
+Jobb kattintás a munkáltatott nevére, vagy bármelyik napra a munkáltatottal megegyező sorban, majd a legördülő menü (Kérés > Legördülő menü) kiválasztása.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/more%20hours%201.png)
+
+- Normál órák (nincs változás a beosztás generálásában)
+- Több óra a hónapban (a munkáltatott több órát fog kapni az átlagnál)
 
 ## Betegség
 

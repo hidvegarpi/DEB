@@ -414,5 +414,57 @@ namespace Vezénylés_szerkesztő
             if (toolStripComboBox1.Text == "Több óra a hónapban") owner.currentMonth.AddEmployeeForMoreHours(employeeData);
             if (toolStripComboBox1.Text == "Normál órák") owner.currentMonth.RemoveEmployeeFromMoreHours(employeeData);
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < owner.currentMonth.sickDays.Count; i++)
+            {
+                int sickID = owner.currentMonth.sickDays[i].sickEmployee.id;
+                int substID = owner.currentMonth.sickDays[i].substituteEmployee.id;
+
+                if (owner.currentMonth.sickDays[i].date == date)
+                {
+                    foreach (Shift s1 in owner.currentMonth.daysOfMonth[date.Day - 1].shiftList)
+                    {
+                        foreach (Shift s2 in owner.currentMonth.sickDays[i].shiftList)
+                        {
+                            if (s1 == s2 && s1.ContainsEmployee(owner.GetEmployee(substID)))
+                            {
+                                s1.AddEmployee(owner.GetEmployee(sickID));
+                                s1.RemoveEmployee(owner.GetEmployee(substID));
+                            }
+                        }
+                    }
+
+                    owner.currentMonth.daysOfMonth[
+                        date.Day - 1
+                        ].shiftList[
+                        PublicParameters.shiftIndexStandby
+                        ].AddEmployee(
+                        owner.GetEmployee(substID)
+                        );
+                    owner.currentMonth.daysOfMonth[
+                        date.Day - 1
+                        ].shiftList[
+                        PublicParameters.shiftIndexSickDay
+                        ].RemoveEmployee(
+                        owner.GetEmployee(sickID)
+                        );
+
+                    owner.SetShiftVisual(
+                        sickID,
+                        date.Day,
+                        owner.currentMonth.daysOfMonth[date.Day - 1].GetShiftsPerEmployee(owner.GetEmployee(sickID)));
+                    owner.SetShiftVisual(
+                        substID,
+                        date.Day,
+                        owner.currentMonth.daysOfMonth[date.Day - 1].GetShiftsPerEmployee(owner.GetEmployee(substID)));
+
+                    owner.currentMonth.sickDays.RemoveAt(i);
+                    owner.SaveCurrentMonth();
+                    break;
+                }
+            }
+        }
     }
 }

@@ -206,5 +206,10 @@ namespace Vezénylés_szerkesztő
             if (toolStripComboBox1.Text == "Több óra a hónapban") owner.currentMonth.AddEmployeeForMoreHours(employeeData);
             if (toolStripComboBox1.Text == "Normál órák") owner.currentMonth.RemoveEmployeeFromMoreHours(employeeData);
         }
+
+        private void törlésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -107,16 +107,16 @@ namespace Vezénylés_szerkesztő
             // bejelentésToolStripMenuItem
             // 
             this.bejelentésToolStripMenuItem.Name = "bejelentésToolStripMenuItem";
-            this.bejelentésToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.bejelentésToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bejelentésToolStripMenuItem.Text = "Bejelentés";
             this.bejelentésToolStripMenuItem.Click += new System.EventHandler(this.bejelentésToolStripMenuItem_Click);
             // 
             // törlésToolStripMenuItem
             // 
-            this.törlésToolStripMenuItem.Enabled = false;
             this.törlésToolStripMenuItem.Name = "törlésToolStripMenuItem";
-            this.törlésToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.törlésToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.törlésToolStripMenuItem.Text = "Törlés";
+            this.törlésToolStripMenuItem.Click += new System.EventHandler(this.törlésToolStripMenuItem_Click);
             // 
             // kérésToolStripMenuItem
             // 

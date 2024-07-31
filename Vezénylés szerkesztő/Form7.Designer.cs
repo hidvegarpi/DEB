@@ -71,6 +71,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Éjszakás";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // label1
             // 

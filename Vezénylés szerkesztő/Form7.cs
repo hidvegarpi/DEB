@@ -63,5 +63,19 @@ namespace Vezénylés_szerkesztő
                 checkBox1.Checked = false;
             }
         }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            {
+                checkBox1.Enabled = false;
+                checkBox1.Checked = false;
+            }
+            else if (!radioButton3.Checked)
+            {
+                checkBox1.Enabled = true;
+                checkBox1.Checked = false;
+            }
+        }
     }
 }

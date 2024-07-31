@@ -111,6 +111,7 @@ Vagy jobb kattintás a napra (a munkáltatottal megegyező sorban) és betegség
 - Dátum (kattintson a naptár ikonra a dátum kiválaszásához)
 - Helyettesítő (legördülő menü, csak az aznap készenlétesek vannak felsorolva)
 
+Amennyiben a jobb kattintás módszert alkalmazta, a dátum automatikusan be van állítva.
 A bejelentett betegség (alapbeállítás szerint) sárga színnel jelenik meg, a helyettesítő számával együtt. A helyettesítő készenlétes műszakjának helyére automatikusan be lesz írva a beteg műszakja.
 
 ![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/sick%204.png)

@@ -1,8 +1,9 @@
-#LHDC UBI Vezénylés szerkesztő
+# LHDC UBI Vezénylés szerkesztő
 
-##Használata
+## Használata
 
-###Új munkáltatott hozzáadása
+### Új munkáltatott hozzáadása
+
 Kattintson a képen látható menüpontra, majd vegye fel a munkáltatott adatait.
 
 ![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/add%20employee%201.png)
@@ -24,7 +25,8 @@ Együtt tudnak bejárni beállításhoz kattintson a szerkesztés gombra, majd v
 
 ![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/add%20employee%203.png)
 
-###Munkáltatott szerkesztése
+### Munkáltatott szerkesztése
+
 Jobb kattintás a munkáltatott nevére, majd a szerkesztés menüpont kiválasztása.
 
 ![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/add%20employee%204.png)

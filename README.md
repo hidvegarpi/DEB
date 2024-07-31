@@ -96,5 +96,27 @@ Jobb kattintás a munkáltatott nevére, vagy bármelyik napra a munkáltatottal
 
 ## Betegség
 
-### Bejelentése (WIP)
-### Törlése (WIP)
+### Bejelentése
+
+Jobb kattintás a munkáltatott nevére, majd a betegség bejelentése (Betegség > Bejelentés) menüpont kiválasztása.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/sick%201.png)
+
+Vagy jobb kattintás a napra (a munkáltatottal megegyező sorban) és betegség bejelentése (Betegség > Bejelentés) menüpont kiválasztása.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/sick%202.png)
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/sick%203.png)
+
+- Dátum (kattintson a naptár ikonra a dátum kiválaszásához)
+- Helyettesítő (legördülő menü, csak az aznap készenlétesek vannak felsorolva)
+
+A bejelentett betegség (alapbeállítás szerint) sárga színnel jelenik meg, a helyettesítő számával együtt. A helyettesítő készenlétes műszakjának helyére automatikusan be lesz írva a beteg műszakja.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/sick%204.png)
+
+### Törlése
+
+Jobb kattintás a napra (amelyik betegséget törölni szeretné) és a betegség törlése (Betegség > Törlés) menüpont kiválasztása.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/sick%205.png)

@@ -394,5 +394,17 @@ namespace Vezénylés_szerkesztő.Properties {
                 this["generateByCanGoWith"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OrangeRed")]
+        public global::System.Drawing.Color colorSickDay {
+            get {
+                return ((global::System.Drawing.Color)(this["colorSickDay"]));
+            }
+            set {
+                this["colorSickDay"] = value;
+            }
+        }
     }
 }

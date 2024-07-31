@@ -1,5 +1,13 @@
 # LHDC UBI Vezénylés szerkesztő
 
+## Beállítások
+
+A beállítások ablakot a Fájl > Beállítások útvonalon érheti el.
+
+A beállításokban a műszakok színeit, illetve számszerű beállításokat tud módosítani.
+
+![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/settings.png)
+
 ## Használata
 
 ### Új munkáltatott hozzáadása

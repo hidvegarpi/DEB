@@ -60,6 +60,7 @@ namespace Vezénylés_szerkesztő
             button16.BackColor = PublicParameters.colorOrderedFreeDay;
             button17.BackColor = PublicParameters.colorOrderedFreeDayImportant;
             button18.BackColor = PublicParameters.colorOrderedNight;
+            button19.BackColor = PublicParameters.colorSickDay;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -250,6 +251,17 @@ namespace Vezénylés_szerkesztő
             {
                 button18.BackColor = colorDialog1.Color;
                 PublicParameters.colorOrderedNight = colorDialog1.Color;
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = button19.BackColor;
+            colorDialog1.CustomColors = new int[] { ColorTranslator.ToOle(button19.BackColor) };
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                button19.BackColor = colorDialog1.Color;
+                PublicParameters.colorSickDay = colorDialog1.Color;
             }
         }
 

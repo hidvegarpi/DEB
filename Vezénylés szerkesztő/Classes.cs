@@ -61,7 +61,7 @@ namespace Vezénylés_szerkesztő
         public static Color colorFreeDay                  { get { return Properties.Settings.Default.colorFreeDay; } set { Properties.Settings.Default.colorFreeDay = value; Properties.Settings.Default.Save(); } }
         public static Color colorStandBy                  { get { return Properties.Settings.Default.colorStandBy; } set { Properties.Settings.Default.colorStandBy = value; Properties.Settings.Default.Save(); } }
         public static Color colorPaidTimeOff              { get { return Properties.Settings.Default.colorPaidTimeOff; } set { Properties.Settings.Default.colorPaidTimeOff = value; Properties.Settings.Default.Save(); } }
-        public static Color colorSickDay = Color.OrangeRed;
+        public static Color colorSickDay                  { get { return Properties.Settings.Default.colorSickDay; } set { Properties.Settings.Default.colorSickDay = value; Properties.Settings.Default.Save(); } }
 
         public static Color colorOrderedFreeDay           { get { return Properties.Settings.Default.colorOrderedFreeDay; } set { Properties.Settings.Default.colorOrderedFreeDay = value; Properties.Settings.Default.Save(); } }
         public static Color colorOrderedFreeDayImportant  { get { return Properties.Settings.Default.colorOrderedFreeDayImportant; } set { Properties.Settings.Default.colorOrderedFreeDayImportant = value; Properties.Settings.Default.Save(); } }

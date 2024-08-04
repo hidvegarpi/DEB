@@ -216,8 +216,9 @@ namespace Vezénylés_szerkesztő
                     for (int i = 0; i < currentMonth.daysOfMonth.Count; i++)
                     {
                         UserControl1 n = new UserControl1();
-                        n.isFreeDay = true; //temporary
-                        n.shifts = currentMonth.daysOfMonth[i].GetShiftsPerEmployee(e);
+                        //n.isFreeDay = true; //temporary
+                        List<Shift> sl = currentMonth.daysOfMonth[i].GetShiftsPerEmployee(e);
+                        n.shifts = sl;
                         n.employeeData = e;
                         n.owner = this;
                         n.date = new DateTime(currentMonth.startDate.Year, currentMonth.startDate.Month, i + 1);
@@ -426,6 +427,7 @@ namespace Vezénylés_szerkesztő
                         #endregion
                         }
 
+                        if (sl.Count == 0) n.SetNull();
                         flowLayoutPanel1.Controls.Add(n);
                         controlList.Add(n);
                     }
@@ -577,8 +579,6 @@ namespace Vezénylés_szerkesztő
             List<float> totalHours = new List<float>();
             List<float> overtime = new List<float>();
 
-            
-
             int longestName = 0;
 
             for (int i = 0; i < employeeList.Count; i++)
@@ -609,6 +609,7 @@ namespace Vezénylés_szerkesztő
                                     addDay = true;
                                 }
                             }
+                            else if (shift.isSickDay) si++;
                         }
                     }
                     if (addDay) d++;
@@ -638,7 +639,7 @@ namespace Vezénylés_szerkesztő
                 "Összeg" + "\n";
             richTextBox1.Text += MultiplyChars(longestName + 103, '#') + "\n";
 
-            for (int i = 0; i < employeeList.Count; i++) //93
+            for (int i = 0; i < employeeList.Count; i++)
             {
                 richTextBox1.Text += employeeList[i].name.PadRight(longestName, ' ') + "|     " +
                     hours[i].ToString("F1").PadLeft(5, ' ') + "|     " +
@@ -652,6 +653,37 @@ namespace Vezénylés_szerkesztő
                     (Math.Round(employeeList[i].distanceToWork) * 2 * shifts[i]).ToString().PadLeft(4, ' ') + "|    " +
                     (Math.Round(employeeList[i].distanceToWork) * 2 * shifts[i] * PublicParameters.multiplierKm).ToString().PadLeft(5, ' ') + " Ft" + "\n";
             }
+
+            int allPTO = 0;
+            int allSickDays = 0;
+            int allOrderedFreeDay = 0;
+            int allNonOrderedFreeDay = 0;
+            int allHours = 0;
+            int allHoursPlusOvertime = 0;
+            int allOvertime = 0;
+
+            foreach (int i in PTO) allPTO += i;
+            foreach (int i in sickDays) allSickDays += i;
+            foreach (int i in hours) allHours += i;
+            foreach (int i in totalHours) allHoursPlusOvertime += i;
+            foreach (int i in overtime) allOvertime += i;
+
+            foreach (Day d in currentMonth.daysOfMonth)
+            {
+                foreach (Shift s in d.shiftList)
+                {
+                    if (s.ordered && s.isFreeDay) allOrderedFreeDay += s.employeeList.Count;
+                    else if (!s.ordered && s.isFreeDay) allNonOrderedFreeDay += s.employeeList.Count;
+                }
+            }
+
+            label1.Text = label1.Text.Replace("#1", allPTO.ToString());
+            label1.Text = label1.Text.Replace("#2", allSickDays.ToString());
+            label1.Text = label1.Text.Replace("#3", allOrderedFreeDay.ToString());
+            label1.Text = label1.Text.Replace("#4", allNonOrderedFreeDay.ToString());
+            label1.Text = label1.Text.Replace("#5", allHours.ToString());
+            label1.Text = label1.Text.Replace("#6", allHoursPlusOvertime.ToString());
+            label1.Text = label1.Text.Replace("#7", allOvertime.ToString());
         }
 
         public void SetShiftVisual(int employeeID, int dayOfMonth, List<Shift> shiftList, Employee substitute = null)

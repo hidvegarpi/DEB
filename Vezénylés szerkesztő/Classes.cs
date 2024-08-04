@@ -489,7 +489,7 @@ namespace Vezénylés_szerkesztő
             foreach (Shift s in shiftList)
                 foreach (Employee em in s.employeeList)
                     if (em != null)
-                        if (em.id == e.id)
+                        if (em.id == e.id && em.name == e.name)
                             shifts.Add(s);
             return shifts;
         }

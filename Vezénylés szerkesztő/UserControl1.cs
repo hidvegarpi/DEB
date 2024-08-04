@@ -207,7 +207,9 @@ namespace Vezénylés_szerkesztő
                 isGate3 = false;
                 isSickDay = false;
 
-                if (shiftData.Count == 2)
+                if (shiftData.Count == 0) SetNull();
+                else if (shiftData.Count > 2) SetErr();
+                else if (shiftData.Count == 2)
                 {
                     date1 = shiftData[0].shiftStart;
                     label1.BackColor = PublicParameters.colorShiftAMStart;
@@ -218,7 +220,7 @@ namespace Vezénylés_szerkesztő
                     date4 = shiftData[1].shiftEnd;
                     label4.BackColor = PublicParameters.colorShiftPMEndLong;
                 }
-                if (shiftData.Count == 1)
+                else if (shiftData.Count == 1)
                 {
                     panel1.BackColor = DefaultBackColor;
                     BackColor = DefaultBackColor;
@@ -323,10 +325,29 @@ namespace Vezénylés_szerkesztő
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
-            if (shifts.Count == 0) isFreeDay = true;
+            if (shifts.Count == 0) SetNull();
         }
 
         public void EnableRemoveOrder() => toolStripMenuItem6.Enabled = true;
+
+        public void SetNull()
+        {
+            isFreeDay = true;
+            label1.Text = "";
+            label2.Text = "";
+            label3.Text = "";
+            label4.Text = "";
+        }
+
+        public void SetErr()
+        {
+            label1.Text = "";
+            label2.Text = "ERR";
+            label3.Text = "";
+            label4.Text = "";
+            BackColor = Color.Red;
+            panel1.BackColor = Color.Red;
+        }
 
         public void RemoveOrderedShift(bool removeNextNight = false)
         {
@@ -363,6 +384,7 @@ namespace Vezénylés_szerkesztő
             BackColor = PublicParameters.colorFreeDay;
             shiftData = sl;
             isFreeDay = true;
+            SetNull();
 
             //kérésTörléseToolStripMenuItem.Enabled = false;
             //kérésHozzáadásaToolStripMenuItem.Enabled = true;

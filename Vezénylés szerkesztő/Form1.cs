@@ -23,11 +23,20 @@ namespace Vezénylés_szerkesztő
             InitializeComponent();
         }
 
+        public List<Employee> employeeList;
+        public Month currentMonth;
+        string statusLabelDefault;
+        string titleDefault;
+        string versionString = "v0.240804";
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            ActiveControl = flowLayoutPanel1;
+
             employeeList = new List<Employee>();
             currentMonth = new Month(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1));
             statusLabelDefault = toolStripStatusLabel1.Text;
+            titleDefault = Text;
 
             flowLayoutPanel1.VerticalScroll.Visible = true;
             timer1.Enabled = true;
@@ -47,6 +56,11 @@ namespace Vezénylés_szerkesztő
             UpdateStatusBar();
             CheckDates();
             GenerateStatistics();
+        }
+
+        private void Form1_Deactivate(object sender, EventArgs e)
+        {
+            ActiveControl = flowLayoutPanel1;
         }
 
         private void timer1_Tick(object sender, EventArgs e) => UpdateStatusBar();
@@ -87,6 +101,8 @@ namespace Vezénylés_szerkesztő
                     }
                 }
             }
+
+            Text = titleDefault + " " + versionString + " - " + currentMonth.startDate.ToString("MMMM", CultureInfo.CurrentCulture).FirstCharToUpper() + " " + employeeList.Count + " fő";
         }
 
         public void SaveCurrentMonth()
@@ -95,10 +111,6 @@ namespace Vezénylés_szerkesztő
             string data = JsonConvert.SerializeObject(currentMonth, Formatting.Indented);
             File.WriteAllText("./MonthData/" + DateTime.Now.ToString("yyyy-MM") + ".mnth", data);
         }
-
-        public List<Employee> employeeList;
-        public Month currentMonth;
-        string statusLabelDefault;
 
         private void hozzáadásToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -197,6 +209,7 @@ namespace Vezénylés_szerkesztő
                     try { ((UserControl3)u).Destroy(); } catch { }
                 }
                 flowLayoutPanel1.Controls.Clear();
+                List<Control> f1 = new List<Control>();
 
                 foreach (Employee e in employeeList)
                 {
@@ -207,7 +220,8 @@ namespace Vezénylés_szerkesztő
                     u.onEmployeeEdited += EmployeeEdited;
                     u.owner = this;
                     u.employeeData = e;
-                    flowLayoutPanel1.Controls.Add(u);
+                    f1.Add(u);
+                    //flowLayoutPanel1.Controls.Add(u);
 
                     employeeControlList.Add(u);
 
@@ -428,16 +442,19 @@ namespace Vezénylés_szerkesztő
                         }
 
                         if (sl.Count == 0) n.SetNull();
-                        flowLayoutPanel1.Controls.Add(n);
+                        f1.Add(n);
+                        //flowLayoutPanel1.Controls.Add(n);
                         controlList.Add(n);
                     }
 
                     controlNestedList.Add(controlList);
                 }
+                flowLayoutPanel1.Controls.AddRange(f1.ToArray());
             }
 
             if (!onlyUpdate)
             {
+                List<Control> f2 = new List<Control>();
                 foreach (UserControl u in flowLayoutPanel2.Controls)
                 {
                     try { ((UserControl1)u).Destroy(); } catch { }
@@ -449,7 +466,8 @@ namespace Vezénylés_szerkesztő
                 UserControl2 u2 = new UserControl2();
                 u2.name = "";
                 u2.id = 0;
-                flowLayoutPanel2.Controls.Add(u2);
+                f2.Add(u2);
+                //flowLayoutPanel2.Controls.Add(u2);
 
                 for (int i = 0; i < currentMonth.daysOfMonth.Count; i++)
                 {
@@ -457,9 +475,12 @@ namespace Vezénylés_szerkesztő
                     n.data = currentMonth.daysOfMonth[i];
                     n.day = i + 1;
                     n.owner = this;
+                    f2.Add(n);
                     flowLayoutPanel2.Controls.Add(n);
                     daysControlList.Add(n);
                 }
+
+                flowLayoutPanel2.Controls.AddRange(f2.ToArray());
             }
         }
 
@@ -470,6 +491,7 @@ namespace Vezénylés_szerkesztő
                 for (int d = 0; d < currentMonth.daysOfMonth.Count; d++)
                     SetShiftVisual(e.id, d + 1, currentMonth.daysOfMonth[d].GetShiftsPerEmployee(e));
             GenerateStatistics();
+            Application.DoEvents();
         }
 
         void UpdateStatusBar() //add multiple flights to current flight

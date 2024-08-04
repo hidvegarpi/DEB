@@ -47,6 +47,7 @@ namespace Vezénylés_szerkesztő
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.értesítésekTörléseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,9 +55,9 @@ namespace Vezénylés_szerkesztő
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.értesítésekTörléseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beosztásGenerálásaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -81,6 +82,7 @@ namespace Vezénylés_szerkesztő
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.beosztásGenerálásaToolStripMenuItem,
             this.dolgozoóHozzáadásaToolStripMenuItem,
             this.járatToolStripMenuItem,
             this.beoSaveToolStripMenuItem,
@@ -175,7 +177,7 @@ namespace Vezénylés_szerkesztő
             // 
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(536, 21);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(599, 21);
             this.toolStripStatusLabel2.Spring = true;
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -201,6 +203,13 @@ namespace Vezénylés_szerkesztő
             this.toolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
             this.toolStripMenuItem1.Text = "Értesítések megtekintése";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // értesítésekTörléseToolStripMenuItem
+            // 
+            this.értesítésekTörléseToolStripMenuItem.Name = "értesítésekTörléseToolStripMenuItem";
+            this.értesítésekTörléseToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.értesítésekTörléseToolStripMenuItem.Text = "Értesítések törlése";
+            this.értesítésekTörléseToolStripMenuItem.Click += new System.EventHandler(this.értesítésekTörléseToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -251,6 +260,7 @@ namespace Vezénylés_szerkesztő
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.richTextBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -278,13 +288,6 @@ namespace Vezénylés_szerkesztő
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "LHDC UBI Vezénylés";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
-            // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "*.png";
@@ -293,12 +296,21 @@ namespace Vezénylés_szerkesztő
             this.saveFileDialog1.InitialDirectory = "./";
             this.saveFileDialog1.Title = "Beosztás mentése képként";
             // 
-            // értesítésekTörléseToolStripMenuItem
+            // beosztásGenerálásaToolStripMenuItem
             // 
-            this.értesítésekTörléseToolStripMenuItem.Name = "értesítésekTörléseToolStripMenuItem";
-            this.értesítésekTörléseToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.értesítésekTörléseToolStripMenuItem.Text = "Értesítések törlése";
-            this.értesítésekTörléseToolStripMenuItem.Click += new System.EventHandler(this.értesítésekTörléseToolStripMenuItem_Click);
+            this.beosztásGenerálásaToolStripMenuItem.Name = "beosztásGenerálásaToolStripMenuItem";
+            this.beosztásGenerálásaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.beosztásGenerálásaToolStripMenuItem.Text = "Beosztás generálása";
+            this.beosztásGenerálásaToolStripMenuItem.Click += new System.EventHandler(this.beosztásGenerálásaToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1193, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 208);
+            this.label1.TabIndex = 1;
+            this.label1.Text = resources.GetString("label1.Text");
             // 
             // Form1
             // 
@@ -321,6 +333,7 @@ namespace Vezénylés_szerkesztő
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,7 +357,6 @@ namespace Vezénylés_szerkesztő
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripMenuItem beoSaveToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -354,6 +366,8 @@ namespace Vezénylés_szerkesztő
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem értesítésekTörléseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem beosztásGenerálásaToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -58,7 +58,7 @@ Járat adatai:
 - Légitársaság
 - Check in kezdés (kattintson a naptár ikonra a dátum beállításához)
 
-Amennyiben a jobb kattintás módszert alkalmazta, a dátum automatikusan be van állítva, csak az időpontot kell módosítani.
+Amennyiben a második módszert alkalmazta, a dátum automatikusan be van állítva, csak az időpontot kell módosítani.
 Ha a hetente ismétlődő pontot bejelöli, a program a hónapban minden hét adott napjára automatikusan beilleszti a járatot ugyanazzal az időponttal.
 
 ## Kérés
@@ -80,7 +80,7 @@ Kérés adatai:
 - Szabadnap esetén fontos / nem fontos
 - Kérés napja (kattintson a naptár ikonra a dátum kiválaszásához)
 
-Amennyiben a jobb kattintás módszert alkalmazta, a dátum automatikusan be van állítva.
+Amennyiben a második módszert alkalmazta, a dátum automatikusan be van állítva.
 A nem fontos kérések (alap beállítás szerint) sárga, a fontos kérések piros színnel jelennek meg. A szabadság mindig fontos, illetve az éjszakás mindig nem fontos színekkel jelenik meg.
 
 ![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/requested%20days%201.png)
@@ -119,7 +119,7 @@ Vagy jobb kattintás a napra (a munkáltatottal megegyező sorban) és betegség
 - Dátum (kattintson a naptár ikonra a dátum kiválaszásához)
 - Helyettesítő (legördülő menü, csak az aznap készenlétesek vannak felsorolva)
 
-Amennyiben a jobb kattintás módszert alkalmazta, a dátum automatikusan be van állítva.
+Amennyiben a második módszert alkalmazta, a dátum automatikusan be van állítva.
 A bejelentett betegség (alapbeállítás szerint) sárga színnel jelenik meg, a helyettesítő számával együtt. A helyettesítő készenlétes műszakjának helyére automatikusan be lesz írva a beteg műszakja.
 
 ![](https://github.com/hidvegarpi/DEB/blob/main/IMAGES/sick%204.png)

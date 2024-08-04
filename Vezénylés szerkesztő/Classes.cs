@@ -189,8 +189,45 @@ namespace Vezénylés_szerkesztő
                     daysOfMonth.Add(new Day(i + 1, this));
         }
 
+        public void ClearEmployeesFromShifts(bool exceptOrdered)
+        {
+            foreach (Day d in daysOfMonth)
+            {
+                foreach (Shift s in d.shiftList)
+                {
+                    if (exceptOrdered && !s.ordered)
+                        s.employeeList = new List<Employee>();
+                    else if (!exceptOrdered)
+                        s.employeeList = new List<Employee>();
+                }
+            }
+        }
+
+        public void ClearAllShifts(bool exceptDefault)
+        {
+            foreach (Day d in daysOfMonth)
+                d.shiftList = new List<Shift>();
+
+            if (exceptDefault)
+                foreach (Day d in daysOfMonth)
+                    d.AddDefaultShifts();
+        }
+
+        public void CreateShifts(bool onlyDefault)
+        {
+            foreach (Day d in daysOfMonth)
+            {
+                d.AddDefaultShifts();
+                if (!onlyDefault) d.CreateShifts();
+            }
+        }
+
         public void CalculateEmployeesForShifts()
         {
+            ClearEmployeesFromShifts(true);
+
+
+
             // TODO:    Make it work
             //
             //          calculte with:

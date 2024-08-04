@@ -39,12 +39,8 @@ namespace Vezénylés_szerkesztő
 
             if (clearShiftData)
             {
-                foreach (Day d in currentMonth.daysOfMonth)
-                {
-                    d.shiftList = new List<Shift>();
-                    d.AddDefaultShifts();
-                    d.CreateShifts();
-                }
+                currentMonth.ClearAllShifts(false);
+                currentMonth.CreateShifts(false);
             }
 
             ShowTable(false, false, !clearShiftData);
@@ -72,7 +68,8 @@ namespace Vezénylés_szerkesztő
         {
             if (!Directory.Exists("./MonthData")) Directory.CreateDirectory("./MonthData");
             if (!File.Exists("./MonthData/" + DateTime.Now.ToString("yyyy-MM") + ".mnth")) return;
-            string data = File.ReadAllText("./MonthData/" + DateTime.Now.ToString("yyyy-MM") + ".mnth");
+            //string data = File.ReadAllText("./MonthData/" + DateTime.Now.ToString("yyyy-MM") + ".mnth");
+            string data = File.ReadAllText("./MonthData/2024-08.mnth");
             currentMonth = JsonConvert.DeserializeObject<Month>(data);
 
             foreach (Day d in currentMonth.daysOfMonth)
@@ -464,6 +461,15 @@ namespace Vezénylés_szerkesztő
             }
         }
 
+        void UpdateTable()
+        {
+            ClearShiftVisual();
+            foreach (Employee e in employeeList)
+                for (int d = 0; d < currentMonth.daysOfMonth.Count; d++)
+                    SetShiftVisual(e.id, d + 1, currentMonth.daysOfMonth[d].GetShiftsPerEmployee(e));
+            GenerateStatistics();
+        }
+
         void UpdateStatusBar() //add multiple flights to current flight
         {
             toolStripStatusLabel2.Text = DateTime.Now.ToString("HH:mm");
@@ -473,35 +479,26 @@ namespace Vezénylés_szerkesztő
 
             List<string> currentFlights = new List<string>();
             bool nextFlightFound = false;
-            for (int d = 0; d < currentMonth.daysOfMonth.Count; d++)
+            for (int i = 0; i < currentMonth.daysOfMonth[DateTime.Now.Day - 1].flightList.Count; i++)
             {
-                for (int i = 0; i < currentMonth.daysOfMonth[d].flightList.Count; i++)
+                int d = DateTime.Now.Day - 1;
+                Flight f = currentMonth.daysOfMonth[d].flightList[i];
+
+                if (f.checkInStart < DateTime.Now &&
+                f.checkInStart + new TimeSpan(2, 0, 0) > DateTime.Now)
                 {
-                    Flight f = currentMonth.daysOfMonth[d].flightList[i];
+                    currentFlights.Add(f.destination);
+                    cD = d;
+                    cI = i;
+                }
 
-                    if (f.checkInStart < DateTime.Now &&
-                    new DateTime(
-                        f.checkInStart.Year,
-                        f.checkInStart.Month,
-                        f.checkInStart.Day,
-                        f.checkInStart.Hour + 2,
-                        f.checkInStart.Minute,
-                        f.checkInStart.Second)
-                    > DateTime.Now)
-                    {
-                        currentFlights.Add(f.destination);
-                        cD = d;
-                        cI = i;
-                    }
-
-                    if (!nextFlightFound && 
-                        ((DateTime.Now.Day == currentMonth.daysOfMonth[d].dayNumber && f.checkInStart > DateTime.Now) || 
-                        (DateTime.Now.Day + 1 == currentMonth.daysOfMonth[d].dayNumber && i == 0)))
-                    {
-                        statusLabel = statusLabel.Replace("#NAME", f.destination);
-                        statusLabel = statusLabel.Replace("#CHECKIN", f.checkInStart.ToString("yyyy. MM. dd. HH:mm"));
-                        nextFlightFound = true;
-                    }
+                if (!nextFlightFound &&
+                    ((DateTime.Now.Day == currentMonth.daysOfMonth[d].dayNumber && f.checkInStart > DateTime.Now) ||
+                    (DateTime.Now.Day + 1 == currentMonth.daysOfMonth[d].dayNumber && i == 0)))
+                {
+                    statusLabel = statusLabel.Replace("#NAME", f.destination);
+                    statusLabel = statusLabel.Replace("#CHECKIN", f.checkInStart.ToString("yyyy. MM. dd. HH:mm"));
+                    nextFlightFound = true;
                 }
             }
 
@@ -603,7 +600,7 @@ namespace Vezénylés_szerkesztő
                         if (shift.ContainsEmployee(employeeList[i]))
                         {
                             if (shift.isPto) p++;
-                            else if (!shift.isStandby)
+                            else if (!shift.isStandby && !shift.isPto && !shift.isFreeDay || !shift.isSickDay && (!shift.ordered || (!shift.ordered && !shift.type.HasFlag(ShiftType.Night))))
                             {
                                 h += shift.hours;
                                 if (!(shift.shiftStart.Hour == 0 && shift.shiftStart.Minute == 0 && day.dayNumber > 1))
@@ -661,6 +658,24 @@ namespace Vezénylés_szerkesztő
         {
             ((UserControl1)controlNestedList[employeeID - 1][dayOfMonth - 1]).shifts = shiftList;
             if (substitute != null) ((UserControl1)controlNestedList[employeeID - 1][dayOfMonth - 1]).substituteEmployee = substitute;
+        }
+
+        public void SetShiftVisual(int employeeID, int dayOfMonth, Shift shiftToAdd, Employee substitute = null)
+        {
+            List<Shift> shiftList = new List<Shift>();
+
+            foreach (Shift s in ((UserControl1)controlNestedList[employeeID - 1][dayOfMonth - 1]).shifts)
+                shiftList.Add(s);
+
+            shiftList.Add(shiftToAdd);
+            SetShiftVisual(employeeID, dayOfMonth, shiftList, substitute);
+        }
+
+        public void ClearShiftVisual()
+        {
+            foreach (Employee e in employeeList)
+                foreach (Day d in currentMonth.daysOfMonth)
+                    ((UserControl1)controlNestedList[e.id - 1][d.dayNumber - 1]).shifts = new List<Shift> { d.shiftList[PublicParameters.shiftIndexFreeDay] };
         }
 
         public void AddNotification(string s)
@@ -739,7 +754,7 @@ namespace Vezénylés_szerkesztő
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            notifyIcon1.Visible = false;
+            //notifyIcon1.Visible = false;
             SaveCurrentMonth();
         }
 
@@ -801,6 +816,14 @@ namespace Vezénylés_szerkesztő
         {
             warningList = new List<string>();
             toolStripSplitButton1.Visible = false;
+        }
+
+        private void beosztásGenerálásaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentMonth.ClearAllShifts(false);
+            currentMonth.CreateShifts(false);
+            currentMonth.CalculateEmployeesForShifts();
+            UpdateTable();
         }
     }
 }

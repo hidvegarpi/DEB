@@ -44,6 +44,10 @@ namespace Vezénylés_szerkesztő
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.egyediMűszakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hozzáadásToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.törlésToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,9 +110,10 @@ namespace Vezénylés_szerkesztő
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripMenuItem4});
+            this.toolStripMenuItem4,
+            this.egyediMűszakToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
             // 
             // toolStripMenuItem1
             // 
@@ -122,12 +127,13 @@ namespace Vezénylés_szerkesztő
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(127, 22);
             this.toolStripMenuItem2.Text = "Bejelentés";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
+            this.toolStripMenuItem3.Enabled = false;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "Törlés";
@@ -141,7 +147,7 @@ namespace Vezénylés_szerkesztő
             this.toolStripSeparator1,
             this.toolStripComboBox1});
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(215, 22);
             this.toolStripMenuItem4.Text = "Kérés";
             // 
             // toolStripMenuItem5
@@ -174,6 +180,30 @@ namespace Vezénylés_szerkesztő
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            // 
+            // egyediMűszakToolStripMenuItem
+            // 
+            this.egyediMűszakToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hozzáadásToolStripMenuItem,
+            this.törlésToolStripMenuItem});
+            this.egyediMűszakToolStripMenuItem.Name = "egyediMűszakToolStripMenuItem";
+            this.egyediMűszakToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.egyediMűszakToolStripMenuItem.Text = "Egyedi műszak";
+            // 
+            // hozzáadásToolStripMenuItem
+            // 
+            this.hozzáadásToolStripMenuItem.Name = "hozzáadásToolStripMenuItem";
+            this.hozzáadásToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hozzáadásToolStripMenuItem.Text = "Hozzáadás";
+            this.hozzáadásToolStripMenuItem.Click += new System.EventHandler(this.hozzáadásToolStripMenuItem_Click);
+            // 
+            // törlésToolStripMenuItem
+            // 
+            this.törlésToolStripMenuItem.Enabled = false;
+            this.törlésToolStripMenuItem.Name = "törlésToolStripMenuItem";
+            this.törlésToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.törlésToolStripMenuItem.Text = "Törlés";
+            this.törlésToolStripMenuItem.Click += new System.EventHandler(this.törlésToolStripMenuItem_Click);
             // 
             // UserControl1
             // 
@@ -211,5 +241,9 @@ namespace Vezénylés_szerkesztő
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripMenuItem egyediMűszakToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hozzáadásToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem törlésToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

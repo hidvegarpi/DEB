@@ -45,3 +45,4 @@ C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylé
 C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form7.resources
 C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form8.resources
 C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.UserControl4.resources
+C:\Users\hidve\Documents\GitHub\DEB\Vezénylés szerkesztő\obj\Debug\Vezénylés_szerkesztő.Form9.resources

@@ -98,5 +98,11 @@
     <Setting Name="colorSickDay" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">OrangeRed</Value>
     </Setting>
+    <Setting Name="warningBeforeCard" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="warningBeforeExam" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

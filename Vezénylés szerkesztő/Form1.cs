@@ -27,7 +27,7 @@ namespace Vezénylés_szerkesztő
         public Month currentMonth;
         string statusLabelDefault;
         string titleDefault;
-        string versionString = "v0.240804";
+        string versionString = "v0.240806";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -177,6 +177,28 @@ namespace Vezénylés_szerkesztő
             SaveCurrentMonth();
         }
 
+        public void AddExcShiftClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Form9 form = (Form9)sender;
+            Shift shift = form.shiftData;
+            Dictionary<int, ShiftNote> additionalData = form.additionalData;
+
+            //foreach (Shift s in currentMonth.daysOfMonth[shift.shiftStart.Day - 1].shiftList)
+            //    if (s == shift)
+            //        foreach (Employee em in additionalData.Keys)
+            //            s.additionalData.Add(em, additionalData[em]);
+
+            SetShiftVisual(form.employeeData.id, shift.shiftStart.Day, currentMonth.daysOfMonth[shift.shiftStart.Day - 1].GetShiftsPerEmployee(form.employeeData));
+        }
+
+        public void ClearExcShiftData(Employee forEmployee, Day day)
+        {
+            foreach (Shift s in currentMonth.daysOfMonth[day.date.Day - 1].shiftList)
+                s.additionalData.Remove(forEmployee.id);
+
+            SetShiftVisual(forEmployee.id,day.date.Day, currentMonth.daysOfMonth[day.date.Day - 1].GetShiftsPerEmployee(forEmployee));
+        }
+
         void EmployeeEdited(Employee e)
         {
             for (int i = 0; i < employeeList.Count; i++)
@@ -232,8 +254,13 @@ namespace Vezénylés_szerkesztő
                         UserControl1 n = new UserControl1();
                         //n.isFreeDay = true; //temporary
                         List<Shift> sl = currentMonth.daysOfMonth[i].GetShiftsPerEmployee(e);
-                        n.shifts = sl;
+                        if (sl.Count == 0)
+                        {
+                            currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexFreeDay].AddEmployee(e);
+                            sl.Add(currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexFreeDay]);
+                        }
                         n.employeeData = e;
+                        n.shifts = sl;
                         n.owner = this;
                         n.date = new DateTime(currentMonth.startDate.Year, currentMonth.startDate.Month, i + 1);
 
@@ -564,7 +591,7 @@ namespace Vezénylés_szerkesztő
             bool hasWarning = false;
             foreach (Employee e in employeeList)
             {
-                if (e.cardDate < DateTime.Now + new TimeSpan(PublicParameters.warningCardDateDays, 0, 0, 0))
+                if (PublicParameters.warningBeforeCard && e.cardDate < DateTime.Now + new TimeSpan(PublicParameters.warningCardDateDays, 0, 0, 0))
                 {
                     string w = e.name + " belépőkártyájának érvényessége " + PublicParameters.warningCardDateDays + " napon belül lejár.";
                     //notifyIcon1.ShowBalloonTip(10000,
@@ -575,7 +602,7 @@ namespace Vezénylés_szerkesztő
                     warningList.Add(w);
                 }
 
-                if (e.examDate + new TimeSpan(365, 0, 0, 0) < DateTime.Now + new TimeSpan(PublicParameters.warningExamDateDays, 0, 0, 0))
+                if (PublicParameters.warningBeforeExam && e.examDate + new TimeSpan(365, 0, 0, 0) < DateTime.Now + new TimeSpan(PublicParameters.warningExamDateDays, 0, 0, 0))
                 {
                     string w = e.name + " vizsgájának érvényessége " + PublicParameters.warningExamDateDays + " napon belül lejár.";
                     //notifyIcon1.ShowBalloonTip(10000,

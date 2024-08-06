@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.Xml.Linq;
 
 namespace Vezénylés_szerkesztő
@@ -206,6 +207,7 @@ namespace Vezénylés_szerkesztő
                 isStandBy = false;
                 isGate3 = false;
                 isSickDay = false;
+                toolTip1.RemoveAll();
 
                 if (shiftData.Count == 0) SetNull();
                 else if (shiftData.Count > 2) SetErr();
@@ -219,11 +221,37 @@ namespace Vezénylés_szerkesztő
                     label3.BackColor = PublicParameters.colorShiftPMEndLong;
                     date4 = shiftData[1].shiftEnd;
                     label4.BackColor = PublicParameters.colorShiftPMEndLong;
+
+                    if (shiftData[0].additionalData.Keys.Contains(employeeData.id))
+                    {
+                        if (shiftData[0].additionalData[employeeData.id].note == "GATE3")
+                        {
+                            label1.BackColor = PublicParameters.colorShiftGate3;
+                            isGate3 = true;
+                        }
+                    }
+                    if (shiftData[1].additionalData.Keys.Contains(employeeData.id))
+                    {
+                        if (shiftData[1].additionalData[employeeData.id].note == "GATE3")
+                        {
+                            label4.BackColor = PublicParameters.colorShiftGate3;
+                            isGate3 = true;
+                        }
+                    }
                 }
                 else if (shiftData.Count == 1)
                 {
                     panel1.BackColor = DefaultBackColor;
                     BackColor = DefaultBackColor;
+
+                    if (shiftData[0].additionalData.Keys.Contains(employeeData.id))
+                    {
+                        if (shiftData[0].additionalData[employeeData.id].note == "GATE3")
+                        {
+                            label1.BackColor = PublicParameters.colorShiftGate3;
+                            isGate3 = true;
+                        }
+                    }
 
                     if (shiftData[0].ordered)
                     {
@@ -256,9 +284,46 @@ namespace Vezénylés_szerkesztő
                         }
                     }
                     else if (shiftData[0].isStandby) isStandBy = true;
-                    else if (shiftData[0].isFreeDay) isFreeDay = true;
                     else if (shiftData[0].isPto) isPTO = true;
                     else if (shiftData[0].isSickDay) isSickDay = true;
+                    else if (shiftData[0].isFreeDay)
+                    {
+                        isFreeDay = true;
+                        if (shiftData[0].additionalData.Keys.Contains(employeeData.id))
+                        {
+                            //tooltip text = shiftData[0].additionalData[employeeData];
+                            label1.Text = "";
+                            label2.Text = "";
+                            label3.Text = "";
+                            label4.Text = "";
+
+                            if (shiftData[0].additionalData[employeeData.id].slot == 1)
+                            {
+                                label1.Text = "        ";
+                                label1.BackColor = Color.Yellow;
+                            }
+                            if (shiftData[0].additionalData[employeeData.id].slot == 2)
+                            {
+                                label2.Text = "        ";
+                                label2.BackColor = Color.DarkOrange;
+                            }
+                            if (shiftData[0].additionalData[employeeData.id].slot == 3)
+                            {
+                                label3.Text = "        ";
+                                label3.BackColor = Color.DarkRed;
+                            }
+                            if (shiftData[0].additionalData[employeeData.id].slot == 4)
+                            {
+                                label4.Text = "        ";
+                                label4.BackColor = Color.DarkCyan;
+                            }
+
+                            SetTooltip(shiftData[0].additionalData[employeeData.id].note);
+
+                            hozzáadásToolStripMenuItem.Enabled = false;
+                            törlésToolStripMenuItem.Enabled = true;
+                        }
+                    }
                     else if (shiftData[0].type == (ShiftType.Night | ShiftType.Long))
                     {
                         label1.Text = "";
@@ -347,6 +412,17 @@ namespace Vezénylés_szerkesztő
             label4.Text = "";
             BackColor = Color.Red;
             panel1.BackColor = Color.Red;
+        }
+
+        public void SetTooltip(string text)
+        {
+            toolTip1.RemoveAll();
+            toolTip1.SetToolTip(this, text);
+            toolTip1.SetToolTip(panel1, text);
+            toolTip1.SetToolTip(label1, text);
+            toolTip1.SetToolTip(label2, text);
+            toolTip1.SetToolTip(label3, text);
+            toolTip1.SetToolTip(label4, text);
         }
 
         public void RemoveOrderedShift(bool removeNextNight = false)
@@ -487,6 +563,36 @@ namespace Vezénylés_szerkesztő
                     break;
                 }
             }
+        }
+
+        private void hozzáadásToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (employeeData.name == "") return;
+
+            Form9 form = new Form9();
+            form.owner = owner;
+            form.shiftData = shiftData.Count == 0 ? owner.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay] : shiftData[0]; // TODO: calculate correct shift
+            form.employeeData = employeeData;
+            form.FormClosing += owner.AddExcShiftClosing;
+
+            if (shiftData.Count == 0)
+            {
+                owner.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay].AddEmployee(employeeData);
+                shiftData.Add(owner.currentMonth.daysOfMonth[date.Day - 1].shiftList[PublicParameters.shiftIndexFreeDay]);
+            }
+
+            form.Show();
+            hozzáadásToolStripMenuItem.Enabled = false;
+            törlésToolStripMenuItem.Enabled = true;
+        }
+
+        private void törlésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            owner.ClearExcShiftData(employeeData, owner.currentMonth.daysOfMonth[date.Day - 1]);
+
+
+            hozzáadásToolStripMenuItem.Enabled = true;
+            törlésToolStripMenuItem.Enabled = false;
         }
     }
 }

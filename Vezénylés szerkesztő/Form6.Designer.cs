@@ -68,6 +68,8 @@ namespace Vezénylés_szerkesztő
             this.label34 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.button19 = new System.Windows.Forms.Button();
             this.label38 = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
@@ -103,8 +105,8 @@ namespace Vezénylés_szerkesztő
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.label41 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -450,6 +452,8 @@ namespace Vezénylés_szerkesztő
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.checkBox4);
+            this.splitContainer1.Panel1.Controls.Add(this.checkBox3);
             this.splitContainer1.Panel1.Controls.Add(this.label39);
             this.splitContainer1.Panel1.Controls.Add(this.numericUpDown12);
             this.splitContainer1.Panel1.Controls.Add(this.label40);
@@ -629,6 +633,24 @@ namespace Vezénylés_szerkesztő
             this.checkBox1.Text = "Betegjelentés: csak a készenlétesek kiválasztásának engedélyezése";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(13, 427);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(61, 13);
+            this.label41.TabIndex = 33;
+            this.label41.Text = "Beteg szín:";
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(212, 423);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(75, 20);
+            this.button19.TabIndex = 32;
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // label38
             // 
@@ -945,23 +967,31 @@ namespace Vezénylés_szerkesztő
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // label41
+            // checkBox3
             // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(13, 427);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(61, 13);
-            this.label41.TabIndex = 33;
-            this.label41.Text = "Beteg szín:";
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Location = new System.Drawing.Point(15, 372);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(244, 17);
+            this.checkBox3.TabIndex = 38;
+            this.checkBox3.Text = "Értesítés küldése azonosító kártya lejárat előtt";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
-            // button19
+            // checkBox4
             // 
-            this.button19.Location = new System.Drawing.Point(212, 423);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(75, 20);
-            this.button19.TabIndex = 32;
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.Location = new System.Drawing.Point(15, 395);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(195, 17);
+            this.checkBox4.TabIndex = 39;
+            this.checkBox4.Text = "Értesítés küldése vizsga lejárat előtt";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // Form6
             // 
@@ -1078,5 +1108,7 @@ namespace Vezénylés_szerkesztő
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

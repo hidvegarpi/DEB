@@ -406,5 +406,29 @@ namespace Vezénylés_szerkesztő.Properties {
                 this["colorSickDay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool warningBeforeCard {
+            get {
+                return ((bool)(this["warningBeforeCard"]));
+            }
+            set {
+                this["warningBeforeCard"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool warningBeforeExam {
+            get {
+                return ((bool)(this["warningBeforeExam"]));
+            }
+            set {
+                this["warningBeforeExam"] = value;
+            }
+        }
     }
 }

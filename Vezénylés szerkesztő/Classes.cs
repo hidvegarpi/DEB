@@ -69,6 +69,8 @@ namespace Vezénylés_szerkesztő
         public static Color colorOrderedNight             { get { return Properties.Settings.Default.colorOrderedNight; } set { Properties.Settings.Default.colorOrderedNight = value; Properties.Settings.Default.Save(); } }
         public static bool sickOnlyStandby                { get { return Properties.Settings.Default.sickOnlyStandby; } set { Properties.Settings.Default.sickOnlyStandby = value; Properties.Settings.Default.Save(); } }
         public static bool generateByCanGoWith            { get { return Properties.Settings.Default.generateByCanGoWith; } set { Properties.Settings.Default.generateByCanGoWith = value; Properties.Settings.Default.Save(); } }
+        public static bool warningBeforeCard              { get { return Properties.Settings.Default.warningBeforeCard; } set { Properties.Settings.Default.warningBeforeCard = value; Properties.Settings.Default.Save(); } }
+        public static bool warningBeforeExam              { get { return Properties.Settings.Default.warningBeforeExam; } set { Properties.Settings.Default.warningBeforeExam = value; Properties.Settings.Default.Save(); } }
 
         public static void Save() => Properties.Settings.Default.Save();
         public static void Reset() => Properties.Settings.Default.Reset();
@@ -237,6 +239,8 @@ namespace Vezénylés_szerkesztő
             //              - moreHoursInMonth
             //              - requested days
             //              - requiredPeople
+            //              - add daily gate3 (male) for long shifts
+            //              - add dawn gate3 (male) for modDayShift
         }
 
         public void AddEmployeeForMoreHours(Employee e)
@@ -542,6 +546,8 @@ namespace Vezénylés_szerkesztő
         public bool ordered = false;
         public bool important = false;
 
+        public Dictionary<int, ShiftNote> additionalData = new Dictionary<int, ShiftNote>();
+
         public float hours
         {
             get
@@ -562,7 +568,7 @@ namespace Vezénylés_szerkesztő
             }
         }
 
-        public Shift(float _shiftStart, float _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false)
+        public Shift(float _shiftStart, float _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false, Dictionary<int, ShiftNote> _additionalData = null)
         {
             day = _day;
             type = _type;
@@ -586,10 +592,12 @@ namespace Vezénylés_szerkesztő
             ordered = _ordered;
             important = _important;
 
+            additionalData = _additionalData == null ? new Dictionary<int, ShiftNote>() : _additionalData;
+
             if (isPto || isFreeDay || isSickDay) requiredPeople = 0;
         }
 
-        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false)
+        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, Day _day, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false, Dictionary<int, ShiftNote> _additionalData = null)
         {
             day = _day;
             type = _type;
@@ -613,11 +621,13 @@ namespace Vezénylés_szerkesztő
             ordered = _ordered;
             important = _important;
 
+            additionalData = _additionalData == null ? new Dictionary<int, ShiftNote>() : _additionalData;
+
             if (isPto || isFreeDay || isSickDay) requiredPeople = 0;
         }
 
         [JsonConstructor]
-        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false)
+        public Shift(DateTime _shiftStart, DateTime _shiftEnd, ShiftType _type, int _reqPeople = -1, bool _standby = false, bool _pto = false, bool _freeDay = false, bool _ordered = false, bool _important = false, bool _sickDay = false, Dictionary<int, ShiftNote> _additionalData = null)
         {
             type = _type;
             requiredPeople = _reqPeople;
@@ -639,6 +649,8 @@ namespace Vezénylés_szerkesztő
 
             ordered = _ordered;
             important = _important;
+
+            additionalData = _additionalData == null ? new Dictionary<int, ShiftNote>() : _additionalData;
 
             if (isPto || isFreeDay || isSickDay) requiredPeople = 0;
         }
@@ -735,6 +747,18 @@ namespace Vezénylés_szerkesztő
             substituteEmployee = _substituteEmployee;
             shiftList = _shiftList;
             date = _date;
+        }
+    }
+
+    public class ShiftNote
+    {
+        public string note = "";
+        public int slot = 1;
+
+        public ShiftNote(string _note, int _slot)
+        {
+            note = _note;
+            slot = _slot;
         }
     }
 

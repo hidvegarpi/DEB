@@ -76,11 +76,13 @@ namespace Vezénylés_szerkesztő
 
         private void UserControl3_MouseEnter(object sender, EventArgs e)
         {
+            if (BackColor == Color.LightGreen) return;
             BackColor = Color.Gray;
         }
 
         private void UserControl3_MouseLeave(object sender, EventArgs e)
         {
+            if (BackColor == Color.LightGreen) return;
             BackColor = _data.date.DayOfWeek == DayOfWeek.Saturday || _data.date.DayOfWeek == DayOfWeek.Sunday ? Color.LightGray : Control.DefaultBackColor;
         }
 
@@ -92,6 +94,14 @@ namespace Vezénylés_szerkesztő
         private void járatTörléseToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void getNonDefaultShiftsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int j = 0; j < data.nonDefaultShifts.Count; j++)
+            {
+                MessageBox.Show("RelativeIndex: " + (j) + "\n" + data.nonDefaultShifts[j].ToString());
+            }
         }
     }
 }

@@ -296,29 +296,30 @@ namespace Vezénylés_szerkesztő
                             label2.Text = "";
                             label3.Text = "";
                             label4.Text = "";
+                            ShiftNote note = shiftData[0].additionalData[employeeData.id];
 
-                            if (shiftData[0].additionalData[employeeData.id].slot == 1)
+                            if (note.slot == 1)
                             {
                                 label1.Text = "        ";
-                                label1.BackColor = Color.Yellow;
+                                label1.BackColor = note.color;
                             }
-                            if (shiftData[0].additionalData[employeeData.id].slot == 2)
+                            if (note.slot == 2)
                             {
                                 label2.Text = "        ";
-                                label2.BackColor = Color.DarkOrange;
+                                label2.BackColor = note.color;
                             }
-                            if (shiftData[0].additionalData[employeeData.id].slot == 3)
+                            if (note.slot == 3)
                             {
                                 label3.Text = "        ";
-                                label3.BackColor = Color.DarkRed;
+                                label3.BackColor = note.color;
                             }
-                            if (shiftData[0].additionalData[employeeData.id].slot == 4)
+                            if (note.slot == 4)
                             {
                                 label4.Text = "        ";
-                                label4.BackColor = Color.DarkCyan;
+                                label4.BackColor = note.color;
                             }
 
-                            SetTooltip(shiftData[0].additionalData[employeeData.id].note);
+                            SetTooltip(note.note);
 
                             hozzáadásToolStripMenuItem.Enabled = false;
                             törlésToolStripMenuItem.Enabled = true;
@@ -407,10 +408,10 @@ namespace Vezénylés_szerkesztő
         public void SetErr()
         {
             label1.Text = "";
-            label2.Text = "ERR";
+            label2.Text = "  ERR  ";
             label3.Text = "";
             label4.Text = "";
-            BackColor = Color.Red;
+            BackColor = Color.Yellow;
             panel1.BackColor = Color.Red;
         }
 

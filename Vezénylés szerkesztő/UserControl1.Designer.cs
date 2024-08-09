@@ -113,7 +113,7 @@ namespace Vezénylés_szerkesztő
             this.toolStripMenuItem4,
             this.egyediMűszakToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 70);
             // 
             // toolStripMenuItem1
             // 
@@ -121,7 +121,7 @@ namespace Vezénylés_szerkesztő
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
             this.toolStripMenuItem1.Text = "Betegség";
             // 
             // toolStripMenuItem2
@@ -135,7 +135,7 @@ namespace Vezénylés_szerkesztő
             // 
             this.toolStripMenuItem3.Enabled = false;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(127, 22);
             this.toolStripMenuItem3.Text = "Törlés";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -147,7 +147,7 @@ namespace Vezénylés_szerkesztő
             this.toolStripSeparator1,
             this.toolStripComboBox1});
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(215, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(136, 22);
             this.toolStripMenuItem4.Text = "Kérés";
             // 
             // toolStripMenuItem5
@@ -187,8 +187,8 @@ namespace Vezénylés_szerkesztő
             this.hozzáadásToolStripMenuItem,
             this.törlésToolStripMenuItem});
             this.egyediMűszakToolStripMenuItem.Name = "egyediMűszakToolStripMenuItem";
-            this.egyediMűszakToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.egyediMűszakToolStripMenuItem.Text = "Egyedi műszak";
+            this.egyediMűszakToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.egyediMűszakToolStripMenuItem.Text = "Megjegyzés";
             // 
             // hozzáadásToolStripMenuItem
             // 

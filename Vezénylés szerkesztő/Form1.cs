@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -27,7 +28,8 @@ namespace Vezénylés_szerkesztő
         public Month currentMonth;
         string statusLabelDefault;
         string titleDefault;
-        string versionString = "v0.240806";
+        string monthStatsDefault;
+        string versionString = "v0.240808/WIP";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -37,6 +39,7 @@ namespace Vezénylés_szerkesztő
             currentMonth = new Month(new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1));
             statusLabelDefault = toolStripStatusLabel1.Text;
             titleDefault = Text;
+            monthStatsDefault = label1.Text;
 
             flowLayoutPanel1.VerticalScroll.Visible = true;
             timer1.Enabled = true;
@@ -58,12 +61,11 @@ namespace Vezénylés_szerkesztő
             GenerateStatistics();
         }
 
-        private void Form1_Deactivate(object sender, EventArgs e)
-        {
-            ActiveControl = flowLayoutPanel1;
-        }
+        private void Form1_Deactivate(object sender, EventArgs e) => ActiveControl = flowLayoutPanel1;
 
         private void timer1_Tick(object sender, EventArgs e) => UpdateStatusBar();
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) => ActiveControl = flowLayoutPanel1;
 
         void LoadEmployees()
         {
@@ -86,21 +88,23 @@ namespace Vezénylés_szerkesztő
             string data = File.ReadAllText("./MonthData/2024-08.mnth");
             currentMonth = JsonConvert.DeserializeObject<Month>(data);
 
-            foreach (Day d in currentMonth.daysOfMonth)
-            {
-                foreach (Shift s in d.shiftList)
-                {
-                    DEL:
-                    for (int i = 0; i < s.employeeList.Count; i++)
-                    {
-                        if (s.employeeList[i] == null)
-                        {
-                            s.employeeList.RemoveAt(i);
-                            goto DEL;
-                        }
-                    }
-                }
-            }
+            //foreach (Day d in currentMonth.daysOfMonth)
+            //{
+            //    foreach (Shift s in d.shiftList)
+            //    {
+            //    DEL:
+            //        for (int i = 0; i < s.employeeList.Count; i++)
+            //        {
+            //            if (s.employeeList[i] == null)
+            //            {
+            //                s.employeeList.RemoveAt(i);
+            //                goto DEL;
+            //            }
+            //        }
+            //    }
+            //}
+
+            currentMonth.owner = this;
 
             Text = titleDefault + " " + versionString + " - " + currentMonth.startDate.ToString("MMMM", CultureInfo.CurrentCulture).FirstCharToUpper() + " " + employeeList.Count + " fő";
         }
@@ -163,8 +167,8 @@ namespace Vezénylés_szerkesztő
                                 ((UserControl3)c).data = d;
                     }
 
-                    if (f.isWeekly && d.date.Year == f.checkInStart.Year && d.date.Month == f.checkInStart.Month && 
-                        (d.date.Day == f.checkInStart.Day + 7 || d.date.Day == f.checkInStart.Day + 14 || 
+                    if (f.isWeekly && d.date.Year == f.checkInStart.Year && d.date.Month == f.checkInStart.Month &&
+                        (d.date.Day == f.checkInStart.Day + 7 || d.date.Day == f.checkInStart.Day + 14 ||
                         d.date.Day == f.checkInStart.Day + 21 || d.date.Day == f.checkInStart.Day + 28))
                     {
                         d.AddFlight(f);
@@ -189,6 +193,8 @@ namespace Vezénylés_szerkesztő
             //            s.additionalData.Add(em, additionalData[em]);
 
             SetShiftVisual(form.employeeData.id, shift.shiftStart.Day, currentMonth.daysOfMonth[shift.shiftStart.Day - 1].GetShiftsPerEmployee(form.employeeData));
+            GenerateStatistics();
+            SaveCurrentMonth();
         }
 
         public void ClearExcShiftData(Employee forEmployee, Day day)
@@ -196,7 +202,9 @@ namespace Vezénylés_szerkesztő
             foreach (Shift s in currentMonth.daysOfMonth[day.date.Day - 1].shiftList)
                 s.additionalData.Remove(forEmployee.id);
 
-            SetShiftVisual(forEmployee.id,day.date.Day, currentMonth.daysOfMonth[day.date.Day - 1].GetShiftsPerEmployee(forEmployee));
+            SetShiftVisual(forEmployee.id, day.date.Day, currentMonth.daysOfMonth[day.date.Day - 1].GetShiftsPerEmployee(forEmployee));
+            GenerateStatistics();
+            SaveCurrentMonth();
         }
 
         void EmployeeEdited(Employee e)
@@ -278,8 +286,8 @@ namespace Vezénylés_szerkesztő
                             }
                         }
 
-                        if (!notModifyShifts) 
-                        { 
+                        if (!notModifyShifts)
+                        {
                             #region TMP_ShiftTypes
                             if (e.id == 1)
                             {
@@ -465,7 +473,7 @@ namespace Vezénylés_szerkesztő
                                 n.isPTO = true;
                                 currentMonth.daysOfMonth[i].shiftList[PublicParameters.shiftIndexPTO].AddEmployee(e);
                             }
-                        #endregion
+                            #endregion
                         }
 
                         if (sl.Count == 0) n.SetNull();
@@ -517,8 +525,17 @@ namespace Vezénylés_szerkesztő
             foreach (Employee e in employeeList)
                 for (int d = 0; d < currentMonth.daysOfMonth.Count; d++)
                     SetShiftVisual(e.id, d + 1, currentMonth.daysOfMonth[d].GetShiftsPerEmployee(e));
+
+            for (int i = 0; i < currentMonth.daysOfMonth.Count; i++)
+                ((UserControl3)daysControlList[i]).data = currentMonth.daysOfMonth[i];
+            
             GenerateStatistics();
             Application.DoEvents();
+        }
+
+        public void UpdateGenerateStatus(int processedDayIndex)
+        {
+            ((UserControl3)daysControlList[processedDayIndex]).BackColor = Color.LightGreen;
         }
 
         void UpdateStatusBar() //add multiple flights to current flight
@@ -648,11 +665,15 @@ namespace Vezénylés_szerkesztő
                     {
                         if (shift.ContainsEmployee(employeeList[i]))
                         {
+                            if (shift.additionalData.Keys.Contains(employeeList[i].id))
+                                h += shift.additionalData[employeeList[i].id].hours;
+
                             if (shift.isPto) p++;
-                            else if (!shift.isStandby && !shift.isPto && !shift.isFreeDay || !shift.isSickDay && (!shift.ordered || (!shift.ordered && !shift.type.HasFlag(ShiftType.Night))))
+                            else if ((!shift.isStandby && !shift.isPto && !shift.isFreeDay) || (!shift.isSickDay && (!shift.ordered || (!shift.ordered && !shift.type.HasFlag(ShiftType.Night)))))
                             {
                                 h += shift.hours;
-                                if (!(shift.shiftStart.Hour == 0 && shift.shiftStart.Minute == 0 && day.dayNumber > 1))
+                                if (!(shift.shiftStart.Hour == 0 && shift.shiftStart.Minute == 0 && day.dayNumber > 1)
+                                    && !shift.isFreeDay && !shift.isPto && !shift.isStandby)
                                 {
                                     s++;
                                     addDay = true;
@@ -682,9 +703,9 @@ namespace Vezénylés_szerkesztő
                 "Szabi" + "|  " +
                 "Beteg" + "|    " +
                 "Összes" + "|     " +
-                "Túlóra" + "|   " + 
+                "Túlóra" + "|   " +
                 "Távolság" + "|  " +
-                "Összes Km" + "|      " + 
+                "Összes Km" + "|      " +
                 "Összeg" + "\n";
             richTextBox1.Text += MultiplyChars(longestName + 103, '#') + "\n";
 
@@ -698,7 +719,7 @@ namespace Vezénylés_szerkesztő
                     sickDays[i].ToString().PadLeft(2, ' ') + "|     " +
                     totalHours[i].ToString("F1").PadLeft(5, ' ') + "|     " +
                     overtime[i].ToString("F1").PadLeft(6, ' ') + "|      " +
-                    employeeList[i].distanceToWork.ToString("F1").PadLeft(5, ' ') + "|       " + 
+                    employeeList[i].distanceToWork.ToString("F1").PadLeft(5, ' ') + "|       " +
                     (Math.Round(employeeList[i].distanceToWork) * 2 * shifts[i]).ToString().PadLeft(4, ' ') + "|    " +
                     (Math.Round(employeeList[i].distanceToWork) * 2 * shifts[i] * PublicParameters.multiplierKm).ToString().PadLeft(5, ' ') + " Ft" + "\n";
             }
@@ -726,6 +747,8 @@ namespace Vezénylés_szerkesztő
                 }
             }
 
+            label1.Text = monthStatsDefault;
+            label1.Text = label1.Text.Replace("#MONTH", currentMonth.startDate.Month.ToString("MMMM", CultureInfo.CurrentCulture));
             label1.Text = label1.Text.Replace("#1", allPTO.ToString());
             label1.Text = label1.Text.Replace("#2", allSickDays.ToString());
             label1.Text = label1.Text.Replace("#3", allOrderedFreeDay.ToString());
@@ -737,6 +760,7 @@ namespace Vezénylés_szerkesztő
 
         public void SetShiftVisual(int employeeID, int dayOfMonth, List<Shift> shiftList, Employee substitute = null)
         {
+            if (shiftList.Count == 0) return; 
             ((UserControl1)controlNestedList[employeeID - 1][dayOfMonth - 1]).shifts = shiftList;
             if (substitute != null) ((UserControl1)controlNestedList[employeeID - 1][dayOfMonth - 1]).substituteEmployee = substitute;
         }
@@ -899,12 +923,44 @@ namespace Vezénylés_szerkesztő
             toolStripSplitButton1.Visible = false;
         }
 
+        bool tableUpdated = false;
         private void beosztásGenerálásaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            currentMonth.ClearAllShifts(false);
-            currentMonth.CreateShifts(false);
-            currentMonth.CalculateEmployeesForShifts();
+            currentMonth.ClearAllShifts(true);
+            currentMonth.CreateShifts(false, true);
+            ThreadStart starter = new ThreadStart(() =>
+            {
+                currentMonth.CalculateEmployeesForShifts(employeeList);
+            });
+            starter += () =>
+            {
+                tableUpdated = true;
+                //UpdateTable();
+            };
+
+            Thread generate = new Thread(starter);
+            generate.Start();
+        }
+
+        private void beosztásTörléseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentMonth.ClearEmployeesFromShifts(false);
             UpdateTable();
+        }
+
+        private void beosztásTörlésekivételKértNapokToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentMonth.ClearEmployeesFromShifts(true);
+            UpdateTable();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (tableUpdated)
+            {
+                tableUpdated = false;
+                UpdateTable();
+            }
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Vezénylés_szerkesztő
 
         string note = "NaN";
         int slot = 1;
+        Color color = Color.DarkOrange;
+        float hours = 0;
 
         public Shift shiftData
         {
@@ -51,17 +53,31 @@ namespace Vezénylés_szerkesztő
 
         private void Form9_Load(object sender, EventArgs e)
         {
-
+            button2.BackColor = color;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) => note = textBox1.Text;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            additionalData.Add(employeeData.id, new ShiftNote(note, slot));
+            additionalData.Add(employeeData.id, new ShiftNote(note, slot, color, hours));
             Close();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e) => slot = (int)numericUpDown1.Value;
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e) => hours = (float)numericUpDown2.Value;
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            colorDialog1.Color = color;
+            colorDialog1.CustomColors = new int[] { ColorTranslator.ToOle(color) };
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                button2.BackColor = colorDialog1.Color;
+                color = colorDialog1.Color;
+            }
+        }
+
     }
 }

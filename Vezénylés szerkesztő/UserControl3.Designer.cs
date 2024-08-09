@@ -35,6 +35,7 @@ namespace Vezénylés_szerkesztő
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.járatHozzáadásaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.járatTörléseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getNonDefaultShiftsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,14 +56,15 @@ namespace Vezénylés_szerkesztő
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.járatHozzáadásaToolStripMenuItem,
-            this.járatTörléseToolStripMenuItem});
+            this.járatTörléseToolStripMenuItem,
+            this.getNonDefaultShiftsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 92);
             // 
             // járatHozzáadásaToolStripMenuItem
             // 
             this.járatHozzáadásaToolStripMenuItem.Name = "járatHozzáadásaToolStripMenuItem";
-            this.járatHozzáadásaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.járatHozzáadásaToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.járatHozzáadásaToolStripMenuItem.Text = "Járat hozzáadása";
             this.járatHozzáadásaToolStripMenuItem.Click += new System.EventHandler(this.járatHozzáadásaToolStripMenuItem_Click);
             // 
@@ -70,9 +72,16 @@ namespace Vezénylés_szerkesztő
             // 
             this.járatTörléseToolStripMenuItem.Enabled = false;
             this.járatTörléseToolStripMenuItem.Name = "járatTörléseToolStripMenuItem";
-            this.járatTörléseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.járatTörléseToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.járatTörléseToolStripMenuItem.Text = "Járat törlése";
             this.járatTörléseToolStripMenuItem.Click += new System.EventHandler(this.járatTörléseToolStripMenuItem_Click);
+            // 
+            // getNonDefaultShiftsToolStripMenuItem
+            // 
+            this.getNonDefaultShiftsToolStripMenuItem.Name = "getNonDefaultShiftsToolStripMenuItem";
+            this.getNonDefaultShiftsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.getNonDefaultShiftsToolStripMenuItem.Text = "GetNonDefaultShifts";
+            this.getNonDefaultShiftsToolStripMenuItem.Click += new System.EventHandler(this.getNonDefaultShiftsToolStripMenuItem_Click);
             // 
             // UserControl3
             // 
@@ -101,5 +110,6 @@ namespace Vezénylés_szerkesztő
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem járatHozzáadásaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem járatTörléseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem getNonDefaultShiftsToolStripMenuItem;
     }
 }

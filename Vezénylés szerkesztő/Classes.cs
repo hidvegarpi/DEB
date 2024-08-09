@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Security.Policy;
 using System.CodeDom;
+using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
 
 namespace Vezénylés_szerkesztő
 {
@@ -134,6 +136,7 @@ namespace Vezénylés_szerkesztő
 
         public override string ToString()
         {
+            //return "ID: " + id;
             return 
                 "Name: " + name +
                 "\nSex: " + (male ? "Male" : "Female") + 
@@ -164,6 +167,8 @@ namespace Vezénylés_szerkesztő
         public List<Day> daysOfMonth;
         public List<int> moreHoursInMonth = new List<int>();
         public List<SickDay> sickDays = new List<SickDay>();
+        [JsonIgnore]
+        public Form1 owner;
 
         //statistic read only parameters
 
@@ -207,28 +212,111 @@ namespace Vezénylés_szerkesztő
 
         public void ClearAllShifts(bool exceptDefault)
         {
-            foreach (Day d in daysOfMonth)
-                d.shiftList = new List<Shift>();
+            CLEAR_LOOP:
+            foreach (Day d in daysOfMonth){
+                for (int i = exceptDefault ? PublicParameters.shiftNonDefaultStart : 0; i < d.shiftList.Count; i++)
+                {
+                    d.shiftList.RemoveAt(i);
+                    goto CLEAR_LOOP;
+                }
+            }
 
-            if (exceptDefault)
-                foreach (Day d in daysOfMonth)
-                    d.AddDefaultShifts();
+            foreach (Day d in daysOfMonth)
+            {
+                if (d.shiftList.Count > (exceptDefault ? PublicParameters.shiftNonDefaultStart : 0))
+                {
+                    MessageBox.Show("NOT CLEARED\n" + d.shiftList.Count);
+                }
+            }
+
+            //if (exceptDefault)
+            //    foreach (Day d in daysOfMonth)
+            //        d.AddDefaultShifts();
         }
 
-        public void CreateShifts(bool onlyDefault)
+        public void CreateShifts(bool onlyDefault, bool onlyNonDefault = false)
         {
             foreach (Day d in daysOfMonth)
             {
-                d.AddDefaultShifts();
-                if (!onlyDefault) d.CreateShifts();
+                if (onlyNonDefault) d.CreateShifts();
+                if (onlyDefault) d.AddDefaultShifts();
             }
         }
 
-        public void CalculateEmployeesForShifts()
+        public void CalculateEmployeesForShifts(List<Employee> employeeList)
         {
+            Random rnd = new Random();
             ClearEmployeesFromShifts(true);
 
+            for (int i = 0; i < daysOfMonth.Count; i++)
+            {
+                Day d = daysOfMonth[i];
+                foreach (Shift s in d.shiftList)
+                {
+                    if (s.ordered) continue;
 
+                    d = daysOfMonth[i];
+                    for (int j = 0; j < s.requiredPeople; j++)
+                    {
+                        d = daysOfMonth[i];
+
+                        if (i > 0)
+                        {
+                            if (s.type.HasFlag(ShiftType.Night) && !s.ordered)
+                            {
+                                if (s.shiftStart == d.shiftList[PublicParameters.shiftIndexNight1_O].shiftStart)
+                                {
+                                    j = d.shiftList[PublicParameters.shiftIndexNight1_O].employeeList.Count;
+                                    break;
+                                }
+                                else if (s.shiftStart == d.shiftList[PublicParameters.shiftIndexNight2_O].shiftStart)
+                                {
+                                    j = d.shiftList[PublicParameters.shiftIndexNight2_O].employeeList.Count;
+                                    break;
+                                }
+                            }
+                            s.AddEmployee(GetRandomFreeEmployee(employeeList, d, i == 0 ? null : daysOfMonth[i - 1], s, s.hasSupervisor ? EmployeeType.Default : EmployeeType.Supervisor));
+                            //if (s.shiftStart.Hour == 0 && s.shiftEnd.Hour == 7 && s.type.HasFlag(ShiftType.Night) && !s.ordered)
+                            //{
+                            //    List<Employee> lastNightEmployees = new List<Employee>();
+                            //    foreach (Employee e in daysOfMonth[i - 1].shiftList[1].employeeList)
+                            //        if (!lastNightEmployees.Contains(e))
+                            //            lastNightEmployees.Add(e);
+                            //    foreach (Employee e in daysOfMonth[i - 1].shiftList[PublicParameters.shiftIndexNight2_O].employeeList)
+                            //        if (!lastNightEmployees.Contains(e))
+                            //            lastNightEmployees.Add(e);
+
+                            //    s.AddEmployee(lastNightEmployees[j]);
+                            //}
+                            //else
+                            //{
+
+                            //}
+                        }
+                        else
+                        {
+                            s.AddEmployee(GetRandomFreeEmployee(employeeList, d, i == 0 ? null : daysOfMonth[i - 1], s, s.hasSupervisor ? EmployeeType.Default : EmployeeType.Supervisor));
+                        }
+
+                    }
+                    //while (s.requiredPeople > s.employeeList.Count)
+                    //{
+                    //    s.AddEmployee(GetRandomFreeEmployee(employeeList, d, i == 0 ? null : daysOfMonth[i - 1], s));
+                    //}
+                    daysOfMonth[i] = d;
+                }
+                //MessageBox.Show("Day " + (i + 1) + " PASS");
+                owner.Invoke((MethodInvoker)delegate
+                {
+                    owner.UpdateGenerateStatus(i);
+                });
+            }
+
+            List<float> hours = new List<float>();
+            foreach (Employee e in employeeList)
+                if (e.id > 1)
+                    hours.Add(GetHoursPerEmployee(e));
+            MessageBox.Show("Min: " + hours.Min() + "\nMax: " + hours.Max() + "\nAvg :" + hours.Average());
 
             // TODO:    Make it work
             //
@@ -259,6 +347,47 @@ namespace Vezénylés_szerkesztő
                     return;
                 }    
             }
+        }
+
+        public float GetHoursPerEmployee(Employee e)
+        {
+            float hoursPerEmployee = 0;
+            foreach (Day d in daysOfMonth)
+                foreach (Shift s in d.shiftList)
+                    foreach (Employee em in s.employeeList)
+                        if (em.id == e.id && em.name == e.name)
+                            hoursPerEmployee += s.hours;
+            return hoursPerEmployee;
+        }
+
+        public Employee GetRandomFreeEmployee(List<Employee> employeeList, Day day, Day prevDay, Shift forShift, EmployeeType type)
+        {
+            Random rnd = new Random();
+            int index = 0;
+
+            List<int> freeIndexes = new List<int>();
+            for (int i = 1; i < employeeList.Count; i++)
+                if (type.HasFlag(employeeList[i].type)) 
+                    if (day.IsEmployeeFreeForWork(employeeList[i], prevDay, forShift))
+                        freeIndexes.Add(i);
+
+            //if (freeIndexes.Count == 0)
+            //    MessageBox.Show("ERROR: Zero free employees", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //if (freeIndexes.Count < day.EmployeesNeeded())
+            //{
+            //    MessageBox.Show("ERROR DAY " + day.date.Day + ": Less free employees than needed:\nFree: " + freeIndexes.Count + "\nNeeded: " + day.EmployeesNeeded(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    for (int j = 0; j < day.nonDefaultShifts.Count; j++)
+            //    {
+            //        MessageBox.Show("RelativeIndex: " + j + "\n" + day.nonDefaultShifts[j].ToString());
+            //    }
+            //}
+
+            index = rnd.Next(0, freeIndexes.Count);
+
+            while (!day.IsEmployeeFreeForWork(employeeList[freeIndexes[index]], prevDay, forShift))
+                index = rnd.Next(0, freeIndexes.Count);
+
+            return employeeList[freeIndexes[index]];
         }
 
         public List<Employee> EmployeesOnStandby(int dayOfMonth)
@@ -353,7 +482,7 @@ namespace Vezénylés_szerkesztő
             CheckFlightsCovered();
 
             LOOP:
-            List<int> shiftToDelete = new List<int>();
+            Queue<int> shiftToDelete = new Queue<int>();
             for (int i = PublicParameters.shiftNonDefaultStart + 1; i < shiftList.Count; i++)
             {
                 if (shiftList.Count <= PublicParameters.shiftNonDefaultStart) break;
@@ -361,13 +490,13 @@ namespace Vezénylés_szerkesztő
                 {
                     //MessageBox.Show("1");
                     shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd;
-                    shiftToDelete.Add(i);
+                    shiftToDelete.Enqueue(i);
                 }
                 if (shiftList[i - 1].shiftStart == shiftList[i].shiftEnd)
                 {
                     //MessageBox.Show("2");
                     shiftList[i].shiftEnd = shiftList[i - 1].shiftEnd;
-                    shiftToDelete.Add(i + 1);
+                    shiftToDelete.Enqueue(i + 1);
                 }
 
                 if (shiftList[i].shiftStart - new TimeSpan(1, 30, 0) == shiftList[i - 1].shiftEnd)
@@ -375,7 +504,7 @@ namespace Vezénylés_szerkesztő
                     //MessageBox.Show("3");
                     //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
                     shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd);
-                    shiftToDelete.Add(i);
+                    shiftToDelete.Enqueue(i);
                 }
 
                 if (shiftList[i].shiftStart - new TimeSpan(0, 30, 0) == shiftList[i - 1].shiftEnd)
@@ -383,7 +512,7 @@ namespace Vezénylés_szerkesztő
                     //MessageBox.Show("4");
                     //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
                     shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd) - new TimeSpan(1, 30, 0);
-                    shiftToDelete.Add(i);
+                    shiftToDelete.Enqueue(i);
                 }
 
                 if (shiftList[i].shiftStart - new TimeSpan(1, 0, 0) == shiftList[i - 1].shiftEnd)
@@ -391,13 +520,21 @@ namespace Vezénylés_szerkesztő
                     //MessageBox.Show("5");
                     //MessageBox.Show(shiftList[i - 1].ToString() + "\n\n" + shiftList[i].ToString());
                     shiftList[i - 1].shiftEnd = shiftList[i].shiftEnd - (shiftList[i].shiftStart - shiftList[i - 1].shiftEnd) - new TimeSpan(1, 0, 0);
-                    shiftToDelete.Add(i);
+                    shiftToDelete.Enqueue(i);
                 }
+
+                //for (int j = PublicParameters.shiftNonDefaultStart; j < shiftList.Count; j++)
+                //{
+                //    if (shiftList[i] == shiftList[j])
+                //    {
+
+                //    }
+                //}
             }
 
-            CheckFlightsCovered();
+            //CheckFlightsCovered();
 
-            if (shiftList.Count == PublicParameters.shiftNonDefaultStart + 3 && shiftToDelete.Count == 0)
+            if (nonDefaultShifts.Count == 3 && shiftToDelete.Count == 0)
             {
                 if (shiftList[PublicParameters.shiftNonDefaultStart].shiftStart.Hour == 4 && shiftList[PublicParameters.shiftNonDefaultStart].shiftEnd.Hour == 8 &&
                     shiftList[PublicParameters.shiftNonDefaultStart + 1].shiftStart.Hour == 10 && shiftList[PublicParameters.shiftNonDefaultStart + 1].shiftEnd.Hour == 14 && shiftList[PublicParameters.shiftNonDefaultStart + 1].shiftEnd.Minute == 30 &&
@@ -418,18 +555,40 @@ namespace Vezénylés_szerkesztő
                     //MessageBox.Show("Custom day");
                 }
             }
+            //if (nonDefaultShifts.Count == 5 && shiftToDelete.Count == 0)
+            //{
+            //    MessageBox.Show("5 nonDefault at day " + date.Day);
+            //    if (shiftList[PublicParameters.shiftNonDefaultStart + 2].shiftStart.Hour == 4 && shiftList[PublicParameters.shiftNonDefaultStart + 2].shiftEnd.Hour == 8 &&
+            //        shiftList[PublicParameters.shiftNonDefaultStart + 3].shiftStart.Hour == 10 && shiftList[PublicParameters.shiftNonDefaultStart + 3].shiftEnd.Hour == 14 && shiftList[PublicParameters.shiftNonDefaultStart + 3].shiftEnd.Minute == 30 &&
+            //        shiftList[PublicParameters.shiftNonDefaultStart + 4].shiftStart.Hour == 17 && shiftList[PublicParameters.shiftNonDefaultStart + 4].shiftEnd.Hour == 21)
+            //    {
+            //        MessageBox.Show("5 nonDefault at day " + date.Day + "\nparameters OK");
+            //        shiftList.RemoveAt(PublicParameters.shiftNonDefaultStart + 4);
+            //        shiftList.RemoveAt(PublicParameters.shiftNonDefaultStart + 3);
+            //        shiftList.RemoveAt(PublicParameters.shiftNonDefaultStart + 2);
+
+            //        //Shift s4_19 = new Shift(4, 19, ShiftType.Day | ShiftType.Long, this, 5);
+            //        //Shift s4_14 = new Shift(4, 14, ShiftType.Day | ShiftType.Divided, this, 0);
+            //        //Shift s17_21 = new Shift(17, 21, ShiftType.Day | ShiftType.Divided, this, 0);
+
+            //        //shiftList[PublicParameters.shiftIndexDay] = s4_19;
+            //        //shiftList.Add(s4_14);
+            //        //shiftList.Add(s17_21);
+
+            //        //MessageBox.Show("Custom day");
+            //    }
+            //}
 
             if (shiftToDelete.Count == 1)
             {
-                shiftList.RemoveAt(shiftToDelete[0]);
+                shiftList.RemoveAt(shiftToDelete.Dequeue());
             } else if (shiftToDelete.Count > 1)
             {
-                shiftList.RemoveAt(shiftToDelete[0]);
-                shiftToDelete.RemoveAt(0);
+                shiftList.RemoveAt(shiftToDelete.Dequeue());
                 goto LOOP;
             }
 
-            if (shiftList.Count > PublicParameters.shiftNonDefaultStart + 2)
+            if (nonDefaultShifts.Count > 2)
             {
                 string s = "";
                 for (int i = PublicParameters.shiftNonDefaultStart; i < shiftList.Count; i++)
@@ -437,13 +596,13 @@ namespace Vezénylés_szerkesztő
                 MessageBox.Show(s);
             }
 
-            if (shiftList.Count == PublicParameters.shiftNonDefaultStart + 2)
+            if (nonDefaultShifts.Count == 2)
             {
                 shiftList[PublicParameters.shiftNonDefaultStart].type = shiftList[PublicParameters.shiftNonDefaultStart].type | ShiftType.Divided;
                 shiftList[PublicParameters.shiftNonDefaultStart + 1].type = shiftList[PublicParameters.shiftNonDefaultStart + 1].type | ShiftType.Divided;
             }
 
-            CheckFlightsCovered();
+            //CheckFlightsCovered();
         }
 
         void CheckFlightsCovered() 
@@ -487,15 +646,74 @@ namespace Vezénylés_szerkesztő
             }
         }
 
-        public List<Shift> GetShiftsPerEmployee(Employee e)
+        public List<Shift> GetShiftsPerEmployee(Employee e, bool workShifts = false)
         {
             List<Shift> shifts = new List<Shift>();
             foreach (Shift s in shiftList)
-                foreach (Employee em in s.employeeList)
-                    if (em != null)
-                        if (em.id == e.id && em.name == e.name)
-                            shifts.Add(s);
+                if (workShifts ? (!s.isFreeDay && !s.isPto && !s.isSickDay) : true) 
+                    foreach (Employee em in s.employeeList)
+                        if (em != null)
+                            if (em.id == e.id && em.name == e.name)
+                                shifts.Add(s);
             return shifts;
+        }
+
+        public bool IsEmployeeFreeForWork(Employee e, Day prevDay, Shift forShift)
+        {
+            if (e.id == 1) return false;
+
+            foreach (Shift s in shiftList)
+            {
+                foreach (Employee em in s.employeeList)
+                {
+                    if (em.id == e.id && em.name == e.name)
+                    {
+                        if (s.isFreeDay && s.ordered) return false;
+                        else if (s.isFreeDay && s.ordered && s.important) return false;
+                        else if (s.isPto) return false;
+                        else if (s.isSickDay) return false;
+                        else if (s.type.HasFlag(ShiftType.Night)) return false;
+                        else if (EmployeHasDividedShift(e) && s.type.HasFlag(ShiftType.Divided)) return true;
+                        else if (EmployeHasDividedShift(e) && !s.type.HasFlag(ShiftType.Divided)) return false;
+                        else if (forShift.hasSupervisor && em.type == EmployeeType.Supervisor) return false;
+                        
+                        if (prevDay != null)
+                        {
+                            if (prevDay.shiftList[1].employeeList.Contains(e) && forShift == shiftList[0]) return true;
+                            else if (prevDay.shiftList[0].employeeList.Contains(e)) return false;
+                        }
+
+                        if (s.type.HasFlag(ShiftType.Day) && !s.type.HasFlag(ShiftType.Divided))
+                            return false;
+
+                        List<Shift> workingShifts = GetShiftsPerEmployee(e, true);
+                        if (workingShifts.Count >= 2) 
+                            return false;
+
+                        //if (s.hours > 0) return false;
+                        break;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public int EmployeesNeeded()
+        {
+            int employeesNeeded = 0;
+            foreach (Shift s in shiftList)
+                employeesNeeded += (s.requiredPeople - s.employeeList.Count);
+            return employeesNeeded;
+        }
+
+        bool EmployeHasDividedShift(Employee e)
+        {
+            foreach (Shift s in shiftList)
+                if (s.type.HasFlag(ShiftType.Divided))
+                    foreach (Employee em in s.employeeList)
+                        if (em.id == e.id && em.name == e.name)
+                            return true;
+            return false;
         }
 
         public override string ToString()
@@ -545,6 +763,41 @@ namespace Vezénylés_szerkesztő
 
         public bool ordered = false;
         public bool important = false;
+
+        [JsonIgnore]
+        public bool hasSupervisor
+        {
+            get
+            {
+                if ((type.HasFlag(ShiftType.Day) && !type.HasFlag(ShiftType.Long)) || type.HasFlag(ShiftType.Divided))
+                {
+                    foreach (Employee e in employeeList)
+                        if (e.type == EmployeeType.Supervisor)
+                            return true;
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        [JsonIgnore]
+        public bool needsMale
+        {
+            get
+            {
+                return true;
+            }
+        }
+        [JsonIgnore]
+        public bool needsFemale
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public Dictionary<int, ShiftNote> additionalData = new Dictionary<int, ShiftNote>();
 
@@ -709,6 +962,11 @@ namespace Vezénylés_szerkesztő
 
         public override string ToString()
         {
+            return
+                shiftStart.ToString() + "\n" +
+                shiftEnd.ToString() + "\n" +
+                "required: " + requiredPeople + "\n" +
+                "employeeCount: " + employeeList.Count;
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
@@ -754,11 +1012,15 @@ namespace Vezénylés_szerkesztő
     {
         public string note = "";
         public int slot = 1;
+        public Color color = Color.Yellow;
+        public float hours = 0;
 
-        public ShiftNote(string _note, int _slot)
+        public ShiftNote(string _note, int _slot, Color _color, float _hours)
         {
             note = _note;
             slot = _slot;
+            color = _color;
+            hours = _hours;
         }
     }
 
